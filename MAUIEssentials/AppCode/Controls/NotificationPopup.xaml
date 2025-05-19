@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.NotificationPopup"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+	xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+	xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+	BackgroundColor="{StaticResource popupBackgroundColor}"
+	CloseWhenBackgroundIsClicked="False">
+    <pages:PopupPage.Animation>
+		<animations:ScaleAnimation
+			PositionIn="Center"
+			PositionOut="Center"
+			ScaleIn="0.5"
+			ScaleOut="0.5"
+			DurationIn="100"
+			DurationOut="100"
+			EasingIn="SinIn"
+			EasingOut="SinIn" />
+	</pages:PopupPage.Animation>
+    <Border
+		x:Name="infoView"
+		VerticalOptions="Center"
+		Style="{DynamicResource borderStyle}"
+		Margin="{x:OnIdiom Phone='20,30', Tablet='50'}"
+		BackgroundColor="White">
+		<StackLayout
+			Padding="10"
+			Spacing="0"
+			Orientation="Vertical">
+			<controls:Image
+				HeightRequest="25"
+				WidthRequest="25"
+				VerticalOptions="Center"
+				HorizontalOptions="Start"
+				Source="ic_close"
+				TintColor="{StaticResource blackTextColor}">
+				<controls:Image.GestureRecognizers>
+					<TapGestureRecognizer
+						Tapped="CloseTapped" />
+				</controls:Image.GestureRecognizers>
+			</controls:Image>
+            <StackLayout
+				x:Name="stackView"
+				Padding="5,30"
+				Spacing="20"
+				Orientation="Vertical">
+				<Image
+					x:Name="imgType"
+					HeightRequest="60"
+					WidthRequest="60"
+					HorizontalOptions="Center" />
+				<Label
+					x:Name="lblTitle"
+					Margin="0,10,0,0"
+					TextColor="{StaticResource blackTextColor}"
+					FontSize="16"
+					FontAttributes="Bold"
+					HorizontalTextAlignment="Center"
+					VerticalTextAlignment="Center" />
+				<Label
+					x:Name="lblMsg"
+					TextColor="{StaticResource grayTextColor}"
+					FontSize="16"
+					HorizontalTextAlignment="Center"
+					VerticalTextAlignment="Center" />
+				<controls:HtmlLabel
+					x:Name="lblHtmlMsg"
+					TextType="Html"
+					TextColor="{StaticResource grayTextColor}"
+					FontSize="{StaticResource FontSize16}"
+					LinkColor="{StaticResource redColor}"
+					UnderlineText="False"
+					AndroidLegacyMode="True"
+					IsOverrideLink="True"
+					OverrideLinkClicked="HtmlOverrideLinkClicked"
+					HorizontalTextAlignment="Center"
+					VerticalTextAlignment="Center" />
+				<controls:Button
+					Margin="0,20,0,0"
+					Text="{Binding Source={x:Static appResources:LocalizationResources.ok}}"
+					TextColor="{StaticResource blueColor}"
+					FontAttributes="Bold"
+					Clicked="CloseTapped"
+					Style="{StaticResource blueButtonBorderStyle}" />
+				<controls:Button
+					x:Name="btnTwo"
+					TextColor="{StaticResource blueColor}"
+					FontAttributes="Bold"
+					Clicked="SecondButtonClicked"
+					Style="{StaticResource blueButtonBorderStyle}" />
+			</StackLayout>
+		</StackLayout>
+    </Border>
+</pages:PopupPage>

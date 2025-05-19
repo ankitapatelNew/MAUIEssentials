@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.AlertViews.SnackbarView"
+    xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    CloseWhenBackgroundIsClicked="False"
+    BackgroundColor="Transparent">
+    <pages:PopupPage.Animation>
+		<animations:MoveAnimation
+			PositionIn="Bottom"
+			PositionOut="Bottom" />
+	</pages:PopupPage.Animation>
+    <StackLayout
+        x:Name="mainStack"
+		Spacing="8"
+		VerticalOptions="End">
+        <Border
+            Padding="0"
+            StrokeShape="RoundRectangle 3,3,3,3"
+            Opacity="0.4"
+            Stroke="Black"
+            BackgroundColor="{Binding Config.BackgroundColor}">
+            <Grid
+				Padding="20,15"
+				ColumnSpacing="10">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="{Binding ButtonWidth}" />
+				</Grid.ColumnDefinitions>
+				<Label
+					Grid.Column="0"
+					Text="{Binding Config.Message}"
+					TextColor="{Binding Config.MessageTextColor}"
+					FontSize="{OnPlatform Android=12, iOS=14}"
+					FontFamily="{Binding Config.MessageFontFamily}"
+					VerticalTextAlignment="Center" />
+				<controls:Button
+					Grid.Column="1"
+					Text="{Binding Config.ButtonText, Converter={StaticResource StringCaseConverter}, ConverterParameter=U}"
+					TextColor="{Binding Config.ButtonTextColor}"
+					FontSize="{OnPlatform Android=12, iOS=14}"
+					FontFamily="{Binding Config.ButtonFontFamily}"
+					FillText="True"
+					TextTransform="Uppercase"
+					HeightRequest="{OnPlatform Android=32, iOS=30}"
+					IsVisible="{Binding Config.ButtonText, Converter={StaticResource EmptyStringConverter}}"
+					Command="{Binding ButtonCommand}"
+					BackgroundColor="Transparent" />
+			</Grid>
+        </Border>
+    </StackLayout>
+</pages:PopupPage>

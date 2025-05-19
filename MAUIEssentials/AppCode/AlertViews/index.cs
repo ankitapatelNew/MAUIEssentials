@@ -1,0 +1,10 @@
+global using Mopups.Pages;
+global using MAUIEssentials.ViewModels;
+global using System.Windows.Input;
+global using Mopups.Services;
+global using MAUIEssentials.AppCode.Helpers;
+global using System.Collections.ObjectModel;
+global using MAUIEssentials.Models;
+global using MAUIEssentials.AppCode.Controls;
+global using System.ComponentModel;
+global using MAUIEssentials.AppCode.DependencyServices;

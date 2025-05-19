@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader
+		name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader
+		name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader
+		name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader
+		name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data
+		name="takeNow"
+		xml:space="preserve">
+    	<value>Take Now</value>
+  	</data>
+	<data
+		name="chooseFromGallery"
+		xml:space="preserve">
+    	<value>Choose from gallery</value>
+  	</data>
+	<data
+		name="selectDocument"
+		xml:space="preserve">
+    	<value>Select Document</value>
+  	</data>
+	<data
+		name="selectFile"
+		xml:space="preserve">
+		<value>Select File</value>
+	</data>
+	<data
+		name="selectFileUpload"
+		xml:space="preserve">
+		<value>Please select a file to upload</value>
+	</data>
+	<data
+		name="cancel"
+		xml:space="preserve">
+		<value>Cancel</value>
+	</data>
+	<data
+		name="ok"
+		xml:space="preserve">
+		<value>Ok</value>
+	</data>
+</root>

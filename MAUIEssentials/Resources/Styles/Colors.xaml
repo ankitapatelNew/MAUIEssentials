@@ -28,6 +28,15 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <Color x:Key="lightBorderColor">#b2b2b2</Color>
+    <Color x:Key="popupBackgroundColor">#aa000000</Color>
+    <Color x:Key="redColor">#d2181f</Color>
+    <Color x:Key="grayColor">#b2b2b2</Color>
+    <Color x:Key="white">#ffffff</Color>
+    <Color x:Key="blackTextColor">#505456</Color>
+    <Color x:Key="grayTextColor">#6e6e6e</Color>
+    <Color x:Key="blueColor">#1e0576</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

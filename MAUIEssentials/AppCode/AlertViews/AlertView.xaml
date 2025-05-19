@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.AlertViews.AlertView"
+    xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+    <pages:PopupPage.Animation>
+		<animations:ScaleAnimation
+			PositionIn="Center"
+			PositionOut="Center"
+			ScaleIn="0.5"
+            ScaleOut="0.5"
+			EasingIn="SinIn"
+            EasingOut="SinIn"
+			DurationIn="200"
+			DurationOut="200" />
+	</pages:PopupPage.Animation>
+    <StackLayout
+        Spacing="0"
+		VerticalOptions="Center">
+        <StackLayout.Margin>
+			<OnIdiom
+				x:TypeArguments="Thickness"
+				Phone="40,0" />
+		</StackLayout.Margin>
+        <Border
+            x:Name="border"
+            Style="{DynamicResource borderStyle}"
+            VerticalOptions="Center">
+            <Border.HorizontalOptions>
+                <OnIdiom 
+                    x:TypeArguments="LayoutOptions"
+					Phone="FillAndExpand"
+					Tablet="Center"/>
+            </Border.HorizontalOptions>
+            <StackLayout
+                Spacing="0">
+				<Label
+					x:Name="lblTitle"
+					FontSize="20"
+					TextColor="Black"
+					FontAttributes="Bold"
+					Margin="20,10,20,0"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center" />
+				<Label
+					x:Name="lblMessage"
+					FontSize="14"
+					TextColor="Black"
+					Margin="10,7,10,15"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center" />
+				<controls:HtmlLabel
+					x:Name="lblHtml"
+					FontSize="14"
+					TextColor="Black"
+					Margin="10,7,10,15"
+					AndroidLegacyMode="True"
+					UnderlineText="False"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center" />
+				<BoxView
+					x:Name="separator1"
+					HeightRequest="1"
+					BackgroundColor="#979797" />
+				<Grid
+					x:Name="twoButtonView"
+					IsVisible="false"
+					ColumnSpacing="0"
+	                Padding="0"
+					HeightRequest="50">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="5*" />
+						<ColumnDefinition
+							Width="1" />
+						<ColumnDefinition
+							Width="5*" />
+					</Grid.ColumnDefinitions>
+					<controls:Button
+						x:Name="btnPositive"
+						Grid.Column="2"
+						Text="Ok"
+						TextColor="#2196F3"
+						FontAttributes="Bold"
+						FontSize="17"
+						FillText="true"
+						HeightRequest="45"
+						Clicked="Handle_Clicked_PositiveButton"
+						BackgroundColor="Transparent" />
+					<BoxView
+						x:Name="separator2"
+						Grid.Column="1"
+						WidthRequest="1"
+						BackgroundColor="#979797" />
+					<controls:Button
+						x:Name="btnNegative"
+						Grid.Column="0"
+						Text="Cancel"
+						TextColor="#9E9E9E"
+						FontAttributes="Bold"
+						FontSize="17"
+						HeightRequest="45"
+						FillText="true"
+						Clicked="Handle_Clicked_NegativeButton"
+						BackgroundColor="Transparent" />
+				</Grid>
+				<controls:Button
+					x:Name="singleButtonView"
+					HeightRequest="45"
+					Text="Ok"
+					TextColor="#2196F3"
+					FontAttributes="Bold"
+					FontSize="17"
+					FillText="true"
+					Clicked="Handle_Clicked_SingleButton"
+					BackgroundColor="Transparent" />
+            </StackLayout>
+        </Border>
+    </StackLayout>
+</pages:PopupPage>

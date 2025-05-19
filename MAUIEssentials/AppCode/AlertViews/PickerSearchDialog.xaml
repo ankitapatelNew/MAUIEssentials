@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.AlertViews.PickerSearchDialog"
+    xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+    BackgroundColor="{StaticResource popupBackgroundColor}">
+    <pages:PopupPage.Animation>
+		<animations:ScaleAnimation
+			PositionIn="Center"
+			PositionOut="Center"
+			ScaleIn="0.5"
+			ScaleOut="0.5"
+			DurationIn="100"
+			DurationOut="100"
+			EasingIn="SinIn"
+			EasingOut="SinIn" />
+	</pages:PopupPage.Animation>
+    <StackLayout
+        Spacing="10"
+		VerticalOptions="Center">
+        <StackLayout.Margin>
+			<OnIdiom
+				x:TypeArguments="Thickness"
+				Phone="30,0" />
+		</StackLayout.Margin>
+        <Border
+            x:Name="border"
+            VerticalOptions="Center"
+            Style="{DynamicResource borderStyle}">
+            <Border.HorizontalOptions>
+                <OnIdiom 
+                    x:TypeArguments="LayoutOptions"
+					Phone="FillAndExpand"
+					Tablet="Center"/>
+            </Border.HorizontalOptions>
+            <StackLayout
+				Spacing="10">
+				<Label
+					Margin="20,10,20,0"
+					Text="{Binding PickerDialog.TitleText}"
+					TextColor="{Binding PickerDialog.TitleTextColor}"
+					FontSize="{StaticResource FontSize16}"
+					HorizontalTextAlignment="Center" />
+				<controls:SearchBar
+					Margin="10,0"
+					x:Name="searchBar"
+					HeightRequest="40"
+					SearchIcon="ic_search.png"
+					CloseIcon="ic_close.png"
+					TextColor="Black"
+					Text="{Binding SearchText}"
+					Placeholder="{Binding PickerDialog.SearchPlaceholder}"
+					PlaceholderColor="Gray"
+					FontSize="{StaticResource FontSize15}"
+					FontFamily="{StaticResource AllerRegular}"
+					IsVisible="{Binding PickerDialog.IsSearchVisible}"
+					TintColor="{Binding PickerDialog.TintColor}">
+					<controls:SearchBar.BackgroundColor>
+						<OnPlatform x:TypeArguments="Color">
+							<On Platform="iOS" Value="#ffffff" />
+							<On Platform="Android" Value="#ECEFF1" />
+						</OnPlatform>
+					</controls:SearchBar.BackgroundColor>
+				</controls:SearchBar>
+				<controls:CustomListView
+					x:Name="pickerView"
+					SeparatorVisibility="None"
+					HasUnevenRows="True"
+					ItemsSource="{Binding DataList}"
+					ItemTapped="PickerItemTapped"
+					HeightRequest="{Binding ListHeight}"
+					BackgroundColor="White">
+					<controls:CustomListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid
+									Padding="10,8"
+									ColumnSpacing="10"
+									ColumnDefinitions="20,*">
+									<controls:Image
+										Grid.Column="0"
+										HeightRequest="20"
+										WidthRequest="20"
+										VerticalOptions="Center"
+										Source="{Binding RadioImage}"
+										TintColor="{Binding RadioTintColor}" />
+									<Label
+										Grid.Column="1"
+										Text="{Binding Name}"
+										TextColor="{StaticResource blackTextColor}"
+										FontSize="{StaticResource FontSize14}"
+										VerticalTextAlignment="Center"
+										IsVisible="{Binding IsHtml, Converter={StaticResource BooleanInverter}}" />
+									<controls:HtmlLabel
+										Grid.Column="1"
+										Text="{Binding Name}"
+										TextColor="{StaticResource blackTextColor}"
+										FontSize="{StaticResource FontSize14}"
+										AndroidLegacyMode="True"
+										IsOverrideLink="True"
+										OverrideLinkClicked="OverrideLinkClicked"
+										LinkColor="{StaticResource redColor}"
+										VerticalTextAlignment="Center"
+										IsVisible="{Binding IsHtml}" />
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</controls:CustomListView.ItemTemplate>
+				</controls:CustomListView>
+				<Grid
+					Margin="10,0"
+					ColumnSpacing="10"
+					ColumnDefinitions="*, *">
+					<controls:Button
+						x:Name="btnOk"
+						Grid.Column="1"
+						Text="{Binding PickerDialog.OkText}"
+						TextColor="{Binding PickerDialog.OkTextColor}"
+						BackgroundColor="{Binding PickerDialog.OkBackgroundColor}"
+						FontSize="{StaticResource FontSize13}"
+						FontFamily="{StaticResource AllerRegular}"
+						CornerRadius="0"
+						HeightRequest="40"
+						TextTransform="Uppercase"
+						Clicked="Handle_Clicked_Ok" />
+					<controls:Button
+						x:Name="btnCancel"
+						Grid.Column="0"
+						Text="{Binding PickerDialog.CancelText}"
+						TextColor="{Binding PickerDialog.CancelTextColor}"
+						BackgroundColor="{Binding PickerDialog.CancelBackgroundColor}"
+						FontSize="{StaticResource FontSize13}"
+						FontFamily="{StaticResource AllerRegular}"
+						CornerRadius="0"
+						HeightRequest="40"
+						TextTransform="Uppercase"
+						Clicked="Handle_Clicked_Cancel" />
+				</Grid>
+			</StackLayout>
+        </Border>
+    </StackLayout>
+</pages:PopupPage>

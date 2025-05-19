@@ -1,4 +1,4 @@
-﻿namespace MAUIEssentials;
+namespace MAUIEssentials;
 
 public partial class AppShell : Shell
 {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.AlertViews.ActionSheetView"
+    xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    xmlns:iOS="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    iOS:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource popupBackgroundColor}">
+    <pages:PopupPage.Animation>
+        <animations:MoveAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+    <StackLayout
+        Spacing="8"
+        Margin="10, 15"
+        VerticalOptions="End">
+        <Border
+            Style="{DynamicResource borderStyle}">
+            <StackLayout
+                Spacing="0"
+                Orientation="Vertical">
+                <Label 
+                    Text="{Binding Title}"
+                    TextColor="{Binding Config.TitleColor}"
+					FontSize="12"
+					FontFamily="{Binding Config.TitleFontFamily}"
+					Margin="0,10"
+					IsVisible="{Binding IsTitleVisible}"
+					HorizontalTextAlignment="Center" />
+                <Border
+					HeightRequest="2"
+					StrokeThickness="1"
+					IsVisible="{Binding IsTitleVisible}"
+					Stroke="{Binding Config.BorderColor}" />
+				<controls:BindableStackLayout
+					Spacing="0"
+					Orientation="Vertical"
+					ItemsSource="{Binding ActionSheetSource}">
+					<controls:BindableStackLayout.ItemDataTemplate>
+						<DataTemplate>
+							<StackLayout
+								Spacing="0"
+								Orientation="Vertical">
+								<controls:Button
+									Text="{Binding Name}"
+									TextColor="{Binding TextColor}"
+									FontSize="16"
+									FontFamily="{Binding FontFamily}"
+									HeightRequest="50"
+									FillText="true"
+									TextTransform="None"
+									Clicked="Handle_Clicked"
+									BackgroundColor="{Binding BackgroundColor}" />
+								<Border
+									HeightRequest="2"
+									StrokeThickness="1"
+									Stroke="{Binding BorderColor}" />
+							</StackLayout>
+						</DataTemplate>
+					</controls:BindableStackLayout.ItemDataTemplate>
+				</controls:BindableStackLayout>
+            </StackLayout>
+        </Border>
+        <controls:Button
+			Text="{Binding Cancel}"
+			BackgroundColor="White"
+			TextColor="{Binding Config.CancelTextColor}"
+			FontSize="16"
+			FontAttributes="Bold"
+			FontFamily="{Binding Config.CancelFontFamily}"
+			CornerRadius="14"
+			HeightRequest="50"
+			FillText="true"
+			Orientation="Horizontal"
+			Clicked="Handle_Clicked"
+			TextTransform="None"
+			StartColor="{Binding Config.CancelStartColor}"
+			EndColor="{Binding Config.CancelEndColor}" />
+    </StackLayout>
+</pages:PopupPage>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.CheckboxControl"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+	ColumnSpacing="10"
+	x:Name="checkboxControl"
+	ColumnDefinitions="*, Auto">
+     <Grid
+		Grid.Column="0"
+		ColumnSpacing="10"
+		ColumnDefinitions="30, *">
+		<controls:Image
+			Grid.Column="0"
+			x:Name="checkImage"
+			HeightRequest="22"
+			WidthRequest="22"
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+		<controls:HtmlLabel
+			Grid.Column="1"
+			TextType="Html"
+			Text="{Binding Text, Source={x:Reference checkboxControl}}"
+			TextColor="{Binding TextColor, Source={x:Reference checkboxControl}}"
+			FontSize="{Binding FontSize, Source={x:Reference checkboxControl}}"
+			AndroidLegacyMode="True"
+			UnderlineText="False"
+			LinkColor="{StaticResource redColor}"
+			VerticalTextAlignment="Center" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="CheckboxTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+	<Grid
+		Grid.Column="1"
+		WidthRequest="30"
+		IsVisible="{Binding HasInfoText, Source={x:Reference checkboxControl}}">
+		<controls:Image
+			HeightRequest="20"
+			WidthRequest="20"
+			Source="ic_info"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			TintColor="{StaticResource blueColor}" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="InfoTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+</Grid>

@@ -9,6 +9,27 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Border Style-->
+			<Style
+				x:Key="borderStyle"
+				TargetType="Border">
+				<Setter
+					Property="Padding"
+					Value="0" />
+				<Setter
+					Property="StrokeShape"
+					Value="RoundRectangle 10,10,10,10" />
+				<Setter
+					Property="StrokeThickness"
+					Value="1" />
+				<Setter
+					Property="Stroke"
+					Value="Transparent" />
+				<Setter
+					Property="BackgroundColor"
+					Value="White" />
+			</Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
