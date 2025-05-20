@@ -120,6 +120,7 @@ namespace MAUIEssentials.AppCode.Helpers
             }
             return memoryStream;
         }
+        
         public static string ToTitleCase(this string input)
         {
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;

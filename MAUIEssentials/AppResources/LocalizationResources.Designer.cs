@@ -130,13 +130,79 @@ namespace MAUIEssentials.AppResources {
                 return ResourceManager.GetString("cancel", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
-        internal static string ok {
-            get {
+        internal static string ok
+        {
+            get
+            {
                 return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string search
+        {
+            get
+            {
+                return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        internal static string retry
+        {
+            get
+            {
+                return ResourceManager.GetString("retry", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No internet connection!.
+        /// </summary>
+        internal static string checkInternet
+        {
+            get
+            {
+                return ResourceManager.GetString("checkInternet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Files.
+        /// </summary>
+        internal static string uploadFiles
+        {
+            get
+            {
+                return ResourceManager.GetString("uploadFiles", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter postcode.
+        /// </summary>
+        internal static string enterPostcode
+        {
+            get
+            {
+                return ResourceManager.GetString("enterPostcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an address.
+        /// </summary>
+        internal static string chooseAddress {
+            get {
+                return ResourceManager.GetString("chooseAddress", resourceCulture);
             }
         }
     }

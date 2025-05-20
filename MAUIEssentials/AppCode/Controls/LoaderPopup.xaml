@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.LoaderPopup"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    xmlns:pages="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    BackgroundColor="{StaticResource popupBackgroundColor}"
+    CloseWhenBackgroundIsClicked="False">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="0.5"
+            ScaleOut="0.5"
+            DurationIn="50"
+            DurationOut="50"
+            EasingIn="SinIn"
+            EasingOut="SinIn" />
+    </pages:PopupPage.Animation>
+    <Border
+        Style="{StaticResource borderStyle}"
+        StrokeShape="RoundRectangle 5,5,5,5"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+        <StackLayout
+            Spacing="5"
+            Padding="15"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <ActivityIndicator
+                x:Name="indicator"
+                Style="{StaticResource commonIndicator}" />
+            <Label
+                x:Name="lblTitle"
+                TextColor="{StaticResource blackTextColor}"
+                FontSize="14"
+                IsVisible="false"
+                HorizontalTextAlignment="Center" />
+        </StackLayout>
+    </Border>
+</pages:PopupPage>

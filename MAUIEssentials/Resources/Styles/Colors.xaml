@@ -36,6 +36,10 @@
     <Color x:Key="blackTextColor">#505456</Color>
     <Color x:Key="grayTextColor">#6e6e6e</Color>
     <Color x:Key="blueColor">#1e0576</Color>
+    <Color x:Key="black54Opacity">#8C000000</Color>
+    <Color x:Key="borderColor">#7b7e7f</Color>
+    <Color x:Key="black">#000000</Color>
+    <Color x:Key="grayTextColor">#6e6e6e</Color>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

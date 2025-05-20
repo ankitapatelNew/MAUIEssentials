@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.RadioControl"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="radioControl"
+	Spacing="7"
+	Orientation="Vertical"
+	BindableLayout.ItemsSource="{Binding ItemSource, Source={x:Reference radioControl}}">
+    <BindableLayout.ItemTemplate>
+		<DataTemplate>
+			<Border
+				Style="{StaticResource borderFrameStyle}">
+				<Grid
+					Padding="10"
+					ColumnSpacing="10"
+					ColumnDefinitions="20,*">
+					<controls:Image
+						Grid.Column="0"
+						HeightRequest="20"
+						WidthRequest="20"
+						VerticalOptions="Center"
+						Source="{Binding RadioImage}"
+						TintColor="{Binding RadioTintColor}" />
+					<Label
+						Grid.Column="1"
+						Text="{Binding Name}"
+						TextColor="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}}"
+						FontSize="{StaticResource FontSize14}"
+						VerticalTextAlignment="Center" />
+				</Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="Border_Clicked"
+                        CommandParameter="{Binding Name}"/>
+                </Border.GestureRecognizers>
+			</Border>
+		</DataTemplate>
+	</BindableLayout.ItemTemplate>
+</StackLayout>

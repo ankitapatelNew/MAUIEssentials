@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.ItemListControl"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="itemListControl"
+	Spacing="0">
+    <Label
+		Text="{Binding HeaderText, Source={x:Reference itemListControl}}"
+		TextColor="{StaticResource blackTextColor}"
+		FontSize="{StaticResource FontSize14}" />
+	<BoxView
+		Margin="0,8,0,0"
+		Style="{StaticResource borderStyle}" />
+    <controls:BindableStackLayout
+		Spacing="0"
+		Orientation="Vertical"
+		ItemsSource="{Binding Source, Source={x:Reference itemListControl}}">
+		<controls:BindableStackLayout.ItemDataTemplate>
+			<DataTemplate>
+				<StackLayout
+					Spacing="0"
+					Orientation="Vertical">
+					<Grid
+						Padding="15,7"
+						ColumnSpacing="15"
+						ColumnDefinitions="30, *">
+						<controls:Image
+							Grid.Column="0"
+							HeightRequest="30"
+							WidthRequest="30"
+							VerticalOptions="Center"
+							Source="{Binding Icon}"
+							TintColor="{Binding IconTintColor}" />
+						<StackLayout
+							Grid.Column="1"
+							Spacing="8"
+							Orientation="Vertical">
+							<Label
+								Text="{Binding Name}"
+								TextColor="{StaticResource blackTextColor}"
+								FontSize="{StaticResource FontSize13}"
+								FontAttributes="Bold" />
+							<Label
+								Text="{Binding Description}"
+								TextColor="{StaticResource blackTextColor}"
+								FontSize="{StaticResource FontSize12}" />
+						</StackLayout>
+					</Grid>
+					<Grid
+						Margin="0,0,15,5"
+						HeightRequest="40"
+						WidthRequest="40"
+						HorizontalOptions="End"
+						VerticalOptions="End"
+						ClassId="{Binding Description}">
+						<controls:Image
+							HeightRequest="22"
+							WidthRequest="22"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Source="ic_delete"
+							TintColor="{StaticResource redColor}" />
+						<Grid.GestureRecognizers>
+							<TapGestureRecognizer
+								Tapped="DeleteTapped" />
+						</Grid.GestureRecognizers>
+					</Grid>
+					<BoxView
+						Style="{StaticResource borderStyle}" />
+				</StackLayout>
+			</DataTemplate>
+		</controls:BindableStackLayout.ItemDataTemplate>
+	</controls:BindableStackLayout>
+</StackLayout>

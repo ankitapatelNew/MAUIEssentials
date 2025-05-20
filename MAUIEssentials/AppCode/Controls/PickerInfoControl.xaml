@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.PickerInfoControl"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="pickerControl"
+	RowSpacing="0"
+	RowDefinitions="Auto, 30, 1, Auto"
+	ColumnSpacing="0"
+	ColumnDefinitions="*, Auto">
+    <Label
+		Grid.Row="0"
+		Text="{Binding HeaderText, Source={x:Reference pickerControl}}"
+		TextColor="{Binding HeaderTextColor, Source={x:Reference pickerControl}}"
+		FontSize="{Binding HeaderFontSize, Source={x:Reference pickerControl}}" />
+	<Grid
+		Grid.Row="1"
+		Grid.Column="0"
+		ColumnSpacing="10"
+		ColumnDefinitions="*, 15">
+		<Label
+			Grid.Column="0"
+			Text="{Binding Text, Source={x:Reference pickerControl}}"
+			TextColor="{Binding TextColor, Source={x:Reference pickerControl}}"
+			FontSize="{Binding FontSize, Source={x:Reference pickerControl}}"
+			VerticalTextAlignment="Center" />
+		<controls:Image
+			Grid.Column="1"
+			HeightRequest="12"
+			WidthRequest="12"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			Source="ic_arrow_down"
+			TintColor="{StaticResource blueColor}" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="PickerTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+	<Grid
+		Grid.Row="1"
+		Grid.Column="1"
+		WidthRequest="30"
+		Margin="10,0,0,0"
+		IsVisible="{Binding HasInfoText, Source={x:Reference pickerControl}}">
+		<controls:Image
+			HeightRequest="20"
+			WidthRequest="20"
+			Source="ic_info"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			TintColor="{StaticResource blueColor}" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="InfoTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+	<Border
+		Grid.Row="2"
+		Grid.Column="0"
+		Style="{StaticResource borderUnderlineStyle}" />
+    <Border
+		Grid.Row="3"
+		Grid.ColumnSpan="2"
+		Margin="0,25,0,0"
+		Style="{StaticResource borderStyle}"
+		IsVisible="{Binding HasUploadButton, Source={x:Reference pickerControl}}"
+		Stroke="{Binding Source={x:StaticResource blueColor}}">
+        <Grid
+			HorizontalOptions="CenterAndExpand"
+			ColumnSpacing="10"
+			ColumnDefinitions="20, Auto"
+			HeightRequest="{StaticResource ButtonHeight}">
+			<controls:Image
+				Grid.Column="0"
+				HeightRequest="20"
+				WidthRequest="20"
+				Source="ic_download"
+				TintColor="{StaticResource blueColor}" />
+			<Label
+				Grid.Column="1"
+				Text="{Binding Source={x:Static appResources:LocalizationResources.uploadFiles}}"
+				TextColor="{StaticResource blueColor}"
+				FontSize="{StaticResource FontSize14}"
+				VerticalTextAlignment="Center" />
+		</Grid>
+		<Border.GestureRecognizers>
+			<TapGestureRecognizer 
+				Tapped="UploadFileClicked"/>
+		</Border.GestureRecognizers>
+    </Border>
+</Grid>

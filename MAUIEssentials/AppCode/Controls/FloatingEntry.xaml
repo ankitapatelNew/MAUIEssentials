@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.FloatingEntry"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="floatingEntry"
+	ColumnSpacing="0"
+	ColumnDefinitions="*, Auto">
+    <controls:CommanEntry
+		x:Name="entry"
+		HeightRequest="38"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="End"
+		Text="{Binding Text, Source={x:Reference floatingEntry}}"
+		TextColor="{Binding TextColor, Source={x:Reference floatingEntry}}"
+		FontSize="{Binding FontSize, Source={x:Reference floatingEntry}}"
+		ReturnType="{Binding ReturnType, Source={x:Reference floatingEntry}}"
+		Keyboard="{Binding Keyboard, Source={x:Reference floatingEntry}}"
+		IsPassword="{Binding IsPassword, Source={x:Reference floatingEntry}}"
+		FontAttributes="{Binding FontAttributeEntry, Source={x:Reference floatingEntry}}"
+		BackgroundColor="Transparent"
+		HorizontalTextAlignment="Start"
+		TextChanged="Handle_TextChanged"
+		Completed="Handle_Completed"
+		Focused="Handle_Focused"
+		Unfocused="Handle_Unfocused" />
+	<Label
+		x:Name="lblPlaceholder"
+		Text="{Binding Placeholder, Source={x:Reference floatingEntry}}"
+		TextColor="{Binding PlaceholderColor, Source={x:Reference floatingEntry}}"
+		FontAttributes="{Binding FontAttributePlaceholder, Source={x:Reference floatingEntry}}"
+		VerticalOptions="Center"
+		VerticalTextAlignment="Center">
+		<Label.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="Handle_Tapped" />
+		</Label.GestureRecognizers>
+	</Label>
+	<Grid
+		Grid.Column="1"
+		WidthRequest="30"
+		Margin="10,0,0,0"
+		IsVisible="{Binding HasInfoText, Source={x:Reference floatingEntry}}">
+		<controls:Image
+			HeightRequest="20"
+			WidthRequest="20"
+			Source="ic_info"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			TintColor="{StaticResource blueColor}" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="InfoTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+</Grid>

@@ -95,6 +95,47 @@ namespace MAUIEssentials.AppCode.Helpers
             return newLine;
         }
 
+        public static AlertConfig CommonAlertConfig()
+        {
+            return new AlertConfig
+            {
+                CornerRadius = 10,
+                Margin = DeviceInfo.Idiom == DeviceIdiom.Tablet ? new Thickness(150, 0) : new Thickness(40, 0),
+                PositiveColor = (Color)Application.Current.Resources["redColor"],
+                NegativeColor = (Color)Application.Current.Resources["black54Opacity"],
+                SeparatorColor = (Color)Application.Current.Resources["borderColor"]
+            };
+        }
+
+        public static ActionSheetConfig CommonActionSheetConfig()
+        {
+            return new ActionSheetConfig
+            {
+                CancelTextColor = (Color)Application.Current.Resources["redColor"],
+                ButtonsTextColor = (Color)Application.Current.Resources["redColor"],
+                CancelStartColor = (Color)Application.Current.Resources["white"],
+                CancelEndColor = (Color)Application.Current.Resources["white"],
+            };
+        }
+
+        public static PickerDialogSettings PickerViewDialogConfig(string title = "")
+        {
+            return new PickerDialogSettings
+            {
+                CancelBackgroundColor = Colors.Transparent,
+                CancelTextColor = (Color)Application.Current.Resources["blueColor"],
+                OkBackgroundColor = Colors.Transparent,
+                OkTextColor = (Color)Application.Current.Resources["redColor"],
+                TitleTextColor = (Color)Application.Current.Resources["blackTextColor"],
+                OkText = LocalizationResources.ok.ToUpper(),
+                CancelText = LocalizationResources.cancel.ToUpper(),
+                TitleText = title,
+                IsSearchVisible = true,
+                SearchPlaceholder = LocalizationResources.search,
+                TintColor = (Color)Application.Current.Resources["blackTextColor"],
+            };
+        }
+
         public static bool IsValidEmail(string email)
         {
             var pattern = @"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
@@ -186,7 +227,7 @@ namespace MAUIEssentials.AppCode.Helpers
                         }
                         else
                         {
-                            // await NavigationServices.OpenPopupPage(new NotificationPopup(NotificationType.Error, "Please turn on location.", string.Empty));
+                            await NavigationServices.OpenPopupPage(new NotificationPopup(NotificationType.Error, "Please turn on location.", string.Empty));
                         }
                         return location;
                     }
@@ -291,24 +332,24 @@ namespace MAUIEssentials.AppCode.Helpers
                 var takeNow = isCameraOptionShow ? LocalizationResources.takeNow : null;
                 var selectDocument = isFileOptionShow ? LocalizationResources.selectDocument : null;
 
-                // var action = await NavigationServices.DisplayActionSheet(LocalizationResources.selectFile, LocalizationResources.cancel,
-                //     CommonActionSheetConfig(), takeNow, LocalizationResources.chooseFromGallery, selectDocument);
+                var action = await NavigationServices.DisplayActionSheet(LocalizationResources.selectFile, LocalizationResources.cancel,
+                    CommonActionSheetConfig(), takeNow, LocalizationResources.chooseFromGallery, selectDocument);
 
-                // if (action != null)
-                // {
-                //     if (action == LocalizationResources.takeNow)
-                //     {
-                //         file = await TakePhoto();
-                //     }
-                //     else if (action == LocalizationResources.chooseFromGallery)
-                //     {
-                //         file = await OpenGallery();
-                //     }
-                //     else if (action == LocalizationResources.selectDocument)
-                //     {
-                //         file = await FilePicker.PickAsync();
-                //     }
-                // }
+                if (action != null)
+                {
+                    if (action == LocalizationResources.takeNow)
+                    {
+                        file = await TakePhoto();
+                    }
+                    else if (action == LocalizationResources.chooseFromGallery)
+                    {
+                        file = await OpenGallery();
+                    }
+                    else if (action == LocalizationResources.selectDocument)
+                    {
+                        file = await FilePicker.PickAsync();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -335,40 +376,121 @@ namespace MAUIEssentials.AppCode.Helpers
                 Console.WriteLine(ex.Message);
             }
         }
+
+        static bool isLoaderVisible;
+        public static async Task ShowLoader()
+        {
+            try
+            {
+                if (isLoaderVisible)
+                {
+                    return;
+                }
+
+                isLoaderVisible = true;
+                await NavigationServices.OpenPopupPage(new LoaderPopup());
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
+        }
+
+        public static async Task HideLoader()
+        {
+            try
+            {
+                if (MopupService.Instance.PopupStack.Any() && MopupService.Instance.PopupStack.LastOrDefault() is LoaderPopup)
+                {
+                    await NavigationServices.ClosePopupPage();
+                    isLoaderVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
+        }
         
-        // static bool isLoaderVisible;
-        // public static async Task ShowLoader()
-        // {
-        //     try
-        //     {
-        //         if (isLoaderVisible)
-        //         {
-        //             return;
-        //         }
+        static bool isInternetDialogVisible;
+        public static async void CheckInternetAccess(ConnectivityChangedEventArgs e)
+        {
+            try
+            {
+                if (e.NetworkAccess == NetworkAccess.Internet)
+                {
+                    if (isInternetDialogVisible)
+                    {
+                        isInternetDialogVisible = false;
+                        await NavigationServices.ClosePopupPage();
+                        MessagingCenter.Send("refresh", "RefreshedToken");
+                    }
+                }
+                else
+                {
+                    if (isInternetDialogVisible)
+                    {
+                        return;
+                    }
 
-        //         isLoaderVisible = true;
-        //         await NavigationServices.OpenPopupPage(new LoaderPopup());
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         ex.LogException();
-        //     }
-        // }
+                    isInternetDialogVisible = true;
+                    await NavigationServices.DisplaySnackbar(new SnackbarConfig
+                    {
+                        ButtonText = LocalizationResources.retry,
+                        Message = LocalizationResources.checkInternet,
+                        ButtonTextColor = (Color)Application.Current.Resources["redColor"],
+                        ButtonWidth = 80,
+                        ButtonFontFamily = (OnPlatform<string>)Application.Current.Resources["AllerRegular"],
+                        MessageFontFamily = (OnPlatform<string>)Application.Current.Resources["AllerRegular"],
+                        ButtonCommand = new Command(() => {
+                            CheckInternetAccess(new ConnectivityChangedEventArgs(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles));
+                        })
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
+        }
 
-        // public static async Task HideLoader()
-        // {
-        //     try
-        //     {
-        //         if (MopupService.Instance.PopupStack.Any() && MopupService.Instance.PopupStack.LastOrDefault() is LoaderPopup)
-        //         {
-        //             await NavigationServices.ClosePopupPage();
-        //             isLoaderVisible = false;
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         ex.LogException();
-        //     }
-        // }
+
+        public static async Task<byte[]> GetResizedByteArray(byte[] fileData, string filePath)
+        {
+            byte[] resizeFile = null;
+            try
+            {
+                var extension = Path.GetExtension(filePath);
+                var size = await DependencyService.Get<ICommonUtils>().GetFileSize(fileData);
+
+                var ratioX = (double)2000 / size.Width;
+                var ratioY = (double)2000 / size.Height;
+                var ratio = Math.Min(ratioX, ratioY);
+
+                var newWidth = (int)(size.Width * ratio);
+                var newHeight = (int)(size.Height * ratio);
+
+
+                resizeFile = DependencyService.Get<ICommonUtils>().ResizeImage(fileData, newWidth, newHeight, extension ?? string.Empty);
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
+            return resizeFile;
+        }
+
+        public static string GetIFrameSource(string videoLink)
+        {
+            var width = ScreenSize.ScreenWidth - (DeviceInfo.Platform == DevicePlatform.Android ? 10 : 15);
+            var height = (ScreenSize.ScreenWidth / 1.5) - 20;
+
+            return $"<html>" +
+                $"<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>" +
+                $"<body>" +
+                $"<iframe src=\"{videoLink}\" height=\"{height}\" width=\"{width}\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" />" +
+                $"</body>" +
+                $"</html>";
+        }
     }
 }

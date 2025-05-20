@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.PostcodeControl"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+	x:Name="postcodeControl"
+	Spacing="20">
+    <Grid
+		RowSpacing="0"
+		RowDefinitions="Auto, 1, Auto"
+		ColumnSpacing="0"
+		ColumnDefinitions="*, 40">
+		<controls:FloatingEntry
+			Grid.Column="0"
+			Text="{Binding Postcode, Source={x:Reference postcodeControl}}"
+			TextColor="{Binding Source={x:StaticResource blackTextColor}}"
+			Placeholder="{Binding Source={x:Static appResources:LocalizationResources.postcode}}"
+			PlaceholderColor="{Binding Source={x:StaticResource grayColor}}"
+			FontSize="{StaticResource FontSize14}"
+			TextChanged="PostCode_TextChanged"
+			ReturnType="Done"
+			TopMargin="18" />
+		<ImageButton
+			Grid.Column="1"
+			Source="ic_search.png"
+			HeightRequest="40"
+			WidthRequest="40"
+			Padding="5"
+			CornerRadius="5"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			BackgroundColor="{Binding Source={x:StaticResource blueColor}}"
+			Clicked="Button_Clicked" />
+		<Border
+			Grid.Row="1"
+			Grid.Column="0"
+			x:Name="border"
+			Style="{StaticResource borderUnderlineStyle}"/>
+		<Label
+			Grid.Row="2"
+			x:Name="lblPostcodeError"
+			Margin="0,3,0,0"
+			Text="{Binding PostcodeErrorText, Source={x:Reference postcodeControl}}"
+			TextColor="{Binding Source={x:StaticResource redColor}}"
+			FontSize="{StaticResource FontSize12}"
+			IsVisible="{Binding PostcodeErrorText, Converter={StaticResource EmptyStringConverter}, Source={x:Reference postcodeControl}}" />
+	</Grid>
+	<Grid
+		RowSpacing="3"
+		RowDefinitions="35, 1"
+		ColumnSpacing="7"
+		ColumnDefinitions="*, 15"
+		IsVisible="{Binding HasAddressList, Source={x:Reference postcodeControl}}">
+		<Label
+			Grid.Column="0"
+			x:Name="lblAddressPlaceholder"
+			Text="{Binding Source={x:Static appResources:LocalizationResources.chooseAddress}}"
+			TextColor="{Binding Source={x:StaticResource grayColor}}"
+			FontSize="{StaticResource FontSize14}"
+			VerticalTextAlignment="Center" />
+		<Label
+			Grid.Column="0"
+			x:Name="lblAddress"
+			Text="{Binding SelectedAddress.Label, Source={x:Reference postcodeControl}}"
+			TextColor="{Binding Source={x:StaticResource blackTextColor}}"
+			FontSize="{StaticResource FontSize14}"
+			VerticalTextAlignment="Center" />
+		<controls:Image
+			Grid.Column="1"
+			HeightRequest="15"
+			WidthRequest="15"
+			VerticalOptions="Center"
+			Source="ic_arrow_down"
+			TintColor="{Binding Source={x:StaticResource blueColor}}" />
+		<Border
+			Grid.Row="1"
+			Grid.ColumnSpan="2"
+			Style="{StaticResource borderUnderlineStyle}"/>
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="ChooseAddressTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+</StackLayout>

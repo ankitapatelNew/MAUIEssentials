@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.Styles.SmallDevicesStyle"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+
+    <x:String
+		x:Key="DeviceStyle">Small</x:String>
+
+	<OnPlatform
+		x:Key="NavigationBarHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="50"/>
+		<On Platform="iOS" Value="44"/>
+	</OnPlatform>
+
+	<OnPlatform
+		x:Key="NavigationButtonHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="24"/>
+		<On Platform="iOS" Value="24"/>
+	</OnPlatform>
+
+	<OnPlatform
+		x:Key="StatusBarHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="0"/>
+		<On Platform="iOS" Value="20"/>
+	</OnPlatform>
+
+	 <OnPlatform x:Key="iPhoneXHeight" x:TypeArguments="GridLength">
+        <On Platform="iOS" Value="0"/>
+        <On Platform="Default" Value="0"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="iPhoneXBottomSpacing" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="0"/>
+        <On Platform="Default" Value="0"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="iPhoneXBottomGridHeight" x:TypeArguments="GridLength">
+        <On Platform="iOS" Value="0"/>
+        <On Platform="Default" Value="0"/>
+    </OnPlatform>
+
+    <!-- Button Dimensions -->
+    <OnPlatform x:Key="ButtonHeight" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="40"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="ButtonHeightGrid" x:TypeArguments="GridLength">
+        <On Platform="Default" Value="40"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="NormalButtonHeight" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="35"/>
+    </OnPlatform>
+
+    <!-- Page Layout -->
+    <OnPlatform x:Key="PageSpacing" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="8"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="PagePadding" x:TypeArguments="Thickness">
+        <On Platform="Default" Value="10,0"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FooterSpaceHeight" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="10"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="ButtonImageSize" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="30"/>
+    </OnPlatform>
+
+    <!-- Font Sizes -->
+    <OnPlatform x:Key="FontSize9" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="7"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize10" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="8"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize11" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="9"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize12" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="10"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize13" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="11"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize14" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="12"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize15" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="13"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize16" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="14"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize17" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="15"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize18" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="16"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize20" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="18"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize22" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="20"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize24" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="22"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize26" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="24"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize36" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="34"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize40" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="38"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize46" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="44"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize52" x:TypeArguments="x:Double">
+        <On Platform="Default" Value="50"/>
+    </OnPlatform>
+
+	<Style
+		x:Key="blueButtonBorderStyle"
+		TargetType="controls:Button">
+		<Setter
+			Property="HeightRequest"
+			Value="40" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="15" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+	<!--Red Button Style-->
+	<Style
+		x:Key="redButtonStyle"
+		TargetType="controls:Button">
+		<Setter
+			Property="HeightRequest"
+			Value="40" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="15" />
+		<Setter
+			Property="FontAttributes"
+			Value="Bold" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+	</Style>
+	<Style
+		x:Key="redButtonBorderStyle"
+		TargetType="controls:Button">
+		<Setter
+			Property="HeightRequest"
+			Value="40" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="15" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+	</Style>
+
+	<!--Common Indicator-->
+	<Style
+		x:Key="commonIndicator"
+		TargetType="ActivityIndicator">
+		<Setter
+			Property="HeightRequest"
+			Value="50" />
+		<Setter
+			Property="WidthRequest"
+			Value="50" />
+		<Setter
+			Property="HorizontalOptions"
+			Value="Center" />
+		<Setter
+			Property="VerticalOptions"
+			Value="Center" />
+		<Setter
+			Property="Scale"
+			Value="{x:OnPlatform Android='0.8', iOS='1.5'}" />
+		<Setter
+			Property="Color"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+</ResourceDictionary>

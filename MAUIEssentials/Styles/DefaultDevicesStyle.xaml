@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.Styles.DefaultDevicesStyle"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+
+    <x:String
+		x:Key="DeviceStyle">Default</x:String>
+
+	<OnPlatform
+		x:Key="NavigationBarHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="55"/>
+		<On Platform="iOS" Value="50"/>
+	</OnPlatform>
+
+	<OnPlatform
+		x:Key="NavigationButtonHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="24"/>
+		<On Platform="iOS" Value="24"/>
+	</OnPlatform>
+
+	<OnPlatform
+		x:Key="StatusBarHeight"
+		x:TypeArguments="GridLength">
+		<On Platform="Android" Value="0"/>
+		<On Platform="iOS" Value="20"/>
+	</OnPlatform>
+
+	<OnPlatform
+		x:Key="iPhoneXHeight"
+		x:TypeArguments="GridLength"/>
+
+	<OnPlatform
+		x:Key="iPhoneXBottomSpacing"
+		x:TypeArguments="x:Double"/>
+
+	<OnPlatform
+		x:Key="iPhoneXBottomGridHeight"
+		x:TypeArguments="GridLength"/>
+
+	
+    <OnIdiom x:Key="ButtonHeight" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>55</OnIdiom.Phone>
+        <OnIdiom.Tablet>65</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnPlatform x:Key="ButtonHeightGrid" x:TypeArguments="x:Double">
+        <On Platform="Android" Value="55"/>
+        <On Platform="iOS" Value="55"/>
+        <On Platform="Android, Tablet" Value="65"/>
+        <On Platform="iOS, Tablet" Value="65"/>
+    </OnPlatform>
+
+    <OnIdiom x:Key="NormalButtonHeight" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>40</OnIdiom.Phone>
+        <OnIdiom.Tablet>50</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="PageSpacing" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>10</OnIdiom.Phone>
+        <OnIdiom.Tablet>20</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="PagePadding" x:TypeArguments="Thickness">
+        <OnIdiom.Phone>15,0</OnIdiom.Phone>
+        <OnIdiom.Tablet>20,0</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnPlatform x:Key="FooterSpaceHeight" x:TypeArguments="x:Double" Default="10" />
+
+    <OnIdiom x:Key="ButtonImageSize" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>35</OnIdiom.Phone>
+        <OnIdiom.Tablet>40</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <!--Font Sizes-->
+    <OnIdiom x:Key="FontSize9" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>9</OnIdiom.Phone>
+        <OnIdiom.Tablet>11</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize10" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>10</OnIdiom.Phone>
+        <OnIdiom.Tablet>12</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize11" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>11</OnIdiom.Phone>
+        <OnIdiom.Tablet>13</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize12" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>12</OnIdiom.Phone>
+        <OnIdiom.Tablet>14</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize13" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>13</OnIdiom.Phone>
+        <OnIdiom.Tablet>15</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize14" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>14</OnIdiom.Phone>
+        <OnIdiom.Tablet>16</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize15" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>15</OnIdiom.Phone>
+        <OnIdiom.Tablet>17</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize16" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>16</OnIdiom.Phone>
+        <OnIdiom.Tablet>18</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize17" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>17</OnIdiom.Phone>
+        <OnIdiom.Tablet>19</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize18" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>18</OnIdiom.Phone>
+        <OnIdiom.Tablet>20</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize20" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>20</OnIdiom.Phone>
+        <OnIdiom.Tablet>22</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize22" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>22</OnIdiom.Phone>
+        <OnIdiom.Tablet>24</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize24" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>24</OnIdiom.Phone>
+        <OnIdiom.Tablet>26</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize26" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>26</OnIdiom.Phone>
+        <OnIdiom.Tablet>28</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize36" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>36</OnIdiom.Phone>
+        <OnIdiom.Tablet>38</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize40" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>40</OnIdiom.Phone>
+        <OnIdiom.Tablet>42</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize46" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>46</OnIdiom.Phone>
+        <OnIdiom.Tablet>48</OnIdiom.Tablet>
+    </OnIdiom>
+
+    <OnIdiom x:Key="FontSize52" x:TypeArguments="x:Double">
+        <OnIdiom.Phone>52</OnIdiom.Phone>
+        <OnIdiom.Tablet>54</OnIdiom.Tablet>
+    </OnIdiom>
+
+
+	<!--Entry Style-->
+	<Style
+		x:Key="entryStyle"
+		TargetType="controls:CommanEntry">
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='40', Tablet='50'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource black}}" />
+		<Setter
+			Property="PlaceholderColor"
+			Value="{Binding Source={x:StaticResource grayTextColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="{x:OnIdiom Phone='15', Tablet='17'}" />
+		<Setter
+			Property="IsBorder"
+			Value="False" />
+	</Style>
+
+	<!--Blue Button Style-->
+	<Style
+		x:Key="blueButtonStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="17" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='55', Tablet='65'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+	</Style>
+
+	<Style
+		x:Key="blueButtonBorderStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="17" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='55', Tablet='65'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+	<!--Red Button Style-->
+	<Style
+		x:Key="redButtonStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="17" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='55', Tablet='65'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+	</Style>
+
+	<Style
+		x:Key="redButtonSignupStyle"
+		TargetType="Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="17" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='55', Tablet='65'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+	</Style>
+
+	<Style
+		x:Key="redButtonBorderStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="17" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='55', Tablet='65'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+	</Style>
+
+	<!--Common Indicator-->
+	<Style
+		x:Key="commonIndicator"
+		TargetType="ActivityIndicator">
+		<Setter
+			Property="HeightRequest"
+			Value="70" />
+		<Setter
+			Property="WidthRequest"
+			Value="70" />
+		<Setter
+			Property="HorizontalOptions"
+			Value="Center" />
+		<Setter
+			Property="VerticalOptions"
+			Value="Center" />
+			<Setter
+			Property="Scale"
+			Value="{x:OnPlatform Android='0.8', iOS='1.5'}" />
+		<Setter
+			Property="Color"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+</ResourceDictionary>

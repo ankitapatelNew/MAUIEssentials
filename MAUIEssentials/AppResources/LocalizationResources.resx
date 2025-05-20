@@ -51,4 +51,34 @@
 		xml:space="preserve">
 		<value>Ok</value>
 	</data>
+	<data
+		name="search"
+		xml:space="preserve">
+		<value>Search...</value>
+	</data>
+	<data
+		name="retry"
+		xml:space="preserve">
+		<value>Retry</value>
+	</data>
+	<data
+		name="checkInternet"
+		xml:space="preserve">
+		<value>No internet connection!</value>
+	</data>
+	<data
+		name="uploadFiles"
+		xml:space="preserve">
+		<value>Upload Files</value>
+	</data>
+	<data
+		name="enterPostcode"
+		xml:space="preserve">
+		<value>Please enter postcode</value>
+	</data>
+	<data
+		name="chooseAddress"
+		xml:space="preserve">
+		<value>Choose an address</value>
+	</data>
 </root>

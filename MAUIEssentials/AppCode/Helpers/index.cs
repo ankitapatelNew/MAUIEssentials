@@ -5,3 +5,5 @@ global using Mopups.Services;
 global using MAUIEssentials.AppCode.DependencyServices;
 global using MAUIEssentials.AppResources;
 global using MAUIEssentials.AppCode.AlertViews;
+global using SQLite;
+global using System.Diagnostics;

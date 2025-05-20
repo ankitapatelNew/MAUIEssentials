@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.DatePickerControl"
+	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="datePickerControl"
+	Padding="7,0"
+	HeightRequest="35"
+	ColumnSpacing="0"
+	ColumnDefinitions="*, Auto">
+   <Label
+		x:Name="lblPlaceholder"
+		Text="{Binding Placeholder, Source={x:Reference datePickerControl}}"
+		TextColor="{Binding PlaceholderColor, Source={x:Reference datePickerControl}}"
+		FontSize="{Binding FontSize, Source={x:Reference datePickerControl}}"
+		VerticalTextAlignment="Center" />
+	<Label
+		x:Name="lblDate"
+		Text="{Binding Text, Source={x:Reference datePickerControl}}"
+		TextColor="{Binding TextColor, Source={x:Reference datePickerControl}}"
+		FontSize="{Binding FontSize, Source={x:Reference datePickerControl}}"
+		VerticalTextAlignment="Center" />
+	<controls:CustomDatePicker
+		x:Name="datePicker"
+		Format="{Binding DateFormat, Source={x:Reference datePickerControl}}"
+		MaximumDate="{Binding MaximumDate, Source={x:Reference datePickerControl}}"
+		MinimumDate="{Binding MinimumDate, Source={x:Reference datePickerControl}}"
+		IsVisible="false"
+		Unfocused="DatePickerUnfocused"
+		Completed="DatePickerCompleted"
+		DateSelected="DatePickerSelected" />
+	<Grid
+		Grid.Column="1"
+		WidthRequest="30"
+		Margin="10,0,0,0"
+		IsVisible="{Binding HasInfoText, Source={x:Reference datePickerControl}}">
+		<controls:Image
+			HeightRequest="20"
+			WidthRequest="20"
+			Source="ic_info"
+			HorizontalOptions="Center"
+			VerticalOptions="Center"
+			TintColor="{StaticResource blueColor}" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="InfoTapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+	<Grid.GestureRecognizers>
+		<TapGestureRecognizer
+			Tapped="DatePickerControlTapped" />
+	</Grid.GestureRecognizers>
+</Grid>

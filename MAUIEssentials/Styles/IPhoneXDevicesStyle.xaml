@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.Styles.IPhoneXDevicesStyle"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+
+    <x:String
+		x:Key="DeviceStyle">iPhoneX</x:String>
+
+    <OnPlatform x:Key="NavigationBarHeight" x:TypeArguments="GridLength">
+        <On Platform="Android" Value="55"/>
+        <On Platform="iOS" Value="60"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="NavigationButtonHeight" x:TypeArguments="GridLength">
+        <On Platform="Android" Value="24"/>
+        <On Platform="iOS" Value="24"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="StatusBarHeight" x:TypeArguments="GridLength">
+        <On Platform="Android" Value="0"/>
+        <On Platform="iOS" Value="20"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="iPhoneXHeight" x:TypeArguments="GridLength">
+        <On Platform="iOS" Value="20"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="iPhoneXBottomSpacing" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="34"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="iPhoneXBottomGridHeight" x:TypeArguments="GridLength">
+        <On Platform="iOS" Value="34"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="ButtonHeight" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="60"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="ButtonHeightGrid" x:TypeArguments="GridLength">
+        <On Platform="iOS" Value="60"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="NormalButtonHeight" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="45"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="PageSpacing" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="10"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="PagePadding" x:TypeArguments="Thickness">
+        <On Platform="iOS" Value="20,0"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FooterSpaceHeight" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="20"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="ButtonImageSize" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="40"/>
+    </OnPlatform>
+
+    <!--Font Sizes-->
+    <OnPlatform x:Key="FontSize9" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="10"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize10" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="11"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize11" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="12"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize12" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="13"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize13" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="14"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize14" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="15"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize15" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="16"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize16" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="17"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize17" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="18"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize18" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="19"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize20" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="21"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize22" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="23"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize24" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="25"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize26" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="27"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize36" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="37"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize52" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="53"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize40" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="41"/>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontSize46" x:TypeArguments="x:Double">
+        <On Platform="iOS" Value="47"/>
+    </OnPlatform>
+
+	<!--Entry Style-->
+	<Style
+		x:Key="entryStyle"
+		TargetType="controls:CommanEntry">
+		<Setter
+			Property="HeightRequest"
+			Value="40" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource black}}" />
+		<Setter
+			Property="PlaceholderColor"
+			Value="{Binding Source={x:StaticResource grayTextColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="17" />
+		<Setter
+			Property="IsBorder"
+			Value="False" />
+	</Style>
+
+	<!--Blue Button Style-->
+	<Style
+		x:Key="blueButtonStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="18" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="62" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+	</Style>
+	<Style
+		x:Key="blueButtonBorderStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="18" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="62" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+	<!--Red Button Style-->
+	<Style
+		x:Key="redButtonStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="18" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="62" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+	</Style>
+	<Style
+		x:Key="redButtonBorderStyle"
+		TargetType="controls:Button">
+		<Style.Triggers>
+			<Trigger
+				TargetType="controls:Button"
+				Property="FontAttributes"
+				Value="Bold">
+				<Setter
+					Property="FontSize"
+					Value="18" />
+			</Trigger>
+		</Style.Triggers>
+		<Setter
+			Property="HeightRequest"
+			Value="62" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="FontSize"
+			Value="16" />
+		<Setter
+			Property="FillText"
+			Value="True" />
+		<Setter
+			Property="BorderWidth"
+			Value="1" />
+		<Setter
+			Property="CornerRadius"
+			Value="0" />
+		<Setter
+			Property="TextTransform"
+			Value="None" />
+		<Setter
+			Property="BorderColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="RippleColor"
+			Value="{Binding Source={x:StaticResource redColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="{Binding Source={x:StaticResource white}}" />
+	</Style>
+
+	<!--Common Indicator-->
+	<Style
+		x:Key="commonIndicator"
+		TargetType="ActivityIndicator">
+		<Setter
+			Property="HeightRequest"
+			Value="100" />
+		<Setter
+			Property="WidthRequest"
+			Value="100" />
+		<Setter
+			Property="HorizontalOptions"
+			Value="Center" />
+		<Setter
+			Property="VerticalOptions"
+			Value="Center" />
+		<Setter
+			Property="Scale"
+			Value="1.7" />
+		<Setter
+			Property="Color"
+			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+</ResourceDictionary>
