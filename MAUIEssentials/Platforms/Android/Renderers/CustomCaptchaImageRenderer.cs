@@ -266,7 +266,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
             {
                 var element = Element as CustomImage;
 
-                if (element.TintColor.Equals(Colors.Transparent))
+                if (!element.TintColor.Equals(Colors.Transparent))
                 {
                     Control.SetColorFilter(element.TintColor, PorterDuff.Mode.SrcAtop);
                 }

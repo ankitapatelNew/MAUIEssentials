@@ -1,0 +1,17 @@
+global using Android.Gms.Maps.Model;
+global using Bumptech.Glide.Request.Transition;
+global using Android.Gms.Maps;
+global using Microsoft.Maui.Maps.Handlers;
+global using Android;
+global using Android.Content.PM;
+global using AndroidX.Core.Content;
+global using Bumptech.Glide.Signature;
+global using MAUIEssentials.Platforms.Android.MapHandlers;
+global using Microsoft.Maui.Maps;
+global using ACircle = Android.Gms.Maps.Model.Circle;
+global using APolygon = Android.Gms.Maps.Model.Polygon;
+global using APolyline = Android.Gms.Maps.Model.Polyline;
+global using Location = Microsoft.Maui.Devices.Sensors.Location;
+global using XCircle = Microsoft.Maui.Controls.Maps.Circle;
+global using XPolygon = Microsoft.Maui.Controls.Maps.Polygon;
+global using XPolyline = Microsoft.Maui.Controls.Maps.Polyline;

@@ -1,6 +1,6 @@
 namespace MAUIEssentials.AppCode.Controls
 {
-    public class PickerView : View
+    public class PickerView : Microsoft.Maui.Controls.View
     {
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(PickerView), null);

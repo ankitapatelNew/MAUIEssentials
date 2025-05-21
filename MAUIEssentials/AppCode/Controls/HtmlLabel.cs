@@ -1,6 +1,6 @@
 namespace MAUIEssentials.AppCode.Controls
 {
-    public class HtmlLabel : Label
+    public class HtmlLabel : Microsoft.Maui.Controls.Label
     {
         public static readonly BindableProperty UnderlineTextProperty =
             BindableProperty.Create(nameof(UnderlineText), typeof(bool), typeof(HtmlLabel), true);
@@ -14,7 +14,7 @@ namespace MAUIEssentials.AppCode.Controls
         public static readonly BindableProperty LinkColorProperty =
             BindableProperty.Create(nameof(LinkColor), typeof(Color), typeof(HtmlLabel), default);
 
-        public Color LinkColor
+        public Microsoft.Maui.Graphics.Color LinkColor
         {
             get => (Color)GetValue(LinkColorProperty);
             set => SetValue(LinkColorProperty, value);

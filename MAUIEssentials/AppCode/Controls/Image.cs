@@ -16,7 +16,7 @@ namespace MAUIEssentials.AppCode.Controls
             if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 var control = (Image)bindable;
-                control.Behaviors.Add(new IconTintColorBehavior { TintColor = (Color)newValue });
+                control.Behaviors.Add(new IconTintColorBehavior { TintColor = (Microsoft.Maui.Graphics.Color)newValue });
             }
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
             {

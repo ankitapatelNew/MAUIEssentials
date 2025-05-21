@@ -51,19 +51,19 @@ namespace MAUIEssentials.AppCode.Controls
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public void OnDraggingStarted(Location location)
+        public void OnDraggingStarted(Microsoft.Maui.Devices.Sensors.Location location)
         {
             DraggingStarted?.Invoke(this, new CenterPositionEventArgs { Position = location });
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public void OnDraggingStopped(Location location)
+        public void OnDraggingStopped(Microsoft.Maui.Devices.Sensors.Location location)
         {
             DraggingStopped?.Invoke(this, new CenterPositionEventArgs { Position = location });
         }
 
-        public Func<Location> NativeGetMapCenterLocation { get; set; }
-        public Location GetMapCenterLocation()
+        public Func<Microsoft.Maui.Devices.Sensors.Location> NativeGetMapCenterLocation { get; set; }
+        public Microsoft.Maui.Devices.Sensors.Location GetMapCenterLocation()
         {
             if (NativeGetMapCenterLocation != null)
             {

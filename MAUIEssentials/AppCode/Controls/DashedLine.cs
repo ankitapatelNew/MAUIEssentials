@@ -1,6 +1,6 @@
 namespace MAUIEssentials.AppCode.Controls
 {
-    public class DashedLine : View
+    public class DashedLine : Microsoft.Maui.Controls.View
     {
         public static readonly BindableProperty DashWidthProperty =
             BindableProperty.Create(nameof(DashWidth), typeof(int), typeof(DashedLine), 4);
