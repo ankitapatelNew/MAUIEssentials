@@ -1,3 +1,12 @@
+using Android.Widget;
+using Android.Graphics.Drawables;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using static Android.Views.ViewGroup;
+using DatePicker = Microsoft.Maui.Controls.DatePicker;
 
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
@@ -19,11 +28,11 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             {
                 base.ConnectHandler(platformView);
 
-                 if (VirtualView is not CustomDatePicker custom || platformView == null)
+                if (VirtualView is not CustomDatePicker custom || platformView == null)
                     return;
 
                 platformView.Text = custom.Placeholder;
-                platformView.SetTextColor(custom.PlaceholderColor);
+                platformView.SetTextColor(custom.PlaceholderColor.ToAndroid());
 
                 platformView.TextChanged += OnTextChanged;
             }
@@ -51,14 +60,14 @@ namespace MAUIEssentials.Platforms.Android.Handlers
         {
             try
             {
-                 if (VirtualView is not CustomDatePicker custom || PlatformView == null)
+                if (VirtualView is not CustomDatePicker custom || PlatformView == null)
                     return;
 
                 var selectedText = e?.Text?.ToString();
 
                 if (selectedText == custom.Placeholder)
                 {
-                    if (VirtualView is Microsoft.Maui.Controls.DatePicker basePicker)
+                    if (VirtualView is DatePicker basePicker)
                     {
                         var format = !string.IsNullOrEmpty(basePicker.Format) ? basePicker.Format : "dd/MM/yyyy";
                         PlatformView.Text = basePicker.Date.ToString(format);
@@ -86,7 +95,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
         {
             if (handler.PlatformView is EditText editText && view is CustomDatePicker custom)
             {
-                editText.SetTextColor(custom.PlaceholderColor);
+                editText.SetTextColor(custom.PlaceholderColor.ToAndroid());
             }
         }
 

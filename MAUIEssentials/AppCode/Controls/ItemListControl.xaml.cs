@@ -1,3 +1,5 @@
+using MAUIEssentials.AppCode.Helpers;
+
 namespace MAUIEssentials.AppCode.Controls
 {
 	public partial class ItemListControl : StackLayout
@@ -40,7 +42,7 @@ namespace MAUIEssentials.AppCode.Controls
 		{
 			try
 			{
-				SelectedItem = Source.FirstOrDefault(x => x.Description == (sender as Grid).ClassId);
+				SelectedItem = Source.FirstOrDefault(x => x.Description == (sender as Grid).ClassId) ?? new ItemListModel();
 				OnDeleted?.Invoke(this, EventArgs.Empty);
 			}
 			catch (Exception ex)

@@ -1,3 +1,13 @@
+using CoreFoundation;
+using Foundation;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+using System.Diagnostics;
+using MAUIEssentials.Platforms.iOS.Helpers;
+
 namespace MAUIEssentials.Platforms.iOS.Handlers
 {
     public class HtmlLabelView : UILabel
@@ -132,7 +142,7 @@ namespace MAUIEssentials.Platforms.iOS.Handlers
 
         private void SetText(string html)
         {
-            if (_isDisposed ||  PlatformView == null || string.IsNullOrEmpty(html))
+            if (_isDisposed || PlatformView == null || string.IsNullOrEmpty(html))
                 return;
 
             var stringType = new NSAttributedStringDocumentAttributes
@@ -182,7 +192,7 @@ namespace MAUIEssentials.Platforms.iOS.Handlers
 
             var range = new NSRange(0, mutableHtmlString.Length);
             var font = GetFontWithAttributes();
-            var textColor = VirtualView?.TextColor?.ToPlatform() ?? UIColor.Label; 
+            var textColor = VirtualView?.TextColor?.ToPlatform() ?? UIColor.Label;
 
             mutableHtmlString.AddAttributes(new UIStringAttributes
             {
@@ -339,5 +349,5 @@ namespace MAUIEssentials.Platforms.iOS.Handlers
         {
             handler.ProcessText();
         }
-    }    
+    }
 }

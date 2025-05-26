@@ -1,3 +1,6 @@
+using MAUIEssentials.AppCode.Controls;
+using Microsoft.Maui.Maps.Handlers;
+
 namespace MAUIEssentials
 {
     public partial class CommanMapHandler

@@ -1,3 +1,7 @@
+using MAUIEssentials.AppCode.Helpers;
+using Mopups.Pages;
+using Mopups.Services;
+
 namespace MAUIEssentials.AppCode.Controls
 {
 	public partial class LoaderPopup : PopupPage
@@ -5,7 +9,7 @@ namespace MAUIEssentials.AppCode.Controls
 		bool _isLoaderVisible;
 		readonly CancellationTokenSource cts;
 
-		static LoaderPopup _instance;
+		static LoaderPopup? _instance;
 		public static LoaderPopup Instance
 		{
 			get

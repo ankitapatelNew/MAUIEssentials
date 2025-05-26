@@ -1,3 +1,14 @@
+using Android.Text.Method;
+using Android.Views;
+using Android.Widget;
+using AndroidX.AppCompat.Widget;
+using AndroidX.Core.Text;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Platforms.Android.Helpers;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Handlers;
+
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
     public class CommanEditorHandler: EditorHandler
@@ -121,7 +132,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
                 if (editor?.IsBorder == true && PlatformView != null)
                 {
                     var backgroundDrawable = Utility.CustomDrawable(
-                        editor.BorderColor,
+                        editor.BorderColor.ToAndroid(),
                         editor.BorderRadius,
                         editor.BorderWidth,
                         editor.BackgroundColor?.ToHex()

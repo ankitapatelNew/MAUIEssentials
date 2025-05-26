@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public static class GlobalSettings

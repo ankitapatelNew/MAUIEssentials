@@ -1,11 +1,23 @@
+using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using CoreGraphics;
+using CoreLocation;
+using Foundation;
 using MapKit;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Graphics.Platform;
 using Microsoft.Maui.Maps;
 using Microsoft.Maui.Maps.Handlers;
 using Microsoft.Maui.Maps.Platform;
 using ObjCRuntime;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace MAUIEssentials
 {

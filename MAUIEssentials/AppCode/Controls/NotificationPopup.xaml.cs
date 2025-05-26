@@ -1,3 +1,6 @@
+using MAUIEssentials.AppCode.Helpers;
+using Mopups.Pages;
+
 namespace MAUIEssentials.AppCode.Controls
 {
 	public partial class NotificationPopup : PopupPage

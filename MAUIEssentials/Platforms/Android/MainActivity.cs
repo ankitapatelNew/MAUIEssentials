@@ -2,6 +2,8 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
+using MAUIEssentials.AppCode.Helpers;
 
 namespace MAUIEssentials;
 

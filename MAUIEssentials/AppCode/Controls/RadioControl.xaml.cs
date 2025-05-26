@@ -1,3 +1,6 @@
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Models;
+
 namespace MAUIEssentials.AppCode.Controls;
 
 public partial class RadioControl : StackLayout
@@ -46,7 +49,7 @@ public partial class RadioControl : StackLayout
 			if (sender is Border border && border.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tapGesture)
 			{
 				var selectedValue = tapGesture.CommandParameter;
-				var selectedItem = list.FirstOrDefault(x => x.Name == selectedValue.ToString());
+				var selectedItem = list.FirstOrDefault(x => x.Name == selectedValue?.ToString());
 
 				if (selectedItem.IsCheckbox)
 				{
@@ -67,11 +70,11 @@ public partial class RadioControl : StackLayout
 				}
 				else
 				{
-					name = selectedValue.ToString();
+					name = selectedValue?.ToString();
 
 					foreach (var item in list)
 					{
-						item.IsSelected = item.Name == selectedValue.ToString();
+						item.IsSelected = item.Name == selectedValue?.ToString();
 					}
 				}	
 			}

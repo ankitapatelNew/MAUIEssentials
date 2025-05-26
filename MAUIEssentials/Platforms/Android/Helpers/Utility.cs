@@ -1,3 +1,8 @@
+using Android.Graphics.Drawables;
+using Android.Util;
+using MAUIEssentials.AppCode.Helpers;
+using Color = Android.Graphics.Color;
+
 namespace MAUIEssentials.Platforms.Android.Helpers
 {
     public static class Utility

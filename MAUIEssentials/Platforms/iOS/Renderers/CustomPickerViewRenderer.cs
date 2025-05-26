@@ -1,6 +1,13 @@
-using System.Drawing;
-using MAUIEssentials.Platforms.iOS.Renderers;
 using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Platform;
+using System.ComponentModel;
+using System.Drawing;
+using UIKit;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.Platforms.iOS.Renderers;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Font = Microsoft.Maui.Font;
+using System.Collections;
 
 [assembly: ExportRenderer(typeof(PickerView), typeof(CustomPickerViewRenderer))]
 namespace MAUIEssentials.Platforms.iOS.Renderers
@@ -59,8 +66,8 @@ namespace MAUIEssentials.Platforms.iOS.Renderers
             try
             {
                 var font = string.IsNullOrEmpty(Element.FontFamily) ?
-                Microsoft.Maui.Font.SystemFontOfSize(Element.FontSize) :
-                Microsoft.Maui.Font.OfSize(Element.FontFamily, Element.FontSize);
+                Font.SystemFontOfSize(Element.FontSize) :
+                Font.OfSize(Element.FontFamily, Element.FontSize);
 
                 MyDataModel myDataModel = new MyDataModel(Element.ItemsSource, row => {
                     Element.SelectedIndex = row;

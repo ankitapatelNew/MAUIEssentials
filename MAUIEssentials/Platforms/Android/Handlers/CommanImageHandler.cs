@@ -1,6 +1,19 @@
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Widget;
+using Bumptech.Glide;
+using Bumptech.Glide.Load;
+using Bumptech.Glide.Load.Engine;
+using Bumptech.Glide.Request;
+using Bumptech.Glide.Request.Target;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using CustomImage = MAUIEssentials.AppCode.Controls.Image;
+
+
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
-    public class CommanImageHandler: ImageHandler
+    public class CommanImageHandler : ImageHandler
     {
         protected override ImageView CreatePlatformView()
         {
@@ -168,7 +181,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
 
                 if (!element.TintColor.Equals(Colors.Transparent))
                 {
-                    PlatformView.SetColorFilter(element.TintColor, PorterDuff.Mode.SrcAtop);
+                    PlatformView.SetColorFilter(element.TintColor.ToPlatform(), PorterDuff.Mode.SrcAtop);
                 }
                 else
                 {
@@ -228,11 +241,11 @@ namespace MAUIEssentials.Platforms.Android.Handlers
         {
             try
             {
-                if (!_element.TintColor.Equals(Color.Transparent))
+                if (!_element.TintColor.Equals(Colors.Transparent))
                 {
                     if (p0 is BitmapDrawable bitmapDrawable)
                     {
-                        bitmapDrawable.SetColorFilter(_element.TintColor, PorterDuff.Mode.SrcAtop);
+                        bitmapDrawable.SetColorFilter(_element.TintColor.ToPlatform(), PorterDuff.Mode.SrcAtop);
                     }
                 }
             }

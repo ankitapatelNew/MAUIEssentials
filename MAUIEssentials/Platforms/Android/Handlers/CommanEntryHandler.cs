@@ -1,3 +1,18 @@
+using Android.Content.Res;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Views.InputMethods;
+using Android.Widget;
+using AndroidX.AppCompat.Widget;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Platforms.Android.Helpers;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Handlers;
+using Color = Android.Graphics.Color;
+using View = Android.Views.View;
+
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
     public class CommanEntryHandler: EntryHandler
@@ -40,7 +55,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
                 {
                     if (platformView != null)
                     {
-                        PlatformView.BackgroundTintList = ColorStateList.ValueOf(global::Android.Graphics.Color.Transparent);
+                        PlatformView.BackgroundTintList = ColorStateList.ValueOf(Color.Transparent);
                         platformView.SetBackgroundColor(Color.Transparent);
                         platformView.SetPadding(0, 0, 0, 0);
                         platformView.SetOnKeyListener(new KeyListener(VirtualView as CommanEntry));
@@ -113,7 +128,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             }
         }
 
-        private void CommanEntryHandler_KeyPress(object sender, global::Android.Views.View.KeyEventArgs e)
+        private void CommanEntryHandler_KeyPress(object sender, View.KeyEventArgs e)
         {
             try
             {
@@ -189,7 +204,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             {
                 if (entry.IsBorder)
                 {
-                    handler.PlatformView.Background = Utility.CustomDrawable(entry.BorderColor, entry.BorderRadius, entry.BorderWidth, entry.BackgroundColor.ToHex());
+                    handler.PlatformView.Background = Utility.CustomDrawable(entry.BorderColor.ToAndroid(), entry.BorderRadius, entry.BorderWidth, entry.BackgroundColor.ToHex());
                 }
             }
             catch (Exception ex)
@@ -202,7 +217,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
         {
             try
             {
-                handler.PlatformView.SetTextColor(entry.TextColor.ToPlatform());
+                handler.PlatformView.SetTextColor(entry.TextColor.ToAndroid());
             }
             catch (Exception ex)
             {

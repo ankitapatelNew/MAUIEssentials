@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public static class UriExtensions
@@ -122,7 +124,7 @@ namespace MAUIEssentials.AppCode.Controls
                 var latitude = double.Parse(coordinates[0], CultureInfo.InvariantCulture.NumberFormat);
                 var longitude = double.Parse(coordinates[1].Split(';')[0], CultureInfo.InvariantCulture.NumberFormat);
                 var location = new Location(latitude, longitude);
-                Microsoft.Maui.ApplicationModel.Map.OpenAsync(location);
+                Map.OpenAsync(location);
                 return true;
             }
             catch (FeatureNotSupportedException ex)

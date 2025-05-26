@@ -1,3 +1,7 @@
+using MAUIEssentials.AppCode.AlertViews;
+using Mopups.Pages;
+using Mopups.Services;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public static class NavigationServices

@@ -1,3 +1,10 @@
+using Foundation;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+using CustomImage = MAUIEssentials.AppCode.Controls.Image;
+
 namespace MAUIEssentials.Platforms.iOS.Handlers
 {
     public class CommanImageHandler : ViewHandler<CustomImage, UIImageView>

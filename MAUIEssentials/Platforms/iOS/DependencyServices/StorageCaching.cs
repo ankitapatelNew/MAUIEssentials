@@ -1,3 +1,7 @@
+using Foundation;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+
 namespace MAUIEssentials.Platforms.iOS.DependencyServices
 {
     public class StorageCaching : IStorageCaching

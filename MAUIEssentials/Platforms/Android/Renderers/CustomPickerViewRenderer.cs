@@ -1,5 +1,17 @@
+using System.ComponentModel;
+using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Util;
+using Android.Widget;
+using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Controls.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.Platforms.Android.Renderers;
 using static Android.Widget.NumberPicker;
+using Color = Android.Graphics.Color;
+using Paint = Android.Graphics.Paint;
 
 namespace MAUIEssentials.Platforms.Android.Renderers
 {

@@ -11,6 +11,8 @@
     BackgroundColor="{StaticResource popupBackgroundColor}">
     <pages:PopupPage.Animation>
         <animations:MoveAnimation 
+			DurationIn="180"
+			DurationOut="180"
             PositionIn="Bottom"
             PositionOut="Bottom" />
     </pages:PopupPage.Animation>

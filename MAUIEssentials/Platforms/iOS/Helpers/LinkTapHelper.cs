@@ -1,3 +1,9 @@
+using CoreGraphics;
+using Foundation;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
 namespace MAUIEssentials.Platforms.iOS.Helpers
 {
     internal static class LinkTapHelper
@@ -104,5 +110,5 @@ namespace MAUIEssentials.Platforms.iOS.Helpers
             }
             return 0f;
         }
-    }    
+    }
 }

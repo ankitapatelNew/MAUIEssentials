@@ -1,4 +1,8 @@
 
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
+
 namespace MAUIEssentials.ViewModels
 {
     public class BaseViewModel : IQueryAttributable, INotifyPropertyChanged
@@ -27,7 +31,7 @@ namespace MAUIEssentials.ViewModels
             return true;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

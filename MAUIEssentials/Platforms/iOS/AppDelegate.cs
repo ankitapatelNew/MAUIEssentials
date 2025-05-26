@@ -1,4 +1,8 @@
-﻿namespace MAUIEssentials;
+﻿using Foundation;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
+namespace MAUIEssentials;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

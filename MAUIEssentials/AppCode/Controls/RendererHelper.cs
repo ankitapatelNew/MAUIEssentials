@@ -1,3 +1,6 @@
+using System.Net;
+using System.Text;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public class RendererHelper
@@ -24,7 +27,7 @@ namespace MAUIEssentials.AppCode.Controls
             _label = label ?? throw new ArgumentNullException(nameof(label));
             _runtimePlatform = runtimePlatform;
             _isRtl = isRtl;
-            _text = text?.Trim();
+            _text = text.Trim();
             _styles = new List<KeyValuePair<string, string>>();
         }
 
@@ -105,7 +108,7 @@ namespace MAUIEssentials.AppCode.Controls
         {
             if (string.IsNullOrWhiteSpace(_text))
             {
-                return null;
+                return string.Empty;
             }
 
             // Add null checks for _label

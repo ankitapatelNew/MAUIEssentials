@@ -1,3 +1,15 @@
+using Android.Content;
+using Android.Graphics.Drawables;
+using Android.OS;
+using Android.Views;
+using Google.Android.Material.Badge;
+using Google.Android.Material.BottomNavigation;
+using Microsoft.Maui.Controls.Platform.Compatibility;
+using Microsoft.Maui.Platform;
+using System.ComponentModel;
+using Microsoft.Maui.Controls.Platform;
+using MAUIEssentials.AppCode.Helpers;
+
 namespace MAUIEssentials.Platforms.Android.Renderers
 {
     public class CustomShellRenderer : Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer
@@ -136,7 +148,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
             {
                 if (_bottomView != null && _bottomView.Handle != IntPtr.Zero)
                 {
-                    var badgeDrawable = _bottomView.GetOrCreateBadge(tabCounter.TabNumber);
+                    var badgeDrawable = _bottomView.GetOrCreateBadge((int)tabCounter.TabNumber);
                     badgeDrawable.HorizontalOffset = 10; // Adjust horizontal offset
                     badgeDrawable.VerticalOffset = 10;   // Adjust vertical offset
 
@@ -149,7 +161,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
                         else
                         {
                             //badgeDrawable.Number = tabCounter.BadgeCount;
-                            badgeDrawable.BackgroundColor = Color.ParseColor("#FF5C39");
+                            badgeDrawable.BackgroundColor = Color.Parse("#FF5C39").ToPlatform();
                             badgeDrawable.BadgeTextColor = Colors.White.ToPlatform();
                             badgeDrawable.SetVisible(true);
                         }

@@ -1,12 +1,15 @@
+using MAUIEssentials.AppCode.DependencyServices;
+using SQLite;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public class DataManager<T> where T : new()
 	{
         public SQLiteConnection dbConn;
-		private static volatile DataManager<T> _instance;
+		private static volatile DataManager<T>? _instance;
 		public static object SyncObject = new object();
 
-		private static Type[] DataBaseTypes;
+		private static Type[]? DataBaseTypes;
 
 		public static DataManager<T> Instance {
 			get {

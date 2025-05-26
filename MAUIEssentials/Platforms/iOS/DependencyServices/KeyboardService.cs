@@ -1,3 +1,7 @@
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
 namespace MAUIEssentials.Platforms.iOS.DependencyServices
 {
     public class KeyboardService : IKeyboardService

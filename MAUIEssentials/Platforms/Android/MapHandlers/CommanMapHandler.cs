@@ -1,3 +1,37 @@
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using Android;
+using Android.Content;
+using Android.Content.PM;
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.OS;
+using Android.Views;
+using AndroidX.Core.Content;
+using Bumptech.Glide;
+using Bumptech.Glide.Load.Engine;
+using Bumptech.Glide.Request;
+using Bumptech.Glide.Signature;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Maps.Handlers;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Platforms.Android.MapHandlers;
+using ACircle = Android.Gms.Maps.Model.Circle;
+using APolygon = Android.Gms.Maps.Model.Polygon;
+using APolyline = Android.Gms.Maps.Model.Polyline;
+using Location = Microsoft.Maui.Devices.Sensors.Location;
+using Path = System.IO.Path;
+using XCircle = Microsoft.Maui.Controls.Maps.Circle;
+using XPolygon = Microsoft.Maui.Controls.Maps.Polygon;
+using XPolyline = Microsoft.Maui.Controls.Maps.Polyline;
+
 namespace MAUIEssentials
 {
     public partial class CommanMapHandler : MapHandler
@@ -160,14 +194,16 @@ namespace MAUIEssentials
 
                 var scrollView = platformView.Parent;
 
-                wrapper.TouchUp += () => {
+                wrapper.TouchUp += () =>
+                {
                     if (scrollView != null)
                     {
                         scrollView.RequestDisallowInterceptTouchEvent(false);
                     }
                 };
 
-                wrapper.TouchDown += () => {
+                wrapper.TouchDown += () =>
+                {
                     if (scrollView != null)
                     {
                         scrollView.RequestDisallowInterceptTouchEvent(true);
@@ -294,7 +330,7 @@ namespace MAUIEssentials
             var y = nativeMap.Projection.ToScreenLocation(visibleRegion.NearLeft);
             var centerPoint = new Android.Graphics.Point(x.X / 2, y.Y / 2);
             nativeMap.Projection.FromScreenLocation(centerPoint);
-            
+
             //BOTH RETURNS THE SAME RESULT
             return new Location(centerPosition.Latitude, centerPosition.Longitude);
         }
@@ -378,7 +414,8 @@ namespace MAUIEssentials
                     update = CameraUpdateFactory.NewLatLngBounds(new LatLngBounds(sw, ne), _map.Width.ToInt(), _map.Height.ToInt(), 0);
                 }
 
-                MainThread.BeginInvokeOnMainThread(() => {
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
                     MoveCamera(update, animate);
                 });
             }
@@ -496,7 +533,7 @@ namespace MAUIEssentials
                 ex.LogException();
             }
         }
-        
+
         static void NativeMap_CameraMove(object sender, EventArgs e)
         {
             try
@@ -705,7 +742,7 @@ namespace MAUIEssentials
                         }
                     }
                 }
-            }   
+            }
             catch (Exception ex)
             {
                 ex.LogException();
@@ -779,7 +816,8 @@ namespace MAUIEssentials
                 _markers = new List<Marker>();
             }
 
-            _markers.AddRange(pins.Cast<Pin>().Select(p => {
+            _markers.AddRange(pins.Cast<Pin>().Select(p =>
+            {
                 Pin pin = p;
                 var opts = CreateMarker(pin);
                 var marker = map.AddMarker(opts);

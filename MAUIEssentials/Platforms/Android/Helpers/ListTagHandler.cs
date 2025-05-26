@@ -1,3 +1,6 @@
+using Android.Text;
+using Org.Xml.Sax;
+
 namespace MAUIEssentials.Platforms.Android.Helpers
 {
     public class ListTagHandler : Java.Lang.Object, Html.ITagHandler

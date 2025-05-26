@@ -1,3 +1,7 @@
+using System.Windows.Input;
+using MAUIEssentials.AppCode.Helpers;
+using Mopups.Services;
+
 namespace MAUIEssentials.AppCode.AlertViews
 {
     public static class AlertDialogCommon
@@ -26,7 +30,12 @@ namespace MAUIEssentials.AppCode.AlertViews
             return await ShowAlert(navigation, title, message, new AlertConfig(), accept, cancel);
         }
 
-        public static async Task<bool> ShowAlert(this INavigation navigation, string title, string message, AlertConfig config, string accept = "", string cancel = "")
+        public static async Task ShowAlert(this INavigation navigation, string title, string message, string accept, AlertConfig config, string secondMessage, string imageError, string tintColor)
+        {
+            await ShowAlert(navigation, title, message, config, accept, secondMessage: secondMessage, imageError: imageError, tintColor: tintColor);
+        }
+
+        public static async Task<bool> ShowAlert(this INavigation navigation, string title, string message, AlertConfig config, string accept = "", string cancel = "", string secondMessage = "", string imageError = "", string tintColor = "")
         {
             var tcs = new TaskCompletionSource<bool>();
             var alertView = new AlertView(title, message, config, accept, cancel);
@@ -79,6 +88,10 @@ namespace MAUIEssentials.AppCode.AlertViews
         public Color NegativeColor { get; set; }
         public Color NegativeButtonColor { get; set; }
         public Color SeparatorColor { get; set; }
+        public Color PositiveBorderColor { get; set; }
+        public Color NegativeBorderColor { get; set; }
+
+        public FormattedString MessageFormattedString { get; set; }
 
         public string TitleFontFamily { get; set; }
         public string MessageFontFamily { get; set; }
@@ -140,6 +153,8 @@ namespace MAUIEssentials.AppCode.AlertViews
 
     public class SnackbarConfig
     {
+        public Action Callback { get; set; }
+        
         public Color BackgroundColor { get; set; }
         public Color MessageTextColor { get; set; }
         public Color ButtonTextColor { get; set; }

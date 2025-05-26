@@ -1,3 +1,5 @@
+using System.Windows.Input;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public class SearchBar : Microsoft.Maui.Controls.SearchBar

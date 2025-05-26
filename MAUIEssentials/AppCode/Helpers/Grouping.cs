@@ -1,3 +1,8 @@
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public class Grouping<K, T> : ObservableCollection<T>, INotifyPropertyChanged

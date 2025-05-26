@@ -1,3 +1,8 @@
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using Microsoft.Maui.Maps.Handlers;
+using Math = System.Math;
+
 namespace MAUIEssentials.Platforms.Android.MapHandlers
 {
     public class OnCameraMoveListener : Java.Lang.Object, GoogleMap.IOnCameraMoveListener

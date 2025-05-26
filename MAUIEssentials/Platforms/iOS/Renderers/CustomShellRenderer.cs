@@ -1,3 +1,10 @@
+using Microsoft.Maui.Controls.Handlers.Compatibility;
+using Microsoft.Maui.Controls.Platform.Compatibility;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+using CoreGraphics;
+
 namespace MAUIEssentials.Platforms.iOS.Renderers
 {
     public class CustomShellRenderer : ShellRenderer
@@ -90,7 +97,7 @@ namespace MAUIEssentials.Platforms.iOS.Renderers
                 if (image != null)
                 {
                     UIGraphics.BeginImageContextWithOptions(new CGSize(iconSize, iconSize), false, 0);
-                    image.Draw(new CoreGraphics.CGRect(0, 0, iconSize, iconSize));
+                    image.Draw(new CGRect(0, 0, iconSize, iconSize));
                     var resizedImage = UIGraphics.GetImageFromCurrentImageContext();
                     UIGraphics.EndImageContext();
 
@@ -163,7 +170,7 @@ namespace MAUIEssentials.Platforms.iOS.Renderers
             {
                 if (_controller != null && _controller.TabBar != null && _controller.TabBar.Items?.Length != 0)
                 {
-                    if (_controller.TabBar.Items?.ElementAtOrDefault(tabCounter.TabNumber) is UITabBarItem currentTabBarItem)
+                    if (_controller.TabBar.Items?.ElementAtOrDefault((int)tabCounter.TabNumber) is UITabBarItem currentTabBarItem)
                     {
                         if (string.IsNullOrEmpty(tabCounter.BadgeText))
                         {

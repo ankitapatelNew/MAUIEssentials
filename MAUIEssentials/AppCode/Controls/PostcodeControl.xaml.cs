@@ -1,3 +1,8 @@
+using System.Text.Json.Serialization;
+using MAUIEssentials.AppCode.AlertViews;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.AppResources;
+
 namespace MAUIEssentials.AppCode.Controls
 {
 	public partial class PostcodeControl : StackLayout
@@ -144,8 +149,8 @@ namespace MAUIEssentials.AppCode.Controls
 
 public class PostcodeItem
 {
-	public string Label { get; set; }
-	public List<FieldModel> Fields { get; set; }
+	public string? Label { get; set; }
+	public List<FieldModel>? Fields { get; set; }
 }
 
 public class FieldModel
@@ -154,10 +159,11 @@ public class FieldModel
 	public object Value { get; set; }
 
 	[JsonIgnore]
-	public string ValueText => Value != null ? Value.ToString() : string.Empty;
+	public string? ValueText => Value != null ? Value.ToString() : string.Empty;
 
 	public FieldModel()
 	{
+		
 	}
 
 	public FieldModel(string name, object value)

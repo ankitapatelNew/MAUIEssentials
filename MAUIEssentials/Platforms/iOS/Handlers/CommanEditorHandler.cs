@@ -1,3 +1,10 @@
+using Foundation;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
 namespace MAUIEssentials.Platforms.iOS.Handlers
 {
     public partial class CommanEditorHandler : EditorHandler

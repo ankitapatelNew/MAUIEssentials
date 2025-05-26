@@ -1,6 +1,9 @@
+using System.Runtime.CompilerServices;
+using Android.Gms.Maps;
+
 namespace MAUIEssentials.Platforms.Android.MapHandlers
 {
-    public static class MapViewExtensions
+	public static class MapViewExtensions
 	{
 		[MethodImpl(MethodImplOptions.NoInlining)]
 
@@ -32,8 +35,8 @@ namespace MAUIEssentials.Platforms.Android.MapHandlers
 			}
 		}
 
-        public void OnMapReady(GoogleMap googleMap)
-        {
+		public void OnMapReady(GoogleMap googleMap)
+		{
 			try
 			{
 				_handler?.Invoke(googleMap);
@@ -42,6 +45,6 @@ namespace MAUIEssentials.Platforms.Android.MapHandlers
 			{
 				Console.WriteLine(ex.Message);
 			}
-        }
-    }
+		}
+	}
 }

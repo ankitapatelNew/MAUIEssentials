@@ -1,3 +1,16 @@
+using System.Text.RegularExpressions;
+using Android.Graphics;
+using Android.Text;
+using Android.Text.Method;
+using Android.Text.Style;
+using Android.Views;
+using Android.Widget;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.Platforms.Android.Helpers;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using TextAlignment = Microsoft.Maui.TextAlignment;
+
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
     public partial class HtmlLabelHandler : ViewHandler<HtmlLabel, TextView>
@@ -264,7 +277,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
                 ds.UnderlineText = _label.UnderlineText;
             }
 
-            public override void OnClick(View widget)
+            public override void OnClick(global::Android.Views.View widget)
             {
                 RendererHelper.HandleUriClick(_label, _span.URL);
             }

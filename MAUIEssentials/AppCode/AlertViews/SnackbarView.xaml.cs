@@ -1,3 +1,8 @@
+using System.ComponentModel;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+using Mopups.Pages;
+
 namespace MAUIEssentials.AppCode.AlertViews
 {
 	[EditorBrowsable(EditorBrowsableState.Never)]

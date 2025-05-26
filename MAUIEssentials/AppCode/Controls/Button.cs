@@ -1,3 +1,5 @@
+using MAUIEssentials.AppCode.Helpers;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public class Button : Microsoft.Maui.Controls.Button

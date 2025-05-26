@@ -1,11 +1,15 @@
-﻿namespace MAUIEssentials;
+﻿using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Styles;
+
+namespace MAUIEssentials;
 
 public partial class App : Application
 {
 	const int smallWightResolution = 768;
 	const int smallHeightResolution = 1280;
 
-	static App _instance;
+	static App? _instance;
 	public static App Instance
 	{
 		get

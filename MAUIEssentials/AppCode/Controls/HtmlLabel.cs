@@ -1,6 +1,6 @@
 namespace MAUIEssentials.AppCode.Controls
 {
-    public class HtmlLabel : Microsoft.Maui.Controls.Label
+    public class HtmlLabel : Label
     {
         public static readonly BindableProperty UnderlineTextProperty =
             BindableProperty.Create(nameof(UnderlineText), typeof(bool), typeof(HtmlLabel), true);
@@ -14,7 +14,7 @@ namespace MAUIEssentials.AppCode.Controls
         public static readonly BindableProperty LinkColorProperty =
             BindableProperty.Create(nameof(LinkColor), typeof(Color), typeof(HtmlLabel), default);
 
-        public Microsoft.Maui.Graphics.Color LinkColor
+        public Color LinkColor
         {
             get => (Color)GetValue(LinkColorProperty);
             set => SetValue(LinkColorProperty, value);
@@ -56,11 +56,11 @@ namespace MAUIEssentials.AppCode.Controls
             set => SetValue(IsOverrideLinkProperty, value);
         }
 
-        public event EventHandler<WebNavigatingEventArgs> Navigating;
+        public event EventHandler<WebNavigatingEventArgs>? Navigating;
 
-        public event EventHandler<WebNavigatingEventArgs> Navigated;
+        public event EventHandler<WebNavigatingEventArgs>? Navigated;
 
-        public event EventHandler OverrideLinkClicked;
+        public event EventHandler? OverrideLinkClicked;
 
         internal void SendNavigating(WebNavigatingEventArgs args)
         {

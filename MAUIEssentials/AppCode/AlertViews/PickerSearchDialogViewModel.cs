@@ -1,3 +1,8 @@
+using System.Collections.ObjectModel;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Models;
+using MAUIEssentials.ViewModels;
+
 namespace MAUIEssentials.AppCode.AlertViews
 {
     public class PickerSearchDialogViewModel : BaseViewModel
@@ -13,7 +18,7 @@ namespace MAUIEssentials.AppCode.AlertViews
             {
                 PickerDialog = settings;
 
-                var filterList = PickerDialog.ListData
+                var filterList = PickerDialog.ListData?
                     .Where(x => !string.IsNullOrEmpty(x))
                     .Distinct()
                     .Select(x => new PickerModel { Name = x, IsSelected = x == PickerDialog.SelectedObject })
@@ -114,7 +119,7 @@ namespace MAUIEssentials.AppCode.AlertViews
 
     public class PickerModel : BaseNotifyPropertyChanged
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         bool _isSelected;
         public bool IsSelected
@@ -259,10 +264,10 @@ namespace MAUIEssentials.AppCode.AlertViews
             }
         }
 
-        public string SelectedObject { get; set; }
-        public string SearchIcon { get; set; }
-        public string CloseIcon { get; set; }
-        public List<string> ListData { get; set; }
-        public Action<string> Search { get; set; }
+        public string? SelectedObject { get; set; }
+        public string? SearchIcon { get; set; }
+        public string? CloseIcon { get; set; }
+        public List<string>? ListData { get; set; }
+        public Action<string>? Search { get; set; }
     }
 }

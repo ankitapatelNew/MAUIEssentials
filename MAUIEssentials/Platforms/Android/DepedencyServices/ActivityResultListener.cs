@@ -1,3 +1,6 @@
+using Android.App;
+using Android.Content;
+
 namespace MAUIEssentials.Platforms.Android.DepedencyServices
 {
     public class ActivityResultListener

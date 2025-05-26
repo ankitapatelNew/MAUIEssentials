@@ -1,7 +1,13 @@
+using CoreAnimation;
+using CoreGraphics;
+using Foundation;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
 namespace MAUIEssentials.Platforms.iOS.Helpers
 {
     public static class Utils
-	{
+    {
         public static UIViewController GetTopViewController()
         {
             var window = UIApplication.SharedApplication.KeyWindow;

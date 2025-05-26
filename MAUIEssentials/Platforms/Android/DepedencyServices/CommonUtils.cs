@@ -1,3 +1,23 @@
+using Android.Content;
+using Android.Gms.Common.Apis;
+using Android.Locations;
+using Android.OS;
+using Android.Util;
+using Android.Views;
+using Android.Webkit;
+using Android.Widget;
+using Plugin.Maui.Biometric;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+using Bitmap = Android.Graphics.Bitmap;
+using BitmapFactory = Android.Graphics.BitmapFactory;
+using FileProvider = AndroidX.Core.Content.FileProvider;
+using Platform = Microsoft.Maui.ApplicationModel.Platform;
+using Size = Microsoft.Maui.Graphics.Size;
+using Typeface = Android.Graphics.Typeface;
+using MAUIEssentials.AppCode.Controls;
+using Microsoft.Maui.Platform;
+
 namespace MAUIEssentials.Platforms.Android.DepedencyServices
 {
     public class CommonUtils : ICommonUtils
@@ -46,7 +66,8 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
             var activity = Platform.CurrentActivity as MainActivity;
             var listener = new ActivityResultListener(activity);
 
-            Task.Run(async () => {
+            Task.Run(async () =>
+            {
                 try
                 {
                     var locationRequest = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
@@ -286,7 +307,7 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
         {
             try
             {
-                var activity =  Platform.CurrentActivity;
+                var activity = Platform.CurrentActivity;
 
                 activity.Window.ClearFlags(WindowManagerFlags.TranslucentStatus);
                 activity.Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);

@@ -1,3 +1,7 @@
+using System.Windows.Input;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.ViewModels;
+
 namespace MAUIEssentials.AppCode.AlertViews
 {
     public class SnackbarViewModel : BaseViewModel

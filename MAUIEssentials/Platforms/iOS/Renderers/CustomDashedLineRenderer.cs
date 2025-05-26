@@ -1,3 +1,12 @@
+using System.ComponentModel;
+using CoreGraphics;
+using Microsoft.Maui.Controls.Handlers.Compatibility;
+using Microsoft.Maui.Controls.Platform;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+
 namespace MAUIEssentials.Platforms.iOS.Renderers
 {
     public class DashedLineRenderer : ViewRenderer<DashedLine, UIView>
@@ -96,5 +105,5 @@ namespace MAUIEssentials.Platforms.iOS.Renderers
                 ex.LogException();
             }
         }
-    }    
+    }
 }

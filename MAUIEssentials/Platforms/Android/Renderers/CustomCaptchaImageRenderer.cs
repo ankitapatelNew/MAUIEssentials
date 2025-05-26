@@ -1,3 +1,20 @@
+using System.ComponentModel;
+using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.OS;
+using Android.Widget;
+using Bumptech.Glide;
+using Bumptech.Glide.Load;
+using Bumptech.Glide.Load.Engine;
+using Bumptech.Glide.Request;
+using Bumptech.Glide.Request.Target;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Controls.Platform;
+using MAUIEssentials.AppCode.Helpers;
+using CustomImage = MAUIEssentials.AppCode.Controls.CaptchaImage;
+using Platform = Microsoft.Maui.ApplicationModel.Platform;
+
 namespace MAUIEssentials.Platforms.Android.Renderers
 {
     public class CustomCaptchaImageRenderer : Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.ImageRenderer
@@ -268,7 +285,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
 
                 if (!element.TintColor.Equals(Colors.Transparent))
                 {
-                    Control.SetColorFilter(element.TintColor, PorterDuff.Mode.SrcAtop);
+                    Control.SetColorFilter(element.TintColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
                 }
                 else
                 {
@@ -314,12 +331,12 @@ namespace MAUIEssentials.Platforms.Android.Renderers
                 {
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
                     {
-                        (p0 as BitmapDrawable).SetColorFilter(new BlendModeColorFilter(_element.TintColor, global::Android.Graphics.BlendMode.SrcAtop));
+                        (p0 as BitmapDrawable).SetColorFilter(new BlendModeColorFilter(_element.TintColor.ToAndroid(), global::Android.Graphics.BlendMode.SrcAtop));
                     }
                     else
                     {
 #pragma warning disable CS0618 // Type or member is obsolete
-                        (p0 as BitmapDrawable).SetColorFilter(_element.TintColor, PorterDuff.Mode.SrcAtop);
+                        (p0 as BitmapDrawable).SetColorFilter(_element.TintColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
 #pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }

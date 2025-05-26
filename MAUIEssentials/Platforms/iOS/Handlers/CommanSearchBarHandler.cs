@@ -1,3 +1,11 @@
+using CoreGraphics;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Platforms.iOS.Helpers;
+using UIKit;
+using System.ComponentModel;
+
 namespace MAUIEssentials.Platforms.iOS.Handlers
 {
     public class CommanSearchBarHandler : SearchBarHandler
@@ -70,7 +78,7 @@ namespace MAUIEssentials.Platforms.iOS.Handlers
         {
             try
             {
-                if (e.PropertyName == Microsoft.Maui.Controls.SearchBar.TextProperty.PropertyName)
+                if (e.PropertyName == SearchBar.TextProperty.PropertyName)
                 {
                     PlatformView.ShowsCancelButton = false;
                 }
@@ -80,10 +88,10 @@ namespace MAUIEssentials.Platforms.iOS.Handlers
                 {
                     UpdateIcons();
                 }
-                else if (e.PropertyName == Microsoft.Maui.Controls.SearchBar.PlaceholderProperty.PropertyName ||
-                        e.PropertyName == Microsoft.Maui.Controls.SearchBar.FontFamilyProperty.PropertyName ||
-                        e.PropertyName == Microsoft.Maui.Controls.SearchBar.FontAttributesProperty.PropertyName ||
-                        e.PropertyName == Microsoft.Maui.Controls.SearchBar.FontSizeProperty.PropertyName)
+                else if (e.PropertyName == SearchBar.PlaceholderProperty.PropertyName ||
+                        e.PropertyName == SearchBar.FontFamilyProperty.PropertyName ||
+                        e.PropertyName == SearchBar.FontAttributesProperty.PropertyName ||
+                        e.PropertyName == SearchBar.FontSizeProperty.PropertyName)
                 {
                     UpdateSearchBar();
                 }

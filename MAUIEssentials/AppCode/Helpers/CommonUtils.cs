@@ -1,3 +1,12 @@
+using System.Text.RegularExpressions;
+using Mopups.Services;
+using MAUIEssentials.AppCode.AlertViews;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppResources;
+using MAUIEssentials.Models;
+using MAUIEssentials.Services;
+using MAUIEssentials.AppCode.Controls;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public static class CommonUtils

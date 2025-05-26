@@ -1,3 +1,6 @@
+using System.Windows.Input;
+using static System.Math;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public class ExpandableView : StackLayout

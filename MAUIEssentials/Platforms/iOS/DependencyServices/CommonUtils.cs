@@ -1,3 +1,13 @@
+using CoreGraphics;
+using CoreLocation;
+using Foundation;
+using Plugin.Maui.Biometric;
+using QuickLook;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
+using UIKit;
+using MAUIEssentials.AppCode.Controls;
+
 namespace MAUIEssentials.Platforms.iOS.DependencyServices
 {
     public class CommonUtils : ICommonUtils
@@ -107,7 +117,7 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
         {
             try
             {
-                //_ = LoaderPopup.Instance.ShowLoader("Saving");
+                _ = LoaderPopup.Instance.ShowLoader("Saving");
                 byte[] fileArray = Convert.FromBase64String(base64File);
                 string filePath = Path.Combine(CreateDocumentDirectory(folderName), name);
 
@@ -117,14 +127,14 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
                 }
 
                 File.WriteAllBytes(filePath, fileArray);
-                //_ = LoaderPopup.Instance.HideLoader();
+                _ = LoaderPopup.Instance.HideLoader();
                 OpenDocument(filePath);
                 return filePath;
 
             }
             catch (Exception ex)
             {
-               // _ = LoaderPopup.Instance.HideLoader();
+                _ = LoaderPopup.Instance.HideLoader();
                 ex.LogException();
             }
             return string.Empty;
@@ -134,7 +144,7 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
         {
             try
             {
-               // _ = LoaderPopup.Instance.ShowLoader("Saving");
+                _ = LoaderPopup.Instance.ShowLoader("Saving");
                 string filePath = Path.Combine(CreateDocumentDirectory(folderName), name);
 
                 if (File.Exists(filePath))
@@ -143,14 +153,14 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
                 }
 
                 File.WriteAllBytes(filePath, fileArray);
-               // _ = LoaderPopup.Instance.HideLoader();
+                _ = LoaderPopup.Instance.HideLoader();
                 OpenDocument(filePath);
                 return filePath;
 
             }
             catch (Exception ex)
             {
-                //_ = LoaderPopup.Instance.HideLoader();
+                _ = LoaderPopup.Instance.HideLoader();
                 ex.LogException();
             }
             return string.Empty;

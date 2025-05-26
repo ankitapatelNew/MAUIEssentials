@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace MAUIEssentials.AppCode.Converters
 {
     public class IsBoldConverter : IValueConverter

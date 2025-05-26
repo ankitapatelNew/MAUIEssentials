@@ -1,3 +1,7 @@
+using Android.Text;
+using Android.Text.Style;
+using Android.Widget;
+
 namespace MAUIEssentials.Platforms.Android.Helpers
 {
     internal class ListBuilder

@@ -1,3 +1,6 @@
+using System.Runtime.CompilerServices;
+using MAUIEssentials.AppCode.Helpers;
+
 namespace MAUIEssentials.AppCode.Controls
 {
 	public partial class FloatingEntry : Grid

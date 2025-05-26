@@ -1,3 +1,8 @@
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using Android.Views;
+using Microsoft.Maui.Maps.Handlers;
+
 namespace MAUIEssentials.Platforms.Android.MapHandlers
 {
     public class OnInfoWindowAdapterListener : Java.Lang.Object, GoogleMap.IInfoWindowAdapter
@@ -21,5 +26,5 @@ namespace MAUIEssentials.Platforms.Android.MapHandlers
         {
             return null;
         }
-    }    
+    }
 }

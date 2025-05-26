@@ -1,3 +1,16 @@
+using System.ComponentModel;
+using Android.Content;
+using Android.Graphics;
+using Microsoft.Maui.Controls.Platform;
+using MAUIEssentials.AppCode.Controls;
+using MAUIEssentials.AppCode.Helpers;
+using AView = Android.Views.View;
+using Paint = Android.Graphics.Paint;
+using Path = Android.Graphics.Path;
+using Microsoft.Maui.Controls.Compatibility;
+using MAUIEssentials.Platforms.Android.Renderers;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+
 [assembly: ExportRenderer(typeof(DashedLine), typeof(CustomDashedLineRenderer))]
 namespace MAUIEssentials.Platforms.Android.Renderers
 {
@@ -75,7 +88,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
 
                 _paint = new Paint
                 {
-                    Color = Element.DashColor,
+                    Color = Element.DashColor.ToAndroid(),
                     StrokeWidth = (float)(Element.Orientation == StackOrientation.Horizontal ? Element.Height : Element.Width),
                     AntiAlias = true,
                     StrokeCap = Paint.Cap.Butt

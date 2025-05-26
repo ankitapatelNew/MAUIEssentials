@@ -1,3 +1,6 @@
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+
 namespace MAUIEssentials.AppCode.Helpers
 {
     public class ClipboardHelper
