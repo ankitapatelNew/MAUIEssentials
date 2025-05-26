@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using AsyncAwaitBestPractices;
 using MAUIEssentials.AppCode.Helpers;
 
 namespace MAUIEssentials.AppCode.Controls
@@ -7,9 +8,28 @@ namespace MAUIEssentials.AppCode.Controls
 	{
 		double _placeholderFontSize, _titleFontSize;
 
-		public event EventHandler Completed;
-		public event EventHandler<FocusEventArgs> EntryFocused;
-		public event EventHandler<FocusEventArgs> EntryUnfocused;
+		readonly AsyncAwaitBestPractices.WeakEventManager completedEventManager = new AsyncAwaitBestPractices.WeakEventManager();
+        readonly WeakEventManager<FocusEventArgs> focusEventManager = new WeakEventManager<FocusEventArgs>();
+        readonly WeakEventManager<FocusEventArgs> unfocusEventManager = new WeakEventManager<FocusEventArgs>();
+
+        public event EventHandler Completed
+        {
+            add => completedEventManager.AddEventHandler(value);
+            remove => completedEventManager.AddEventHandler(value);
+        }
+
+        public event EventHandler<FocusEventArgs> EntryFocused
+        {
+            add => focusEventManager.AddEventHandler(value);
+            remove => focusEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler<FocusEventArgs> EntryUnfocused
+        {
+            add => unfocusEventManager.AddEventHandler(value);
+            remove => unfocusEventManager.RemoveEventHandler(value);
+        }
+		
 		public event EventHandler TextChanged;
 
 		public static readonly BindableProperty TextProperty =
@@ -126,7 +146,6 @@ namespace MAUIEssentials.AppCode.Controls
 			set => SetValue(InfoTextProperty, value);
 		}
 
-
 		public FontAttributes FontAttributeEntry
 		{
 			get => (FontAttributes)GetValue(FontAttributeEntryProperty);
@@ -168,6 +187,8 @@ namespace MAUIEssentials.AppCode.Controls
 			{
 				InitializeComponent();
 				lblPlaceholder.TranslationX = 5;
+				lblPlaceholder.HorizontalTextAlignment = TextAlignment.Start;
+
 				_titleFontSize = FontSize - 2;
 				_placeholderFontSize = FontSize;
 
@@ -206,7 +227,7 @@ namespace MAUIEssentials.AppCode.Controls
 					await TransitionToTitle(true);
 				}
 
-				EntryFocused?.Invoke(this, e);
+				focusEventManager?.RaiseEvent(this, e, nameof(EntryFocused));
 			}
 			catch (Exception ex)
 			{
@@ -223,7 +244,7 @@ namespace MAUIEssentials.AppCode.Controls
 					await TransitionToPlaceholder(true);
 				}
 
-				EntryUnfocused?.Invoke(this, e);
+				unfocusEventManager?.RaiseEvent(this, e, nameof(EntryUnfocused));
 			}
 			catch (Exception ex)
 			{
@@ -321,7 +342,7 @@ namespace MAUIEssentials.AppCode.Controls
 		{
 			try
 			{
-				Completed?.Invoke(this, e);
+				completedEventManager?.RaiseEvent(this, e, nameof(Completed));
 			}
 			catch (Exception ex)
 			{
@@ -409,7 +430,7 @@ namespace MAUIEssentials.AppCode.Controls
 		{
 			try
 			{
-				Completed?.Invoke(this, e);
+				completedEventManager?.RaiseEvent(this, e, nameof(Completed));
 			}
 			catch (Exception ex)
 			{

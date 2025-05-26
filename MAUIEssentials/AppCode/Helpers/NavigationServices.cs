@@ -253,7 +253,7 @@ namespace MAUIEssentials.AppCode.Helpers
                 ex.LogException();
             }
         }
-        
+
         public static async Task DisplaySnackbar(SnackbarConfig config)
         {
             await Navigation.ShowSnackbar(config);
@@ -283,6 +283,71 @@ namespace MAUIEssentials.AppCode.Helpers
                 await OpenShellPage("MainPage", clearStack: true);
             }
             return false;
+        }
+
+        public static async Task<List<Page>> GetAllPagesInStack(bool isDelay = false)
+        {
+            var pages = new List<Page>();
+
+            try
+            {
+                if (DeviceInfo.Platform == DevicePlatform.Android && isDelay)
+                {
+                    await Task.Delay(100);
+                }
+
+                if (MainPage is NavigationPage navigationPage)
+                {
+                    var navigationStack = navigationPage.Navigation.NavigationStack;
+                    var modalStack = navigationPage.Navigation.ModalStack;
+                    var popupStack = MopupService.Instance?.PopupStack;
+
+                    AddPagesToList(navigationStack, pages);
+                    AddPagesToList(modalStack, pages);
+
+                    if (popupStack != null)
+                    {
+                        pages.AddRange(popupStack);
+                    }
+                }
+                else if (Shell.Current != null)
+                {
+                    pages = Shell.Current.Navigation.NavigationStack.ToList();
+                }
+                else
+                {
+                    pages = Navigation.NavigationStack.Where(x => x != null).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
+            return pages;
+        }
+
+        private static void AddPagesToList(IEnumerable<Page> source, List<Page> destination)
+        {
+            foreach (var item in source)
+            {
+                if (item is TabbedPage tabbedPage)
+                {
+                    destination.AddRange(tabbedPage.Children.SelectMany(GetPagesFromTabbedPage));
+                }
+                else
+                {
+                    destination.Add(item);
+                }
+            }
+        }
+
+        private static IEnumerable<Page> GetPagesFromTabbedPage(Page page)
+        {
+            if (page is NavigationPage navigation)
+            {
+                return navigation.Navigation.NavigationStack;
+            }
+            return new List<Page> { page };
         }
     }
 }

@@ -81,4 +81,174 @@
 		xml:space="preserve">
 		<value>Choose an address</value>
 	</data>
+	<data 
+		name="pleaseWaitString" 
+		xml:space="preserve">
+    	<value>Please wait...</value>
+	</data>
+	<data 
+		name="currentPlan" 
+		xml:space="preserve">
+    	<value>Current Plan</value>
+  	</data>
+	<data 
+		name="changeYourPlan" 
+		xml:space="preserve">
+    	<value>Change Your Plan</value>
+  	</data>
+	<data 
+		name="switchToThisPlan" 
+		xml:space="preserve">
+    	<value>Switch To This Plan</value>
+  	</data>
+	<data 
+		name="startTrialString" 
+		xml:space="preserve">
+    	<value>Start Your {0}-Day Trial</value>
+  	</data>
+	<data 
+		name="getStartedPayment" 
+		xml:space="preserve">
+    	<value>Get Started</value>
+  	</data>
+	<data 
+		name="noPlanForThisPeriod" 
+		xml:space="preserve">
+    	<value>Unavailable</value>
+	</data>
+	<data 
+		name="addNewCard" 
+		xml:space="preserve">
+		<value>Add new card</value>
+      </data>
+	<data 
+		name="expiryDate" 
+		xml:space="preserve">
+		<value>Expiry Date</value>
+      </data>
+	  <data 
+	  	name="cardNumber" 
+		xml:space="preserve">
+		<value>Card number</value>
+      </data>
+	<data 
+		name="cashText" 
+		xml:space="preserve">
+    	<value>Pay cash</value>
+	</data>
+	<data 
+		name="cards" 
+		xml:space="preserve">
+    	<value>My Cards</value>
+	</data>
+	<data 
+		name="applePay" 
+		xml:space="preserve">
+    	<value>Pay</value>
+	</data>
+	<data 
+		name="googlePay" 
+		xml:space="preserve">
+    	<value>Google pay</value>
+	</data>
+	<data 
+		name="NewCardDetail" 
+		xml:space="preserve">
+    	<value>You'll enter you new card details in the next page</value>
+  	</data>
+	<data 
+		name="resourceBusyPeriod" 
+		xml:space="preserve">
+    	<value>{0} {1}</value>
+  	</data>
+	<data 
+		name="notRatedYet" 
+		xml:space="preserve">
+    	<value>Not rated yet</value>
+	</data>
+	<data 
+		name="km" 
+		xml:space="preserve">
+    	<value>km</value>
+  	</data>
+	<data 
+		name="meter" 
+		xml:space="preserve">
+    	<value>m</value>
+  	</data>
+	<data 
+		name="permissionRequired" 
+		xml:space="preserve">
+    	<value>Permission Required</value>
+  	</data>
+	<data 
+		name="openSettings" 
+		xml:space="preserve">
+    	<value>Open Settings</value>
+  	</data>
+	<data 
+		name="permissionRequiredForImport" 
+		xml:space="preserve">
+    	<value>Read contact permission is necessary for the import. Would you like to open settings to grant it?</value>
+  	</data>
+	<data 
+		name="permissionRequiredForCamera" 
+		xml:space="preserve">
+    	<value>Camera permission is necessary for the import. Would you like to open settings to grant it?</value>
+  	</data>
+	<data 
+		name="showOnMap" 
+		xml:space="preserve">
+    	<value>Show on map</value>
+  	</data>
+	<data 
+		name="appleMap" 
+		xml:space="preserve">
+    	<value>Apple Maps</value>
+	</data>
+	<data 
+		name="googleMap" 
+		xml:space="preserve">
+    	<value>Google Maps</value>
+	</data>
+	<data 
+		name="pleaseWait" 
+		xml:space="preserve">
+    	<value>Please wait</value>
+	</data>
+	<data 
+		name="locationPermissionInfoMsg" 
+		xml:space="preserve">
+		<value>If you would like to be able to find services close to you, please allow MAUIEssentials app to access your location while using the app</value>
+	</data>
+	<data 
+		name="allow" 
+		xml:space="preserve">
+		<value>Allow</value>
+	</data>
+	<data 
+		name="allowOptionMultiSelect" 
+		xml:space="preserve">
+    	<value>Enable multiple {0} for this {1}</value>
+	</data>
+	<data 
+		name="hrStr" 
+		xml:space="preserve">
+		<value>hr</value>
+	</data>
+	<data 
+		name="hrsStr" 
+		xml:space="preserve">
+		<value>hrs</value>
+	</data>
+	<data 
+		name="mins" 
+		xml:space="preserve">
+		<value>mins</value>
+	</data>
+	<data 
+		name="emailNotSupport" 
+		xml:space="preserve">
+    	<value>Email is not supported on this device</value>
+	</data>
 </root>

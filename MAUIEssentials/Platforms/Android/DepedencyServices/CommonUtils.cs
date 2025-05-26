@@ -17,6 +17,9 @@ using Size = Microsoft.Maui.Graphics.Size;
 using Typeface = Android.Graphics.Typeface;
 using MAUIEssentials.AppCode.Controls;
 using Microsoft.Maui.Platform;
+using Android.Graphics.Drawables;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using AndroidX.Core.App;
 
 namespace MAUIEssentials.Platforms.Android.DepedencyServices
 {
@@ -357,6 +360,180 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
         public long SystemClockERealtime()
         {
             return SystemClock.ElapsedRealtime();
+        }
+
+        public Size GetImageSize(string fileName)
+        {
+            var context = Platform.AppContext;
+
+            var options = new BitmapFactory.Options
+            {
+                InJustDecodeBounds = true
+            };
+
+            fileName = fileName.Replace('-', '_').Replace(".png", "").Replace(".jpg", "");
+            var resId = context.Resources.GetIdentifier(fileName, "drawable", context.PackageName);
+            BitmapFactory.DecodeResource(context.Resources, resId, options);
+
+            return new Size(Convert.ToDouble(options.OutWidth), Convert.ToDouble(options.OutHeight));
+        }
+
+        public void StatusbarColor(Color startColor, Color endColor, GradientOrientation orientation)
+        {
+            try
+            {
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                {
+                    var activity = Platform.CurrentActivity;
+                    if(activity == null)
+                    {
+                        return;
+                    }
+                    activity.Window?.ClearFlags(WindowManagerFlags.TranslucentStatus);
+                    activity.Window?.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+                    activity.Window?.SetStatusBarColor(global::Android.Graphics.Color.Transparent);
+
+                    var drawable = new GradientDrawable();
+                    drawable.SetGradientType(GradientType.LinearGradient);
+
+                    drawable.SetColors(new int[] {
+                        startColor.ToAndroid().ToArgb(),
+                        endColor.ToAndroid().ToArgb()
+                    });
+
+                    switch (orientation)
+                    {
+                        case GradientOrientation.Horizontal:
+                            drawable.SetOrientation(GradientDrawable.Orientation.LeftRight);
+                            break;
+                        case GradientOrientation.Vertical:
+                            drawable.SetOrientation(GradientDrawable.Orientation.TopBottom);
+                            break;
+                        case GradientOrientation.Diagonal:
+                            drawable.SetOrientation(GradientDrawable.Orientation.TlBr);
+                            break;
+                        case GradientOrientation.ReverseDiagonal:
+                            drawable.SetOrientation(GradientDrawable.Orientation.BlTr);
+                            break;
+                    }
+
+                    activity.Window?.SetBackgroundDrawable(drawable);
+
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.R)
+                    {
+                        var controller = activity.Window?.InsetsController;
+
+                        if (controller != null)
+                        {
+                            if (startColor == Colors.White)
+                            {
+                                controller.SetSystemBarsAppearance((int)WindowInsetsControllerAppearance.LightStatusBars, (int)WindowInsetsControllerAppearance.LightStatusBars);
+                            }
+                            else
+                            {
+                                controller.SetSystemBarsAppearance((int)WindowInsetsControllerAppearance.None, (int)WindowInsetsControllerAppearance.LightStatusBars);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                        {
+                            var decorView = activity.Window.DecorView;
+
+#pragma warning disable CS0618 // Type or member is obsolete
+                            if (startColor == Colors.White)
+                            {
+                                decorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.LightStatusBar;
+                            }
+                            else
+                            {
+                                decorView.SystemUiVisibility &= ~(StatusBarVisibility)SystemUiFlags.LightStatusBar;
+                            }
+#pragma warning restore CS0618 // Type or member is obsolete
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex?.Message);
+            }
+        }
+
+        public string GetDeviceId()
+        {
+            string id = string.Empty;
+
+            try
+            {
+                var context = Platform.AppContext;
+                id = global::Android.Provider.Settings.Secure.GetString(context.ContentResolver, global::Android.Provider.Settings.Secure.AndroidId);
+            }
+            catch (Exception ex)
+            {
+                Log.Warn("DeviceInfo", "Unable to get id: " + ex.ToString());
+            }
+            return id;
+        }
+
+        public async Task<bool> CheckNotificationPermission()
+        {
+            var context = Platform.AppContext;
+            var notificationManager = NotificationManagerCompat.From(context);
+
+            if (notificationManager != null && notificationManager.AreNotificationsEnabled())
+            {
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+                {
+                    var channels = notificationManager.NotificationChannels;
+
+                    if (channels != null && channels.Any())
+                    {
+                        foreach (var item in channels)
+                        {
+                            if (item.Importance == global::Android.App.NotificationImportance.Unspecified
+                                || item.Importance == global::Android.App.NotificationImportance.None)
+                            {
+                                return false;
+                            }
+
+                            if (Build.VERSION.SdkInt >= BuildVersionCodes.P && !string.IsNullOrEmpty(item.Group))
+                            {
+                                var channelGroup = notificationManager.GetNotificationChannelGroup(item.Group);
+
+                                if (channelGroup != null && channelGroup.IsBlocked)
+                                {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string GetExportsFolder()
+        {
+            string root = string.Empty;
+
+            root = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            var document = root + "/Exports/";
+            if (!Directory.Exists(document))
+            {
+                Directory.CreateDirectory(document);
+            }
+            return document;
         }
     }
 }

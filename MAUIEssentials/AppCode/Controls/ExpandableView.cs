@@ -1,4 +1,6 @@
 using System.Windows.Input;
+using AsyncAwaitBestPractices;
+using MAUIEssentials.AppCode.Helpers;
 using static System.Math;
 
 namespace MAUIEssentials.AppCode.Controls
@@ -7,9 +9,20 @@ namespace MAUIEssentials.AppCode.Controls
     {
         public const string ExpandAnimationName = nameof(ExpandAnimationName);
 
-        public event EventHandler<StatusChangedEventArgs> StatusChanged;
+        readonly WeakEventManager<StatusChangedEventArgs> statusChangeEventManager = new WeakEventManager<StatusChangedEventArgs>();
+        readonly AsyncAwaitBestPractices.WeakEventManager tappedEventManager = new AsyncAwaitBestPractices.WeakEventManager();
 
-        public event EventHandler Tapped;
+        public event EventHandler<StatusChangedEventArgs> StatusChanged
+        {
+            add => statusChangeEventManager.AddEventHandler(value);
+            remove => statusChangeEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler Tapped
+        {
+            add => tappedEventManager.AddEventHandler(value);
+            remove => tappedEventManager.RemoveEventHandler(value);
+        }
 
         public static readonly BindableProperty PrimaryViewProperty = BindableProperty.Create(nameof(PrimaryView), typeof(View), typeof(ExpandableView), null, propertyChanged: (bindable, oldValue, newValue) =>
         {
@@ -70,28 +83,39 @@ namespace MAUIEssentials.AppCode.Controls
             _defaultTapGesture = new TapGestureRecognizer
             {
                 CommandParameter = this,
-                Command = new Command(p =>
-                {
-                    var view = (p as View).Parent;
-                    while (view != null && !(view is Page))
-                    {
-                        if (view is ExpandableView ancestorExpandable)
-                        {
-                            ancestorExpandable.SecondaryView.HeightRequest = -1;
-                        }
-                        view = view.Parent;
-                    }
-                    Command?.Execute(CommandParameter);
-                    Tapped?.Invoke(this, new EventArgs());
-                    if (!IsTouchToExpandEnabled)
-                    {
-                        return;
-                    }
-                    IsExpanded = !IsExpanded;
-                })
+                Command = new Command(TapAction),
             };
 
             ForceUpdateSizeCommand = new Command(ForceUpdateSize);
+        }
+
+        private void TapAction(object obj)
+        {
+            try
+            {
+                var view = (obj as View).Parent;
+
+                while (view != null && !(view is Page))
+                {
+                    if (view is ExpandableView ancestorExpandable)
+                    {
+                        ancestorExpandable.SecondaryView.HeightRequest = -1;
+                    }
+                    view = view.Parent;
+                }
+                Command?.Execute(CommandParameter);
+                tappedEventManager?.RaiseEvent(this, new EventArgs(), nameof(Tapped));
+
+                if (!IsTouchToExpandEnabled)
+                {
+                    return;
+                }
+                IsExpanded = !IsExpanded;
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
         }
 
         public View PrimaryView
@@ -219,7 +243,6 @@ namespace MAUIEssentials.AppCode.Controls
             var isExpanding = SecondaryView.AnimationIsRunning(ExpandAnimationName);
             SecondaryView.AbortAnimation(ExpandAnimationName);
 
-
             _startHeight = SecondaryView.IsVisible
                 ? Max(SecondaryView.Height - (SecondaryView is Layout l
                                     ? l.Padding.Top + l.Padding.Bottom
@@ -244,6 +267,11 @@ namespace MAUIEssentials.AppCode.Controls
                     shouldInvokeAnimation = false;
                     SecondaryView.HeightRequest = -1;
                     SecondaryView.SizeChanged += OnSecondaryViewSizeChanged;
+
+                    if (SecondaryView.Height > 0)
+                    {
+                        shouldInvokeAnimation = true;
+                    }
                 }
             }
             else
@@ -381,7 +409,7 @@ namespace MAUIEssentials.AppCode.Controls
         private void RaiseStatusChanged(ExpandStatus status)
         {
             Status = status;
-            StatusChanged?.Invoke(this, new StatusChangedEventArgs(status));
+            statusChangeEventManager?.RaiseEvent(this, new StatusChangedEventArgs(status), nameof(StatusChanged));
         }
     }
 

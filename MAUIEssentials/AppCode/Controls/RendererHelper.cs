@@ -216,6 +216,7 @@ namespace MAUIEssentials.AppCode.Controls
                 result = Launcher.TryOpenAsync(uri).Result;
             }
 
+            // KWI-FIX What to do if the navigation failed? I assume not to spawn the SendNavigated event or introduce a fail bit on the args 
             label.SendNavigated(args);
             return result;
         }

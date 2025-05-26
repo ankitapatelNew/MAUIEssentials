@@ -1,6 +1,7 @@
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MAUIEssentials.AppCode.Helpers;
 using Newtonsoft.Json;
 
 namespace MAUIEssentials.ViewModels
@@ -31,17 +32,53 @@ namespace MAUIEssentials.ViewModels
             return true;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        readonly WeakEventManager propertyChangedEventManager = new WeakEventManager();
+
+        public event PropertyChangedEventHandler PropertyChanged
+        {
+            add => propertyChangedEventManager.AddEventHandler(value);
+            remove => propertyChangedEventManager.RemoveEventHandler(value);
+        }
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var changed = propertyChangedEventManager;
+
+            if (changed == null)
+            {
+                return;
+            }
+
+            changed.HandleEvent(this, new PropertyChangedEventArgs(propertyName), nameof(PropertyChanged));
         }
 
-         public virtual void OnFirstTimeAppearing() { }
+        public async void OnException(Exception ex)
+        {
+            await CommonUtils.HideLoader();
+            ex.LogException();
+        }
+
+        public virtual void OnFirstTimeAppearing() { }
 
         public virtual void OnAppearing() { }
 
-        public virtual void OnDisappearing() { }
+        public virtual void OnDisappearing()
+        {
+            IsRefreshing = false;
+        }
+
+        public virtual void OnNotificationReceived(IDictionary<string, object> data) { }
+
+        public virtual void OnInternetAvailable() { }
+
+        public virtual void OnDispose() { }
+
+        public void CheckInternetConnected()
+        {
+            OnPropertyChanged(nameof(IsInternetConnected));
+        }
+
+        public bool IsInternetConnected => Connectivity.NetworkAccess == NetworkAccess.Internet
+            || Connectivity.NetworkAccess == NetworkAccess.ConstrainedInternet;
 
         public virtual void ApplyQueryAttributes(IDictionary<string, object> query)
         {
@@ -74,5 +111,33 @@ namespace MAUIEssentials.ViewModels
             get => _apiErrorMessage;
             set => SetProperty(ref _apiErrorMessage, value);
         }
+        
+        public double ItemSize
+        {
+            get
+            {
+                var width = (ScreenSize.ScreenWidth - 40) / ((DeviceInfo.Idiom == DeviceIdiom.Tablet) ? 4 :2.9);
+                return width - 30;
+            }
+        }
+
+        public double MainItemHeight
+        {
+            get
+            {
+                return (ScreenSize.ScreenWidth - 40) / ((DeviceInfo.Idiom == DeviceIdiom.Tablet) ? 4.5 :3) + 10;
+            }
+        }
+
+        public double MainItemWidth
+        {
+            get
+            {
+                return (ScreenSize.ScreenWidth - 40) / ((DeviceInfo.Idiom == DeviceIdiom.Tablet) ? 3 :2);
+            }
+        }
+
+        public double ItemCornerRadius => ItemSize / 2;
+        public double MainItemVerticalSpacing => (DeviceInfo.Idiom == DeviceIdiom.Tablet) ? 30 : 15;
     }
 }

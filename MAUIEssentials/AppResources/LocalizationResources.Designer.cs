@@ -196,13 +196,387 @@ namespace MAUIEssentials.AppResources {
                 return ResourceManager.GetString("enterPostcode", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Choose an address.
         /// </summary>
-        internal static string chooseAddress {
-            get {
+        internal static string chooseAddress
+        {
+            get
+            {
                 return ResourceManager.GetString("chooseAddress", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait....
+        /// </summary>
+        public static string pleaseWaitString
+        {
+            get
+            {
+                return ResourceManager.GetString("pleaseWaitString", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Current Plan.
+        /// </summary>
+        public static string currentPlan
+        {
+            get
+            {
+                return ResourceManager.GetString("currentPlan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Change Your Plan.
+        /// </summary>
+        public static string changeYourPlan
+        {
+            get
+            {
+                return ResourceManager.GetString("changeYourPlan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Switch To This Plan.
+        /// </summary>
+        public static string switchToThisPlan
+        {
+            get
+            {
+                return ResourceManager.GetString("switchToThisPlan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Start Your {0}-Day Trial.
+        /// </summary>
+        public static string startTrialString
+        {
+            get
+            {
+                return ResourceManager.GetString("startTrialString", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Get Started.
+        /// </summary>
+        public static string getStartedPayment
+        {
+            get
+            {
+                return ResourceManager.GetString("getStartedPayment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unavailable.
+        /// </summary>
+        public static string noPlanForThisPeriod
+        {
+            get
+            {
+                return ResourceManager.GetString("noPlanForThisPeriod", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add new card.
+        /// </summary>
+        public static string addNewCard
+        {
+            get
+            {
+                return ResourceManager.GetString("addNewCard", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Expiry Date.
+        /// </summary>
+        public static string expiryDate
+        {
+            get
+            {
+                return ResourceManager.GetString("expiryDate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Card number.
+        /// </summary>
+        public static string cardNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("cardNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to My Cards.
+        /// </summary>
+        public static string cards
+        {
+            get
+            {
+                return ResourceManager.GetString("cards", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pay cash.
+        /// </summary>
+        public static string cashText
+        {
+            get
+            {
+                return ResourceManager.GetString("cashText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pay.
+        /// </summary>
+        public static string applePay
+        {
+            get
+            {
+                return ResourceManager.GetString("applePay", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Google pay.
+        /// </summary>
+        public static string googlePay
+        {
+            get
+            {
+                return ResourceManager.GetString("googlePay", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;ll enter you new card details in the next page.
+        /// </summary>
+        public static string NewCardDetail
+        {
+            get
+            {
+                return ResourceManager.GetString("NewCardDetail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        public static string resourceBusyPeriod
+        {
+            get
+            {
+                return ResourceManager.GetString("resourceBusyPeriod", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Not rated yet.
+        /// </summary>
+        public static string notRatedYet
+        {
+            get
+            {
+                return ResourceManager.GetString("notRatedYet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to km.
+        /// </summary>
+        public static string km
+        {
+            get
+            {
+                return ResourceManager.GetString("km", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to m.
+        /// </summary>
+        public static string meter
+        {
+            get
+            {
+                return ResourceManager.GetString("meter", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings Menu.
+        /// </summary>
+        public static string openSettings
+        {
+            get
+            {
+                return ResourceManager.GetString("openSettings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Permission Required.
+        /// </summary>
+        public static string permissionRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("permissionRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Camera permission is necessary for the import. Would you like to open settings to grant it?.
+        /// </summary>
+        public static string permissionRequiredForCamera
+        {
+            get
+            {
+                return ResourceManager.GetString("permissionRequiredForCamera", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Read contact permission is necessary for the import. Would you like to open settings to grant it?.
+        /// </summary>
+        public static string permissionRequiredForImport
+        {
+            get
+            {
+                return ResourceManager.GetString("permissionRequiredForImport", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Show on map.
+        /// </summary>
+        public static string showOnMap
+        {
+            get
+            {
+                return ResourceManager.GetString("showOnMap", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Apple Maps.
+        /// </summary>
+        public static string appleMap
+        {
+            get
+            {
+                return ResourceManager.GetString("appleMap", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Google Maps.
+        /// </summary>
+        public static string googleMap
+        {
+            get
+            {
+                return ResourceManager.GetString("googleMap", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait.
+        /// </summary>
+        public static string pleaseWait
+        {
+            get
+            {
+                return ResourceManager.GetString("pleaseWait", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to If you would like to be able to find services close to you, please allow DORI app to access your location while using the app.
+        /// </summary>
+        public static string locationPermissionInfoMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("locationPermissionInfoMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Allow.
+        /// </summary>
+        public static string allow
+        {
+            get
+            {
+                return ResourceManager.GetString("allow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enable multiple {0} for this {1}.
+        /// </summary>
+        public static string allowOptionMultiSelect
+        {
+            get
+            {
+                return ResourceManager.GetString("allowOptionMultiSelect", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to hrs.
+        /// </summary>
+        public static string hrsStr
+        {
+            get
+            {
+                return ResourceManager.GetString("hrsStr", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to hr.
+        /// </summary>
+        public static string hrStr
+        {
+            get
+            {
+                return ResourceManager.GetString("hrStr", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to mins.
+        /// </summary>
+        public static string mins
+        {
+            get
+            {
+                return ResourceManager.GetString("mins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is not supported on this device.
+        /// </summary>
+        public static string emailNotSupport {
+            get {
+                return ResourceManager.GetString("emailNotSupport", resourceCulture);
             }
         }
     }

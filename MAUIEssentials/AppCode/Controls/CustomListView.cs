@@ -1,6 +1,7 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
+using AsyncAwaitBestPractices;
 
 namespace MAUIEssentials.AppCode.Controls
 {
@@ -11,7 +12,28 @@ namespace MAUIEssentials.AppCode.Controls
 
         public event Action<int> EventScrollToGroup;
         public event EventHandler EventScrollToTop;
-        public event EventHandler Dragged;
+
+        readonly WeakEventManager<SwipedEventArgs> swipeEventManager = new WeakEventManager<SwipedEventArgs>();
+        readonly AsyncAwaitBestPractices.WeakEventManager draggedEventManager = new AsyncAwaitBestPractices.WeakEventManager();
+
+        public event EventHandler Dragged
+        {
+            add => draggedEventManager.AddEventHandler(value);
+            remove => draggedEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler<SwipedEventArgs> OnSwipe
+        {
+            add => swipeEventManager.AddEventHandler(value);
+            remove => swipeEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler<int> FirstVisibleItemIndexChanged;
+
+        public void NotifyFirstVisibleItemIndexChanged(int index)
+        {
+            FirstVisibleItemIndexChanged?.Invoke(this, index);
+        }
 
         public static readonly BindableProperty IsScrollDisabledProperty =
             BindableProperty.Create(nameof(IsScrollDisabled), typeof(bool), typeof(CustomListView), false);
@@ -25,8 +47,12 @@ namespace MAUIEssentials.AppCode.Controls
         public static readonly BindableProperty DisableBounceProperty =
             BindableProperty.Create(nameof(DisableBounce), typeof(bool), typeof(CustomListView), false);
 
-        public CustomListView() : base(ListViewCachingStrategy.RecycleElement)
+        public void OnSwiped(SwipeDirection direction) =>
+            swipeEventManager?.RaiseEvent(this, new SwipedEventArgs(null, direction), nameof(OnSwipe));
+
+        public CustomListView()
         {
+            ItemAppearing -= CustomListView_ItemAppearing;
             ItemAppearing += CustomListView_ItemAppearing;
         }
 
@@ -34,7 +60,7 @@ namespace MAUIEssentials.AppCode.Controls
         {
             var items = ItemsSource as IList;
 
-            if (items != null && e.Item == items[items.Count - 1])
+            if (items?.Count > 0 && e.Item == items[items.Count - 1])
             {
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
                     LoadMoreCommand.Execute(null);
@@ -53,7 +79,7 @@ namespace MAUIEssentials.AppCode.Controls
 
         public void OnDragged()
         {
-            Dragged?.Invoke(this, EventArgs.Empty);
+            draggedEventManager?.RaiseEvent(this, EventArgs.Empty, nameof(Dragged));
         }
 
         public bool IsScrollDisabled
@@ -83,6 +109,19 @@ namespace MAUIEssentials.AppCode.Controls
         public void ReloadRowData(int index)
         {
             ReloadRow?.Invoke(index);
+        }
+        
+        public Func<int> NativeFirstVisbileIndex { get; set; }
+        public int GetFirstVisbileIndex()
+        {
+            if (NativeFirstVisbileIndex != null)
+            {
+                return NativeFirstVisbileIndex();
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

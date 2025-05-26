@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+  <!--
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+   <data name="white" xml:space="preserve">
+    <value>#ffffff</value>
+  </data>
+  <data name="white87facity" xml:space="preserve">
+    <value>#E6ffffff</value>
+  </data>
+  <data name="white60Opacity" xml:space="preserve">
+    <value>#99ffffff</value>
+  </data>
+  <data name="white54Opacity" xml:space="preserve">
+    <value>#8cffffff</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>#000000</value>
+  </data>
+  <data name="black87Opacity" xml:space="preserve">
+    <value>#E6000000</value>
+  </data>
+  <data name="black60Opacity" xml:space="preserve">
+    <value>#99000000</value>
+  </data>
+  <data name="black54Opacity" xml:space="preserve">
+    <value>#8C000000</value>
+  </data>
+  <data name="black50Opacity" xml:space="preserve">
+    <value>#80000000</value>
+  </data>
+  <data name="black38Opacity" xml:space="preserve">
+    <value>#66000000</value>
+  </data>
+  <data name="black30Opacity" xml:space="preserve">
+    <value>#4D000000</value>
+  </data>
+  <data name="grayTextColor" xml:space="preserve">
+    <value>#808080</value>
+  </data>
+  <data name="SuvaGray" xml:space="preserve">
+    <value>#8b8b8b</value>
+  </data>
+  <data name="borderColor" xml:space="preserve">
+    <value>#7b7e7f</value>
+  </data>
+  <data name="lightGrayColor" xml:space="preserve">
+    <value>#f2f2f2</value>
+  </data>
+  <data name="grayColor" xml:space="preserve">
+    <value>#b2b2b2</value>
+  </data>
+  <data name="blackTextColor" xml:space="preserve">
+    <value>#333333</value>
+  </data>
+  <data name="overlay" xml:space="preserve">
+    <value>#88000000</value>
+  </data>
+  <data name="lightBorderColor" xml:space="preserve">
+    <value>#b2b2b2</value>
+  </data>
+  <data name="greenColor" xml:space="preserve">
+    <value>#39b54a</value>
+  </data>
+  <data name="blueColor" xml:space="preserve">
+    <value>#00a0df</value>
+  </data>
+  <data name="PrimaryGreen" xml:space="preserve">
+    <value>#00ae42</value>
+  </data>
+
+  <data name="PrimaryGreen75Opacity" xml:space="preserve">
+    <value>#BF00ae42</value>
+  </data>
+
+  <data name="lightGrayColor9" xml:space="preserve">
+    <value>#f9f9f9</value>
+  </data>
+  <data name="lightGrayColor0" xml:space="preserve">
+    <value>#f0f0f0</value>
+  </data>
+  <data name="darkGrayTextColor" xml:space="preserve">
+    <value>#646464</value>
+  </data>
+  <data name="Gray91" xml:space="preserve">
+    <value>#e8e8e8</value>
+  </data>
+  <data name="Gray30Opacity" xml:space="preserve">
+    <value>#4D333333</value>
+  </data>
+  <data name="LightGray30Opacity" xml:space="preserve">
+    <value>#4De8e8e8</value>
+  </data>
+  <data name="Gray90Opacity" xml:space="preserve">
+    <value>#99333333</value>
+  </data>
+  <data name="LightGray90Opacity" xml:space="preserve">
+    <value>#99e8e8e8</value>
+  </data>
+  <data name="lightBorderColor2" xml:space="preserve">
+    <value>#e8e8e8</value>
+  </data>
+  <data name="redColor" xml:space="preserve">
+    <value>#df0000</value>
+  </data>
+  <data name="Transparent" xml:space="preserve">
+    <value>#00FFFFFF</value>
+  </data>
+  <data name="blueColorOpacity40" xml:space="preserve">
+    <value>#6600a0df</value>
+  </data>
+  <data name="greenColorOpacity9" xml:space="preserve">
+    <value>#1739b54a</value>
+  </data>
+  <data name="orangeColor" xml:space="preserve">
+    <value>#f89203</value>
+  </data>
+  <data name="eclipse" xml:space="preserve">
+    <value>#373737</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>#fbb13b</value>
+  </data>
+  <data name="YellowColorOpacity9" xml:space="preserve">
+    <value>#17fbb13b</value>
+  </data>
+  <data name="popupBgColor" xml:space="preserve">
+    <value>#CC242424</value>
+  </data>
+  <data name="switchOffThumb" xml:space="preserve">
+    <value>#A5A5A5</value>
+  </data>
+  <data name="blueGray50" xml:space="preserve">
+    <value>#ECEFF1</value>
+  </data>
+  <data name="clickColorWhite" xml:space="preserve">
+    <value>#52FFFFFF</value>
+  </data>
+  <data name="clickColorBlack" xml:space="preserve">
+    <value>#1A000000</value>
+  </data>
+  <data name="badgeColor" xml:space="preserve">
+    <value>#FF5C39</value>
+  </data>
+  <data name="orangeColorOpacity20" xml:space="preserve">
+    <value>#33f89203</value>
+  </data>
+  <data name="darkOrangeColor" xml:space="preserve">
+    <value>#ff5d39</value>
+  </data>
+  <data name="bluecolorOpacity5" xml:space="preserve">
+    <value>#0F00a0df</value>
+  </data>
+  <data name="mediumTurquoise" xml:space="preserve">
+    <value>#33cdcd</value>
+  </data>
+  <data name="grayHeaderColor" xml:space="preserve">
+    <value>#535353</value>
+  </data>
+  <data name="grayColorOpacity25" xml:space="preserve">
+    <value>#40E8E8E8</value>
+  </data>
+  <data name="pictonBlueColorOpacity10" xml:space="preserve">
+    <value>#1A40B8E7</value>
+  </data>
+  <data name="pictonBlueColor" xml:space="preserve">
+    <value>#40B8E7</value>
+  </data>
+  <data name="cyanColor" xml:space="preserve">
+    <value>#00B4EA</value>
+  </data>
+  <data name="cyanColorBookingConfirmation" xml:space="preserve">
+    <value>#00c7c7</value>
+  </data>
+
+   <data name="darkgrayMediumOpacity" xml:space="preserve">
+    <value>#66314137</value>
+  </data>
+
+   <data name="shadowGray" xml:space="preserve">
+    <value>#e0e0e0</value>
+  </data>
+
+   <data name="bookingImageColor" xml:space="preserve">
+    <value>#02C7C6</value>
+  </data>
+     <data name="headerbluecolor" xml:space="preserve">
+    <value>#00c1d1</value>
+    </data>
+   <data name="PaymentSDKColor" xml:space="preserve">
+    <value>#4CD3D4</value>
+  </data>
+  <data name="grayColorOpacity80" xml:space="preserve">
+    <value>#ccb2b2b2</value>
+  </data>
+  <data name="lightRedColor" xml:space="preserve">
+    <value>#FFDFE7</value>
+  </data>
+  <data name="YellowColorOpacity40" xml:space="preserve">
+    <value>#66fbb13b</value>
+  </data>
+   <data name="SkyBlue" xml:space="preserve">
+    <value>#40b8e7</value>
+</data>
+   <data name="brightSkyBlue30" xml:space="preserve">
+    <value>#EFF8FB</value>
+</data>
+   <data name="white87Opacity" xml:space="preserve">
+    <value>#E6ffffff</value>
+</data>
+   <data name="brightSkyBlue" xml:space="preserve">
+    <value>#00b4ea</value>
+</data>
+  <data name="lightYellowColor" xml:space="preserve">
+    <value>#FDE0B1</value>
+  </data>
+  <data name="lightgray" xml:space="preserve">
+    <value>#CCCCCC</value>
+  </data>
+  <data name="lightGrayColor7" xml:space="preserve">
+    <value>#f7f7f7</value>
+  </data>
+  <data name="lightGreenColor9" xml:space="preserve">
+    <value>#4D00ae42</value>
+  </data>
+</root>

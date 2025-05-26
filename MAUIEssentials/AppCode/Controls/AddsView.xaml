@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.AddsView"
+    xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    x:Name="addsView"
+    Padding="0">
+    <ads:MTAdView
+        x:Name="adView"
+        AdsId="{Binding AdsId, Source={x:Reference addsView}}"
+        IsVisible="{Binding IsAdsVisible, Source={x:Reference addsView}}"
+        AdsClicked="AdClicked"
+        AdsLoaded="AdLoaded"
+        AdsClosed="AdClosed"
+        AdsFailedToLoad="AdFailedToLoad"
+        AdsImpression="AdImpression"
+        AdsOpened="AdOpened"
+        HeightRequest="{x:OnIdiom Phone='60', Tablet='80'}"
+        AdSize="FullBanner"/>
+    <controls:HuaweiAddsView
+        x:Name="huaweiAddsView"
+        AdId="{Binding AdsId, Source={x:Reference addsView}}"
+        AdsClicked="AdClicked"
+        AdsLoaded="AdLoaded"
+        AdsFailedToLoad="AdFailedToLoad"
+        AdsClosed="AdClosed"
+        AdsImpression="AdImpression"
+        AdsOpened="AdOpened"
+        IsVisible="{Binding IsAdsVisible, Source={x:Reference addsView}}"
+        HeightRequest="{x:OnIdiom Phone='60', Tablet='80'}" />
+</Grid>

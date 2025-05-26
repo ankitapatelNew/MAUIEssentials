@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Border 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.AppCode.Controls.ChipView"
+    x:Name="chip"
+    Stroke="{Binding BorderColor, Source={x:Reference chip}}"
+    BackgroundColor="{Binding BackgroundColorChip, Source={x:Reference chip}}"
+    Padding="0"
+    VerticalOptions="Center"
+    MinimumHeightRequest="{Binding MinimumHeightRequest, Source={x:Reference chip}}"
+    MinimumWidthRequest="{Binding MinimumWidthRequest, Source={x:Reference chip}}"
+    Margin="0"
+    HeightRequest="30"
+    StrokeShape="RoundRectangle 15,15,15,15">
+    <Label
+        VerticalOptions="Center"
+        Margin="25,2"
+        Grid.Column="0"
+        HorizontalOptions="Center"
+        HorizontalTextAlignment="Center"
+        Text="{Binding Text, Source={x:Reference chip}}"
+        TextColor="{Binding TextColor, Source={x:Reference chip}}"
+        FontSize="{Binding FontSize, Source={x:Reference chip}}"
+        FontFamily="{Binding FontFamily, Source={x:Reference chip}}"
+        VerticalTextAlignment="Center" />
+</Border>

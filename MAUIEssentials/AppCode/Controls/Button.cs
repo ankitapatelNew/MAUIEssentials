@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using MAUIEssentials.AppCode.Helpers;
 
 namespace MAUIEssentials.AppCode.Controls
@@ -18,7 +19,7 @@ namespace MAUIEssentials.AppCode.Controls
 
         public static readonly BindableProperty RippleColorProperty =
             BindableProperty.Create(nameof(RippleColor), typeof(Color), typeof(Button), new Color());
-            
+
         public bool FillText
         {
             get => (bool)GetValue(FillTextProperty);
@@ -49,8 +50,6 @@ namespace MAUIEssentials.AppCode.Controls
             set => SetValue(RippleColorProperty, value);
         }
 
-        public new InnerPadding Padding { get; } = new InnerPadding();
-
         public class InnerPadding
         {
             public int Left { get; set; }
@@ -58,5 +57,35 @@ namespace MAUIEssentials.AppCode.Controls
             public int Right { get; set; }
             public int Bottom { get; set; }
         }
+        
+        public Button()
+		{
+			if (FillText) {
+				Padding = new Thickness();
+			}
+		}
+
+		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			base.OnPropertyChanged(propertyName);
+
+			switch (propertyName) {
+				case nameof(BackgroundColor):
+					SetFrameRippleColor();
+					break;
+				case nameof(FillText):
+					if (FillText) {
+						Padding = new Thickness();
+					}
+					break;
+			}
+		}
+
+		private void SetFrameRippleColor()
+		{
+			if (RippleColor == new Color()) {
+				RippleColor = BackgroundColor.IsColorDark() ? "#52FFFFFF".ToColor() : "#33000000".ToColor();
+			}
+		}
     }
 }

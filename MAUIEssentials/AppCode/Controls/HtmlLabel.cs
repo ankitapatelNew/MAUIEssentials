@@ -1,3 +1,5 @@
+using AsyncAwaitBestPractices;
+
 namespace MAUIEssentials.AppCode.Controls
 {
     public class HtmlLabel : Label
@@ -56,25 +58,45 @@ namespace MAUIEssentials.AppCode.Controls
             set => SetValue(IsOverrideLinkProperty, value);
         }
 
-        public event EventHandler<WebNavigatingEventArgs>? Navigating;
+        readonly WeakEventManager<WebNavigatingEventArgs> navigatingEventManager
+            = new WeakEventManager<WebNavigatingEventArgs>();
 
-        public event EventHandler<WebNavigatingEventArgs>? Navigated;
+        readonly WeakEventManager<WebNavigatingEventArgs> navigatedEventManager
+            = new WeakEventManager<WebNavigatingEventArgs>();
 
-        public event EventHandler? OverrideLinkClicked;
+        readonly AsyncAwaitBestPractices.WeakEventManager linkEventManager = new AsyncAwaitBestPractices.WeakEventManager();
+
+        public event EventHandler<WebNavigatingEventArgs> Navigating
+        {
+            add => navigatingEventManager.AddEventHandler(value);
+            remove => navigatingEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler<WebNavigatingEventArgs> Navigated
+        {
+            add => navigatedEventManager.AddEventHandler(value);
+            remove => navigatedEventManager.RemoveEventHandler(value);
+        }
+
+        public event EventHandler OverrideLinkClicked
+        {
+            add => linkEventManager.AddEventHandler(value);
+            remove => linkEventManager.RemoveEventHandler(value);
+        }
 
         internal void SendNavigating(WebNavigatingEventArgs args)
         {
-            Navigating?.Invoke(this, args);
+            navigatingEventManager?.RaiseEvent(this, args, nameof(Navigating));
         }
 
         internal void SendNavigated(WebNavigatingEventArgs args)
         {
-            Navigated?.Invoke(this, args);
+            navigatedEventManager?.RaiseEvent(this, args, nameof(Navigated));
         }
 
         internal void OnOverrideLinkClick()
         {
-            OverrideLinkClicked?.Invoke(this, EventArgs.Empty);
+            linkEventManager?.RaiseEvent(this, EventArgs.Empty, nameof(OverrideLinkClicked));
         }
     }
 }

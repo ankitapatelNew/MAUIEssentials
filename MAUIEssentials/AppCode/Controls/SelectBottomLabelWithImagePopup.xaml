@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:PopupBase
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="MAUIEssentials.AppCode.Controls.SelectBottomLabelWithImagePopup"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"    
+    xmlns:behaviors="clr-namespace:MAUIEssentials.AppCode.Behaviors"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+    BackgroundColor="{Binding Source={x:Static appResources:AppColorResources.black50Opacity}, Converter={StaticResource ColorConverter}}"
+    x:DataType="controls:SelectBottomLabelWithImageViewModel">
+    <controls:PopupBase.BindingContext>
+        <controls:SelectBottomLabelWithImageViewModel
+            x:Name="viewModel" />
+    </controls:PopupBase.BindingContext>
+    <controls:PopupBase.Animation>
+        <animations:MoveAnimation
+            DurationIn="180"
+            DurationOut="180"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </controls:PopupBase.Animation>
+    <Border
+        x:Name="cardView"
+        StrokeThickness="0"
+        VerticalOptions="End"
+        FlowDirection="{DynamicResource AppFlowDirection}"
+        BackgroundColor="{DynamicResource SecondaryColor}">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8,8,0,0" />
+        </Border.StrokeShape>
+        <StackLayout
+            x:Name="lstView"
+            VerticalOptions="End"
+            Margin="24,30,24,20"
+            BindableLayout.ItemsSource="{Binding BottomLabelWithImageList}"
+            BackgroundColor="{Binding Source={x:Static appResources:AppColorResources.white}, Converter={StaticResource ColorConverter}}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="0,0,0,10"
+                        x:Name="newBookingView"
+                        IsEnabled="True"
+                        Style="{StaticResource borderStyle}"
+                        Stroke="{Binding Source={x:Static appResources:AppColorResources.blueColor}, Converter={StaticResource ColorConverter}}"
+                        x:DataType="controls:BottomLabelWithImage">
+                        <Grid
+                            Padding="15,0"
+                            HeightRequest="50"
+                            ColumnSpacing="15">
+                            <Image
+                                x:Name="img"
+                                Rotation="{Binding ImageRotation}"
+                                HeightRequest="{Binding Height}"
+                                WidthRequest="{Binding Height}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                Source="{Binding Image}"
+                                BackgroundColor="Transparent">
+                                <Image.Behaviors>
+                                    <xct:IconTintColorBehavior 
+                                        BindingContext="{Binding BindingContext, Source={x:Reference img}, x:DataType=Image}"
+                                        TintColor="{Binding ImageTintColor}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label
+                                Text="{Binding Title}"
+                                TextColor="{Binding Source={x:Static appResources:AppColorResources.black}, Converter={StaticResource ColorConverter}}"
+                                FontSize="{StaticResource FontSize15}"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" />
+                            <Grid.Behaviors>
+                                <behaviors:CommonTouchBehavior />
+                            </Grid.Behaviors>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                Command="{Binding BindingContext.ItemClickCommand, Source={x:Reference lstView}}"
+                                CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </Border>
+</controls:PopupBase>

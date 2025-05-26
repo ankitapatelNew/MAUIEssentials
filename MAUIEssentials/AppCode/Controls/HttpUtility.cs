@@ -35,10 +35,10 @@ namespace MAUIEssentials.AppCode.Controls
                     });
         }
 
-        public static string GetFirst(this Dictionary<string, List<string>> qParams, string key) =>
+        public static string? GetFirst(this Dictionary<string, List<string>> qParams, string key) =>
             qParams.Get(key)?.FirstOrDefault();
 
-        public static List<string> Get(this Dictionary<string, List<string>> qParams, string key) =>
+        public static List<string>? Get(this Dictionary<string, List<string>> qParams, string key) =>
             qParams != null && key != null && qParams.ContainsKey(key.ToUpperInvariant()) ? qParams[key.ToUpperInvariant()] : null;
     }
 }

@@ -56,16 +56,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Platforms/Android/Resources/xml/file_paths.xml" />
+	  <AndroidResource Remove="Platforms/Android/Resources/xml/network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FirebaseEssentials\FirebaseEssentials.csproj">
+			<ReferenceSourceTarget></ReferenceSourceTarget>
+		</ProjectReference>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.70" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="9.0.70" />
 		<PackageReference Include="Microsoft.Maui.Maps" Version="9.0.70" />
+		<PackageReference Include="MonkeyCache.FileStore" Version="2.1.1" />
 		<PackageReference Include="Mopups.Maui" Version="1.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Plugin.InAppBilling" Version="8.0.5" />
 		<PackageReference Include="Plugin.Maui.Biometric" Version="0.0.5" />
+		<PackageReference Include="Plugin.MauiMTAdmob" Version="2.0.2" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.0" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.9" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="3.119.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="4.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

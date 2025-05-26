@@ -7,6 +7,8 @@ using MAUIEssentials.AppCode.DependencyServices;
 using MAUIEssentials.AppCode.Helpers;
 using UIKit;
 using MAUIEssentials.AppCode.Controls;
+using UserNotifications;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 
 namespace MAUIEssentials.Platforms.iOS.DependencyServices
 {
@@ -42,6 +44,27 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
 
         public void StatusbarColor(Color color)
         {
+            if (UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
+            {
+                UIView statusBar = UIApplication.SharedApplication.KeyWindow?.ViewWithTag(101);
+
+                if (statusBar == null && UIApplication.SharedApplication.KeyWindow != null)
+                {
+                    statusBar = new UIView(UIApplication.SharedApplication.KeyWindow.WindowScene.StatusBarManager.StatusBarFrame);
+                    statusBar.Tag = 101;
+                    UIApplication.SharedApplication.KeyWindow?.AddSubview(statusBar);
+                }
+
+                if (statusBar != null)
+                {
+                    statusBar.BackgroundColor = color.ToUIColor();
+                }
+            }
+            else
+            {
+                var statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+                statusBar.BackgroundColor = color.ToUIColor();
+            }
         }
 
         public async Task<bool> EnableLocation()
@@ -292,6 +315,48 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
             }
             return false;
         }
+
+        public Size GetImageSize(string fileName)
+        {
+            UIImage image = UIImage.FromFile(fileName);
+            return new Size(Convert.ToDouble(image?.Size.Width), Convert.ToDouble(image?.Size.Height));
+        }
+
+        public void StatusbarColor(Color startColor, Color endColor, GradientOrientation orientation)
+        {
+        }
+
+        public string GetDeviceId()
+        {
+            return UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+        }
+
+        public Task<bool> CheckNotificationPermission()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+
+            var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+            UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => {
+                if (error != null)
+                {
+                    tcs.TrySetResult(false);
+                }
+                else if (!granted)
+                {
+                    tcs.TrySetResult(false);
+                }
+                else
+                {
+                    tcs.TrySetResult(true);
+                }
+            });
+
+            return tcs.Task;
+        }
+        public  string GetExportsFolder()
+        {
+            return CreateDocumentDirectory("Exports");
+        }
     }
 
     public class PDFPreviewControllerDataSource : QLPreviewControllerDataSource
@@ -325,6 +390,16 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
         {
             _title = title;
             _uri = uri;
+        }
+
+        public override NSUrl PreviewItemUrl
+        {
+            get { return NSUrl.FromFilename(_uri); }
+        }
+
+        public override string PreviewItemTitle
+        {
+            get { return _title; }
         }
     }
 }

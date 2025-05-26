@@ -21,6 +21,7 @@
 		FontAttributes="{Binding FontAttributeEntry, Source={x:Reference floatingEntry}}"
 		BackgroundColor="Transparent"
 		HorizontalTextAlignment="Start"
+		VerticalTextAlignment="Center"
 		TextChanged="Handle_TextChanged"
 		Completed="Handle_Completed"
 		Focused="Handle_Focused"

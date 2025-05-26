@@ -22,4 +22,24 @@ namespace MAUIEssentials.AppCode.Helpers
         Info,
         Success,
     }
+
+    public enum TooltipPosition
+    {
+        Top,
+        Bottom,
+        Left,
+        Right
+    }
+
+    public enum GeoCodeCalcMeasurement : int
+    {
+        Miles = 0,
+        Kilometers = 1
+    }
+
+    public enum AppTypeEnum
+    {
+        Customer = 1,
+        Owner = 2
+    }
 }

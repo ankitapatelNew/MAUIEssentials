@@ -1,11 +1,13 @@
 ﻿using MAUIEssentials.AppCode.DependencyServices;
 using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Models;
 using MAUIEssentials.Styles;
 
 namespace MAUIEssentials;
 
 public partial class App : Application
 {
+	public static IMauiContext? mauiContext;
 	const int smallWightResolution = 768;
 	const int smallHeightResolution = 1280;
 
@@ -142,6 +144,19 @@ public partial class App : Application
 		}
 	}
 
+	protected override void OnHandlerChanged()
+	{
+		try
+		{
+			base.OnHandlerChanged();
+			mauiContext = Handler.MauiContext;
+		}
+		catch (Exception ex)
+		{
+			ex.LogException();
+		}
+	}
+
 	private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
 	{
 		try
@@ -167,64 +182,19 @@ public partial class App : Application
 		}
 	}
 	
-	//Timer set like :- new MyTimer(TimeSpan.FromSeconds(10), (methodname));
-	public class MyTimer
+	public static List<LanguageModel> Languages => new List<LanguageModel>()
 	{
-		private readonly TimeSpan timespan;
-		private readonly Action callback;
-
-		private CancellationTokenSource cancellation;
-		private IDispatcher? dispatcher;
-
-		public bool IsRunning { get; set; }
-
-		public MyTimer(TimeSpan timespan, Action callback)
-		{
-			try
-			{
-				this.timespan = timespan;
-				this.callback = callback;
-				cancellation = new CancellationTokenSource();
-				dispatcher = Current?.Dispatcher;
-			}
-			catch (Exception ex)
-			{
-				ex.LogException();
-			}
-		}
-
-		public void Start()
-		{
-			if (IsRunning)
-				return; // Prevent multiple timers
-
-			IsRunning = true;
-			CancellationTokenSource cts = cancellation; // safe copy
-
-			dispatcher?.StartTimer(timespan, () =>
-			{
-				if (cts.IsCancellationRequested)
-				{
-					IsRunning = false;
-					return false; // Stop the timer
-				}
-
-				callback.Invoke();
-				return true; // Continue the timer
-			});
-		}
-
-		public void Stop()
-		{
-			try
-			{
-				IsRunning = false;
-				Interlocked.Exchange(ref cancellation, new CancellationTokenSource()).Cancel();
-			}
-			catch (Exception ex)
-			{
-				ex.LogException();
-			}
-		}
-	}
+		new LanguageModel() {
+			Name = "English",
+			Code = "en",
+			Language = AppLanguage.English,
+			FlowDirection = FlowDirection.LeftToRight
+		},
+		new LanguageModel() {
+			Name = "العربية",
+			Code = "ar",
+			Language = AppLanguage.Arabic,
+			FlowDirection = FlowDirection.RightToLeft
+		},
+	};
 }

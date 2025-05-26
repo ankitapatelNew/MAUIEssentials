@@ -14,16 +14,29 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+			<converters:ArabicStringConverter
+				x:Key="ArabicStringConverter" />
 			<converters:BooleanInverter
 				x:Key="BooleanInverter" />
+			<converters:EmptyValueToBoolConverter
+				x:Key="EmptyValueToBoolConverter" />
 			<converters:EmptyStringConverter
 				x:Key="EmptyStringConverter" />
 			<converters:StringVisibilityConverter
 				x:Key="StringVisibilityConverter" />
+			<converters:ColorToBrushConverter
+				x:Key="ColorToBrush" />
 			<converters:DashConverter
 				x:Key="DashConverter" />
+			<converters:GregorianDateStringConverter
+				x:Key="GregorianDateStringConverter" />
 			<converters:IsBoldConverter
 				x:Key="IsBoldConverter" />
+			<converters:StringToColorConverter
+				x:Key="ColorConverter" />
+			<converters:TrimStringConverter
+				x:Key="TrimStringConverter" />
+
 			<styles:DefaultDevicesStyle
 				x:Key="DefaultDevicesStyle" />
 			<styles:IPhoneXDevicesStyle

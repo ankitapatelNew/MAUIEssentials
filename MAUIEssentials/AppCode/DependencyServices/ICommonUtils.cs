@@ -19,5 +19,33 @@ namespace MAUIEssentials.AppCode.DependencyServices
         Task<Size> GetFileSize(byte[] fileData);
         byte[] ResizeImage(byte[] imageData, float width, float height, string extension = "");
         bool IsIphone18OrAbove();
+        Size GetImageSize(string fileName);
+        void StatusbarColor(Color startColor, Color endColor, GradientOrientation orientation);
+        string GetDeviceId();
+        Task<bool> CheckNotificationPermission();
+        string GetExportsFolder();
     }
+
+    public interface ILocationHelper
+	{
+		Task<Location> GetLastLocation();
+	}
+
+	public interface ICheckMap
+	{
+		bool IsAppleMap();
+		bool IsGoogleMap();
+		void OpenGoogleMap(double latitude, double longitude);
+		void OpenGoogleMap(Location source, Location destination);
+	}
+
+	public interface IListenToSmsRetriever
+	{
+		void ListenToSmsRetriever();
+	}
+
+	public interface INativeHttpHandler
+	{
+		HttpMessageHandler GetHandler();
+	}
 }
