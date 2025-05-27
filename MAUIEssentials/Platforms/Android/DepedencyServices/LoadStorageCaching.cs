@@ -1,7 +1,7 @@
 using FirebaseEssentials.Shared;
 using MAUIEssentials.DependencyServices;
 
-namespace MAUIEssentials.Platforms.Android.DepedencyServices
+namespace MAUIEssentials.DepedencyServices
 {
     public sealed class StorageCachingImplementation : DisposableBase, IStorageCaching
     {

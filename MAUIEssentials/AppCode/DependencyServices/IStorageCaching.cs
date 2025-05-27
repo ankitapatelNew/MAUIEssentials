@@ -1,3 +1,5 @@
+using MAUIEssentials.DepedencyServices;
+
 namespace MAUIEssentials.DependencyServices
 {
     public interface IStorageCaching : IDisposable

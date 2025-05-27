@@ -10,7 +10,7 @@ using Java.Net;
 namespace MAUIEssentials.Platforms.Android.Helpers
 {
     internal class UrlDrawable : BitmapDrawable
-    {
+    { 
         public UrlDrawable(Resources resources, string source) : base(resources, source)
         {
         }
@@ -21,7 +21,7 @@ namespace MAUIEssentials.Platforms.Android.Helpers
         {
             if (Drawable != null)
             {
-                Drawable.Draw(canvas ?? new Canvas()); ;
+                Drawable.Draw(canvas ?? new Canvas());
             }
         }
     }
