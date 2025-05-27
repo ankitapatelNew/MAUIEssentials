@@ -1,11 +1,12 @@
 using CommunityToolkit.Maui.Core;
 using FirebaseEssentials.Shared;
+using MAUIEssentials.AppCode.Helpers;
 
 namespace MAUIEssentials.Platforms.Android.DepedencyServices
 {
     public class ToastImplementationNew : DisposableBase, IToastPopUp
     {
-        private static Android.Widget.Toast toast;
+        private static global::Android.Widget.Toast? toast;
 
         public void ShowMessage(string message, ToastDuration toastLength = ToastDuration.Short, Action callback = null)
         {
@@ -17,10 +18,10 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
             var context = Platform.AppContext;
             var activity = Platform.CurrentActivity;
 
-            var length = toastLength == ToastDuration.Short ? Android.Widget.ToastLength.Short : Android.Widget.ToastLength.Long;
-            var delay = length == Android.Widget.ToastLength.Long ? TimeSpan.FromSeconds(3.5) : TimeSpan.FromSeconds(2);
+            var length = toastLength == ToastDuration.Short ? global::Android.Widget.ToastLength.Short : global::Android.Widget.ToastLength.Long;
+            var delay = length == global::Android.Widget.ToastLength.Long ? TimeSpan.FromSeconds(3.5) : TimeSpan.FromSeconds(2);
 
-            activity.RunOnUiThread(() =>
+            activity?.RunOnUiThread(() =>
             {
                 // To dismiss existing toast, otherwise, the screen will be populated with it if the user do so
                 toast?.Cancel();
@@ -35,8 +36,8 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
                     });
                 });
 
-                toast = Android.Widget.Toast.MakeText(context, message, length);
-                toast.Show();
+                toast = global::Android.Widget.Toast.MakeText(context, message, length);
+                toast?.Show();
                 thread.Start();
             });
         }

@@ -149,12 +149,12 @@ namespace MAUIEssentials.Platforms.Android.Handlers
 
     public class DroidTouchListener : Java.Lang.Object, global::Android.Views.View.IOnTouchListener
     {
-        public bool OnTouch(global::Android.Views.View v, MotionEvent e)
+        public bool OnTouch(global::Android.Views.View? v, MotionEvent? e)
         {
-            v.Parent?.RequestDisallowInterceptTouchEvent(true);
-            if ((e.Action & MotionEventActions.Up) != 0 && (e.ActionMasked & MotionEventActions.Up) != 0)
+            v?.Parent?.RequestDisallowInterceptTouchEvent(true);
+            if ((e?.Action & MotionEventActions.Up) != 0 && (e?.ActionMasked & MotionEventActions.Up) != 0)
             {
-                v.Parent?.RequestDisallowInterceptTouchEvent(false);
+                v?.Parent?.RequestDisallowInterceptTouchEvent(false);
             }
             return false;
         }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MAUIEssentials.AppCode.Helpers;
+using MAUIEssentials.Models;
 using Newtonsoft.Json;
 
 namespace MAUIEssentials.ViewModels
@@ -97,6 +98,9 @@ namespace MAUIEssentials.ViewModels
             }
             return property;
         }
+
+        public string RigthArrow => Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_arrow_left" : "ic_arrow_right";
+        public string BackImage =>  Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_back_right" : "ic_back";
 
         bool _isRefreshing;
         public bool IsRefreshing

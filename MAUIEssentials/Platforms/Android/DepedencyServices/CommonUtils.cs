@@ -66,7 +66,7 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
 
         public Task<bool> EnableLocation()
         {
-            var activity = Platform.CurrentActivity as MainActivity;
+            var activity = Platform.CurrentActivity as MauiAppCompatActivity;
             var listener = new ActivityResultListener(activity);
 
             Task.Run(async () =>

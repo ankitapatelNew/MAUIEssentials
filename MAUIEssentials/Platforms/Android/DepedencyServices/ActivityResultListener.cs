@@ -9,11 +9,11 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
 
         public Task<bool> Task => Complete.Task;
 
-        public ActivityResultListener(MainActivity activity)
+        public ActivityResultListener(MauiAppCompatActivity activity)
         {
             try
             {
-                activity.ActivityResult += OnActivityResult;
+                // activity.ActivityResult += OnActivityResult;
             }
             catch (Exception ex)
             {
@@ -25,8 +25,8 @@ namespace MAUIEssentials.Platforms.Android.DepedencyServices
         {
             try
             {
-                var activity = (MainActivity)Platform.CurrentActivity;
-                activity.ActivityResult -= OnActivityResult;
+                var activity = (MauiAppCompatActivity?)Platform.CurrentActivity;
+                // activity.ActivityResult -= OnActivityResult;
 
                 Complete.TrySetResult(resultCode == Result.Ok);
             }

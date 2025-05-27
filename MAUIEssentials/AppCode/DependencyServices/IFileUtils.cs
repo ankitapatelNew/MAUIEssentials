@@ -1,5 +1,4 @@
 using System;
-using MAUIEssentials.DepedencyServices;
 
 namespace MAUIEssentials.DependencyServices
 {

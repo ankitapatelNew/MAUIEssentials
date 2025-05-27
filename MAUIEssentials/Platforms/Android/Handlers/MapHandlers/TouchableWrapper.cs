@@ -18,7 +18,7 @@ namespace MAUIEssentials.Platforms.Android.MapHandlers
         public TouchableWrapper(Context context, IAttributeSet attrs, int defStyle) : base(context, attrs, defStyle) { }
         #endregion
 
-        public override bool DispatchTouchEvent(MotionEvent e)
+        public override bool DispatchTouchEvent(MotionEvent? e)
         {
             switch (e.Action)
             {

@@ -1,10 +1,12 @@
 using Android.Content;
 using Android.OS;
 using Android.Telephony;
+using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.AppCode.Helpers;
 
 namespace MAUIEssentials.Platforms.Android.DepedencyServices
 {
-    public class DeviceRegionService: IDeviceRegionService
+    public class DeviceRegionService : IDeviceRegionService
     {
         public string GetDeviceCountryCode()
         {

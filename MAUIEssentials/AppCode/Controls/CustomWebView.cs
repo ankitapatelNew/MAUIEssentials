@@ -1,5 +1,3 @@
-using System;
-
 namespace MAUIEssentials.AppCode.Controls
 {
     public class CustomWebView : WebView

@@ -107,5 +107,10 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             drawable.SetColors(new int[] { startColor.ToArgb(), endColor.ToArgb() });
             return drawable;
         }
+
+        public static bool IsNullOrDisposed(this Java.Lang.Object javaObject)
+        {
+            return javaObject == null || javaObject.Handle == IntPtr.Zero;
+        }
     }
 }

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.Styles.ThemeResourceDictionary">
+
+    <Color x:Key="PrimaryColor">#00a0df</Color> <!--blueColor-->
+    <Color x:Key="SecondaryColor">white</Color> <!--white-->
+    <Color x:Key="PrimaryDarkColor">black</Color> <!--black-->
+    <Color x:Key="PrimaryTextColor">#333333</Color> <!--blackTextColor-->
+    <Color x:Key="SecondaryDarkTextColor">#646464</Color><!--darkGrayTextColor-->
+    <Color x:Key="SecondaryTextColor">#808080</Color><!--grayTextColor-->
+    <Color x:Key="ShadowEffectColor">#b2b2b2</Color><!--grayColor-->
+    <Color x:Key="DividerColor">#e8e8e8</Color><!--lightBorderColor2-->
+    <Color x:Key="BadgeOrangeColor">#FF5C39</Color><!--badgeColor-->
+    <Color x:Key="ShadowSkeletonEffectColor">#f2f2f2</Color><!--lightGrayColor-->
+    <Color x:Key="LightGrayColor">#f2f2f2</Color><!--lightGrayColor-->
+    <Color x:Key="GreenColor">#39b54a</Color><!--greenColor-->
+    <Color x:Key="RedColor">#df0000</Color><!--redColor-->
+    <Color x:Key="PlaceholderColor">#b2b2b2</Color><!--grayColor-->
+    <Color x:Key="HeaderColor">#535353</Color><!--grayColor-->
+    
+</ResourceDictionary>

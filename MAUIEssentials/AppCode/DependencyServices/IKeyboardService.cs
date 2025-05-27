@@ -1,6 +1,6 @@
 using MAUIEssentials.DepedencyServices;
 
-namespace MAUIEssentials.AppCode.DependencyServices
+namespace MAUIEssentials.DependencyServices
 {
     public interface IKeyboardService : IDisposable
     {

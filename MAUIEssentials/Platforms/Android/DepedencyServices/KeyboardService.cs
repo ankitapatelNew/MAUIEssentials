@@ -1,7 +1,7 @@
 using Android.Content;
 using Android.Views;
 using Android.Views.InputMethods;
-using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.DependencyServices;
 using View = Android.Views.View;
 
 namespace MAUIEssentials.DepedencyServices

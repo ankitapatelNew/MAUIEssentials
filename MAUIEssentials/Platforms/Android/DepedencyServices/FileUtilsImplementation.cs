@@ -1,7 +1,6 @@
 using Android.Graphics;
 using FirebaseEssentials.Shared;
-using System.IO;
-using IImage = Microsoft.Maui.Graphics.IImage;
+using MAUIEssentials.DependencyServices;
 
 namespace MAUIEssentials.DepedencyServices
 {

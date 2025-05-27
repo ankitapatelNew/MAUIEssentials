@@ -1,4 +1,3 @@
-using System;
 using MAUIEssentials.AppCode.Helpers;
 using MAUIEssentials.AppResources;
 using MAUIEssentials.ViewModels;

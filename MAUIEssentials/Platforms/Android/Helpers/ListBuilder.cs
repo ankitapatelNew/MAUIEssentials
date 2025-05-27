@@ -10,7 +10,7 @@ namespace MAUIEssentials.Platforms.Android.Helpers
 
         private readonly int _gap = 0;
         private readonly LiGap _liGap;
-        private readonly ListBuilder _parent = null;
+        private readonly ListBuilder? _parent = null;
 
         private int _liIndex = -1;
         private int _liStart = -1;
@@ -70,7 +70,7 @@ namespace MAUIEssentials.Platforms.Android.Helpers
         public ListBuilder CloseList(IEditable output)
         {
             EnsureParagraphBoundary(output);
-            ListBuilder result = _parent;
+            ListBuilder? result = _parent;
             if (result == null)
             {
                 result = this;
@@ -120,7 +120,7 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             }
         }
 
-        private static LiGap GetLiGap(TextView tv)
+        private static LiGap GetLiGap(TextView? tv)
         {
             var orderedGap = tv == null ? 40 : ComputeWidth(tv, true);
             var unorderedGap = tv == null ? 30 : ComputeWidth(tv, false);
@@ -134,9 +134,9 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             using (var bounds = new global::Android.Graphics.Rect())
             {
                 var startString = isOrdered ? "99. " : "• ";
-                paint.GetTextBounds(startString, 0, startString.Length, bounds);
+                paint?.GetTextBounds(startString, 0, startString.Length, bounds);
                 var width = bounds.Width();
-                var pt = global::Android.Util.TypedValue.ApplyDimension(global::Android.Util.ComplexUnitType.Pt, width, tv.Context.Resources.DisplayMetrics);
+                var pt = global::Android.Util.TypedValue.ApplyDimension(global::Android.Util.ComplexUnitType.Pt, width, tv?.Context?.Resources?.DisplayMetrics);
                 return (int)pt;
             }
         }

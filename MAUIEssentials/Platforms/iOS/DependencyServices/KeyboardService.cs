@@ -1,9 +1,9 @@
 
-using MAUIEssentials.AppCode.DependencyServices;
+using MAUIEssentials.DependencyServices;
 using MAUIEssentials.AppCode.Helpers;
 using UIKit;
 
-namespace MAUIEssentials.Platforms.iOS.DependencyServices
+namespace MAUIEssentials.DepedencyServices
 {
     public class KeyboardServiceImplementation : FirebaseEssentials.Shared.DisposableBase, IKeyboardService
     {
@@ -47,14 +47,14 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
 
                 UIApplication.SharedApplication.InvokeOnMainThread(() =>
                    {
-                       var window = UIApplication.SharedApplication.KeyWindow;
-                       var vc = window.RootViewController;
-                       while (vc.PresentedViewController != null)
+                       var window = UIApplication.SharedApplication?.KeyWindow;
+                       var vc = window?.RootViewController;
+                       while (vc?.PresentedViewController != null)
                        {
                            vc = vc.PresentedViewController;
                        }
 
-                       vc.View.EndEditing(true);
+                       vc?.View?.EndEditing(true);
                    });
             }
             catch (Exception ex)
@@ -67,6 +67,5 @@ namespace MAUIEssentials.Platforms.iOS.DependencyServices
         {
             return keyboardHeight;
         }
-
     }
 }

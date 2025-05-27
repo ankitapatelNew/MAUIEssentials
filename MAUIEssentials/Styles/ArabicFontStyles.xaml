@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentials.Styles.ArabicFontStyles"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+
+    <!--Entry Font-->
+    <Style
+        TargetType="controls:CommanEntry">
+        <Setter
+            Property="FontFamily"
+            Value="NakshRegular" />
+    </Style>
+    <Style
+        TargetType="controls:CommanEditor">
+        <Setter
+            Property="FontFamily"
+            Value="NakshRegular" />
+    </Style>
+
+    <!--Button Font-->
+    <Style
+        TargetType="controls:Button">
+        <Style.Triggers>
+            <Trigger
+                TargetType="controls:Button"
+                Property="FontAttributes"
+                Value="Bold">
+                <Setter
+                    Property="FontFamily"
+                    Value="NakshBold" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter
+            Property="FontFamily"
+            Value="NakshRegular" />
+    </Style>
+
+    <!--Label Font-->
+    <Style
+        TargetType="Label">
+        <Style.Triggers>
+            <Trigger
+                TargetType="Label"
+                Property="FontAttributes"
+                Value="Bold">
+                <Setter
+                    Property="FontFamily"
+                    Value="NakshBold" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter
+            Property="FontFamily"
+            Value="NakshRegular" />
+    </Style>
+
+    <x:String x:Key="FontRegular">NakshRegular</x:String>
+    <x:String x:Key="FontLight">NakshRegular</x:String>
+    <x:String x:Key="FontBold">NakshBold</x:String>
+    <x:String x:Key="FontMedium">NakshMedium</x:String>
+
+</ResourceDictionary>

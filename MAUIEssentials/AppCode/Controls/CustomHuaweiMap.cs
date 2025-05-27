@@ -1,4 +1,3 @@
-using System;
 using AsyncAwaitBestPractices;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;

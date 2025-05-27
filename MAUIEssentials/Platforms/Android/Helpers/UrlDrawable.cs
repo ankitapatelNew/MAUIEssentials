@@ -17,11 +17,11 @@ namespace MAUIEssentials.Platforms.Android.Helpers
 
         public Drawable Drawable { get; set; }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Canvas? canvas)
         {
             if (Drawable != null)
             {
-                Drawable.Draw(canvas); ;
+                Drawable.Draw(canvas ?? new Canvas()); ;
             }
         }
     }
@@ -37,13 +37,13 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             _container = container;
         }
 
-        protected override Drawable RunInBackground(params string[] @params)
+        protected override Drawable? RunInBackground(params string[] @params)
         {
             var source = @params[0];
             return FetchDrawable(source);
         }
 
-        protected override void OnPostExecute(Drawable result)
+        protected override void OnPostExecute(Drawable? result)
         {
             if (result == null)
             {
@@ -66,13 +66,13 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             _container.Ellipsize = null;
         }
 
-        private Drawable FetchDrawable(string urlString)
+        private Drawable? FetchDrawable(string urlString)
         {
             try
             {
-                Stream stream = Fetch(urlString);
+                Stream? stream = Fetch(urlString);
                 var drawable = Drawable.CreateFromStream(stream, "src");
-                drawable.SetBounds(0, 0, 0 + drawable.IntrinsicWidth, 0 + drawable.IntrinsicHeight);
+                drawable?.SetBounds(0, 0, 0 + drawable.IntrinsicWidth, 0 + drawable.IntrinsicHeight);
                 return drawable;
             }
             catch (Exception ex)
@@ -82,10 +82,10 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             }
         }
 
-        private static Stream Fetch(string urlString)
+        private static Stream? Fetch(string urlString)
         {
             var url = new URL(urlString);
-            var urlConnection = (HttpURLConnection)url.OpenConnection();
+            var urlConnection = (HttpURLConnection?)url.OpenConnection();
             Stream stream = urlConnection.InputStream;
             return stream;
         }
@@ -102,7 +102,7 @@ namespace MAUIEssentials.Platforms.Android.Helpers
             _container = container;
         }
 
-        public Drawable GetDrawable(string source)
+        public Drawable? GetDrawable(string? source)
         {
             var urlDrawable = new UrlDrawable(_context.Resources, source);
 

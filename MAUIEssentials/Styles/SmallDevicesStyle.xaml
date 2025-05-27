@@ -3,33 +3,36 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MAUIEssentials.Styles.SmallDevicesStyle"
-    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls">
+	xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
+	xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+	xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls">
 
     <x:String
 		x:Key="DeviceStyle">Small</x:String>
 
 	<OnPlatform
 		x:Key="NavigationBarHeight"
-		x:TypeArguments="GridLength">
+		x:TypeArguments="x:Double">
 		<On Platform="Android" Value="50"/>
 		<On Platform="iOS" Value="44"/>
 	</OnPlatform>
 
 	<OnPlatform
 		x:Key="NavigationButtonHeight"
-		x:TypeArguments="GridLength">
+		x:TypeArguments="x:Double">
 		<On Platform="Android" Value="24"/>
 		<On Platform="iOS" Value="24"/>
 	</OnPlatform>
 
 	<OnPlatform
 		x:Key="StatusBarHeight"
-		x:TypeArguments="GridLength">
+		x:TypeArguments="x:Double">
 		<On Platform="Android" Value="0"/>
 		<On Platform="iOS" Value="20"/>
 	</OnPlatform>
 
-	 <OnPlatform x:Key="iPhoneXHeight" x:TypeArguments="GridLength">
+	 <OnPlatform x:Key="iPhoneXHeight" x:TypeArguments="x:Double">
         <On Platform="iOS" Value="0"/>
         <On Platform="Default" Value="0"/>
     </OnPlatform>
@@ -39,10 +42,7 @@
         <On Platform="Default" Value="0"/>
     </OnPlatform>
 
-    <OnPlatform x:Key="iPhoneXBottomGridHeight" x:TypeArguments="GridLength">
-        <On Platform="iOS" Value="0"/>
-        <On Platform="Default" Value="0"/>
-    </OnPlatform>
+    <OnPlatform x:Key="iPhoneXBottomGridHeight" x:TypeArguments="GridLength" />
 
     <!-- Button Dimensions -->
     <OnPlatform x:Key="ButtonHeight" x:TypeArguments="x:Double">
@@ -73,6 +73,12 @@
     <OnPlatform x:Key="ButtonImageSize" x:TypeArguments="x:Double">
         <On Platform="Default" Value="30"/>
     </OnPlatform>
+
+	<OnPlatform x:Key="ImageButtonTextMargin" x:TypeArguments="Thickness" Default="40,0" />
+
+	<OnPlatform x:Key="HomeNotificationButtonHeight" x:TypeArguments="x:Double" Default="25" />
+
+	<OnPlatform x:Key="HomeNotificationButtonWidth" x:TypeArguments="x:Double" Default="125" />
 
     <!-- Font Sizes -->
     <OnPlatform x:Key="FontSize9" x:TypeArguments="x:Double">
@@ -147,57 +153,40 @@
         <On Platform="Default" Value="50"/>
     </OnPlatform>
 
+	<!--Entry Style-->
 	<Style
-		x:Key="blueButtonBorderStyle"
-		TargetType="controls:Button">
+		x:Key="entryStyle"
+		TargetType="controls:CommanEntry">
 		<Setter
 			Property="HeightRequest"
-			Value="40" />
+			Value="35" />
 		<Setter
 			Property="TextColor"
-			Value="{Binding Source={x:StaticResource blueColor}}" />
+			Value="{DynamicResource PrimaryDarkColor}"/>
+		<Setter
+			Property="PlaceholderColor"
+			Value="{DynamicResource SecondaryTextColor}"  />
 		<Setter
 			Property="FontSize"
-			Value="15" />
+			Value="14" />
 		<Setter
-			Property="FillText"
-			Value="True" />
-		<Setter
-			Property="BorderWidth"
-			Value="1" />
-		<Setter
-			Property="CornerRadius"
-			Value="0" />
-		<Setter
-			Property="TextTransform"
-			Value="None" />
-		<Setter
-			Property="BorderColor"
-			Value="{Binding Source={x:StaticResource blueColor}}" />
-		<Setter
-			Property="RippleColor"
-			Value="{Binding Source={x:StaticResource blueColor}}" />
-		<Setter
-			Property="BackgroundColor"
-			Value="Transparent" />
+			Property="IsBorder"
+			Value="False" />
 	</Style>
 
-	<!--Red Button Style-->
+	<!-- Button Style-->
 	<Style
-		x:Key="redButtonStyle"
+		x:Key="buttonStyle"
 		TargetType="controls:Button">
 		<Setter
 			Property="HeightRequest"
-			Value="40" />
+			Value="50" />
 		<Setter
 			Property="TextColor"
-			Value="{Binding Source={x:StaticResource white}}" />
+			Value="{DynamicResource SecondaryColor}" />
 		<Setter
 			Property="FontSize"
-			Value="15" />
-		<Setter
-			Property="FontAttributes"
-			Value="Bold" />
+			Value="14" />
 		<Setter
 			Property="FillText"
 			Value="True" />
@@ -209,41 +198,25 @@
 			Value="None" />
 		<Setter
 			Property="BackgroundColor"
-			Value="{Binding Source={x:StaticResource redColor}}" />
-	</Style>
-	<Style
-		x:Key="redButtonBorderStyle"
-		TargetType="controls:Button">
+			Value="{DynamicResource PrimaryColor}" />
 		<Setter
-			Property="HeightRequest"
-			Value="40" />
+			Property="android:VisualElement.Elevation"
+			Value="2" />
 		<Setter
-			Property="TextColor"
-			Value="{Binding Source={x:StaticResource redColor}}" />
-		<Setter
-			Property="FontSize"
-			Value="15" />
-		<Setter
-			Property="FillText"
+			Property="android:Button.UseDefaultShadow"
 			Value="True" />
 		<Setter
-			Property="BorderWidth"
-			Value="1" />
+			Property="ios:VisualElement.IsShadowEnabled"
+			Value="True" />
 		<Setter
-			Property="CornerRadius"
-			Value="0" />
+			Property="ios:VisualElement.ShadowColor"
+			Value="{Binding Source={x:Static appResources:AppColorResources.black60Opacity}}" />
 		<Setter
-			Property="TextTransform"
-			Value="None" />
+			Property="ios:VisualElement.ShadowOpacity"
+			Value="0.4" />
 		<Setter
-			Property="BorderColor"
-			Value="{Binding Source={x:StaticResource redColor}}" />
-		<Setter
-			Property="RippleColor"
-			Value="{Binding Source={x:StaticResource redColor}}" />
-		<Setter
-			Property="BackgroundColor"
-			Value="{Binding Source={x:StaticResource white}}" />
+			Property="ios:VisualElement.ShadowRadius"
+			Value="2" />
 	</Style>
 
 	<!--Common Indicator-->
@@ -268,6 +241,171 @@
 		<Setter
 			Property="Color"
 			Value="{Binding Source={x:StaticResource blueColor}}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+	<!--Placeholder-->
+	<Style
+        x:Key="lblPlaceholder"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+			Value="{DynamicResource SecondaryTextColor}" />
+		<Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize13}" />
+        <Setter
+            Property="Margin"
+            Value="10,0" />
+        <Setter
+            Property="VerticalTextAlignment"
+            Value="Center" />
+    </Style>
+	
+	<!--Error Label Style-->
+    <Style
+        x:Key="errorLabelStyle"
+        TargetType="Label">
+        <Setter
+            Property="Margin"
+            Value="0,2,0,0" />
+        <Setter
+            Property="TextColor"
+            Value="{Binding Source={x:Static appResources:AppColorResources.orangeColor}}" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize12}" />
+		<Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+        <Setter
+            Property="IsVisible"
+            Value="false" />
+    </Style>
+	
+	<!--Header Label Style-->
+    <Style
+        x:Key="headerLabelStyle"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+			Value="{DynamicResource SecondaryTextColor}"/>
+		<Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize14}" />
+    </Style>
+
+	<Style
+        x:Key="headerLabelStyleFontSize13"
+        TargetType="Label">
+       	<Setter
+            Property="TextColor"
+            Value="{Binding Source={x:Static appResources:AppColorResources.grayTextColor}, Converter={StaticResource ColorConverter}}" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize13}" />
+		 <Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+    </Style>
+	
+	<!--Value Label Style-->
+    <Style
+        x:Key="valueLabelStyle"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+			Value="{DynamicResource PrimaryDarkColor}" />
+		<Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+        <Setter
+            Property="VerticalOptions"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="10,0" />
+        <Setter
+			Property="FontSize"
+			Value="{x:OnIdiom Phone='15', Tablet='17'}" />
+    </Style>
+	
+    <Style
+        x:Key="lblValueStyle"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+            Value="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}, Converter={StaticResource ColorConverter}}" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize14}" />
+        <Setter
+            Property="FontFamily"
+            Value="{DynamicResource FontMedium}" />
+		<Setter
+            Property="BackgroundColor"
+            Value="Transparent" />
+    </Style>
+
+	<Style
+        x:Key="lblMoreLableButtonStyle"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+            Value="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}, Converter={StaticResource ColorConverter}}" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize14}" />
+        <Setter
+            Property="Padding"
+            Value="10,7" />
+    </Style>
+
+    <Style
+        x:Key="labelStyle"
+        TargetType="Label">
+        <Setter
+            Property="TextColor"
+            Value="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}, Converter={StaticResource ColorConverter}}" />
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource FontSize15}" />
+        <Setter
+            Property="VerticalTextAlignment"
+            Value="Center" />
+    </Style>
+
+	<Style
+		x:Key="fromsQuestionStyle"
+		TargetType="Label">
+			<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}, Converter={StaticResource ColorConverter}}" />
+		<Setter
+			Property="FontSize"
+			Value="{StaticResource FontSize16}" />
+		<Setter
+			Property="BackgroundColor"
+			Value="Transparent" />
+	</Style>
+
+	<Style
+		x:Key="fromsCustomerQuestionStyle"
+		TargetType="Label">
+			<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:Static appResources:AppColorResources.grayTextColor}, Converter={StaticResource ColorConverter}}" />
+		<Setter
+			Property="FontSize"
+			Value="{StaticResource FontSize14}" />
 		<Setter
 			Property="BackgroundColor"
 			Value="Transparent" />
