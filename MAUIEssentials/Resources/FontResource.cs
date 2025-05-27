@@ -1,6 +1,6 @@
 #if EXPORTFONTS
 // Unused: Export the font to ensure it is visibility
-namespace MAUIEssentials.Resources
+namespace MAUIEssentials
 
 [assembly: ExportFont("NotoNaskhArabic-Bold.ttf", Alias = "NakshBold")]
 [assembly: ExportFont("NotoNaskhArabic-Medium.ttf", Alias = "NakshMedium")]
@@ -13,7 +13,7 @@ namespace MAUIEssentials.Resources
 [assembly: ExportFont("OpenSans-Semibold.ttf", Alias = "OpenSansSemibold")]
 #endif
 
-namespace MAUIEssentials.Resources
+namespace MAUIEssentials
 {
     /// <summary>
     /// Provides a font description for loading a font stored as an embedded resource.
