@@ -49,7 +49,7 @@ namespace MAUIEssentials.AppCode.Controls
         private static object GetDefaultFontSize(BindableObject bindable)
         {
             // Use the new MAUI way to get default font size
-            return Application.Current?.Resources["MediumFontSize"] ?? 14.0;
+            return Application.Current?.Resources["FontMedium"] ?? 14.0;
         }
 
         private static object CoerceFontSize(BindableObject bindable, object value)

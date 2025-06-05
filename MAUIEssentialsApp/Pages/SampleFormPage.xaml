@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BaseContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentialsApp.Pages.SampleFormPage"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources;assembly=MAUIEssentials"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls;assembly=MAUIEssentials"
+    xmlns:pages="clr-namespace:MAUIEssentials.Pages;assembly=MAUIEssentials"
+    xmlns:viewModel="clr-namespace:MAUIEssentialsApp.ViewModels"
+    BackgroundColor="{Binding Source={x:Static appResources:AppColorResources.white}}">
+    <pages:BaseContentPage.BindingContext>
+        <viewModel:SampleFormViewModel
+            x:Name="viewModel" />
+    </pages:BaseContentPage.BindingContext>
+    <pages:BaseContentPage.Content>
+        <controls:CustomScrollView
+            x:Name="scrollView"
+            DisableBounce="false"
+            Orientation="Vertical">
+            <StackLayout
+                Padding="20"
+                Spacing="0"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill">
+                <Label 
+                    Text="{Binding Source={x:Static appResources:LocalizationResources.sampleForm}}"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.blueColor}}"
+                    FontSize="{StaticResource FontSize18}"
+                    HorizontalTextAlignment="Center" />
+                <Label 
+                    Text="ScrollView Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <Label 
+                    Text="Comman Entry Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Spacing="10"
+                    Margin="10,0,0,0">
+                    <Grid
+                        RowSpacing="0"
+                        RowDefinitions="Auto, 1">
+                        <Label
+                            Margin="4,0,0,0"
+                            Text="{Binding Source={x:Static appResources:LocalizationResources.firstName}}"
+                            TextColor="{Binding Source={x:Static appResources:AppColorResources.grayColor}}"
+                            FontSize="{StaticResource FontSize14}"
+                            FontFamily="{StaticResource FontLight}"
+                            VerticalTextAlignment="Center"
+                            IsVisible="{Binding FirstName, Converter={StaticResource StringVisibilityConverter}}"/>
+                        <controls:CommanEntry
+                            Text="{Binding FirstName}"
+                            Style="{StaticResource entryStyle}"
+                            ReturnType="Next" />
+                        <BoxView
+                            Grid.Row="1"
+                            Style="{StaticResource boxViewStyle}" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    Margin="10,10,0,0">
+                    <Grid
+                        RowSpacing="0"
+                        RowDefinitions="Auto, 1">
+                        <Label
+                            Margin="4,0,0,0"
+                            Text="{Binding Source={x:Static appResources:LocalizationResources.lastName}}"
+                            TextColor="{Binding Source={x:Static appResources:AppColorResources.grayColor}}"
+                            FontSize="{StaticResource FontSize14}"
+                            FontFamily="{StaticResource FontLight}"
+                            VerticalTextAlignment="Center"
+                            IsVisible="{Binding LastName, Converter={StaticResource StringVisibilityConverter}}"/>
+                        <controls:CommanEntry
+                            Text="{Binding LastName}"
+                            Style="{StaticResource entryStyle}"
+                            ReturnType="Next" />
+                        <Border
+                            Grid.Row="1"
+                            Style="{StaticResource borderStyle}" />
+                    </Grid>
+                </StackLayout>
+                <Label 
+                    Text="Date Picker Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,0,0,0">
+                    <Grid
+                        ColumnSpacing="0"
+                        ColumnDefinitions="*, Auto">
+                        <StackLayout
+                            x:Name="datePickerView" />
+                    </Grid>
+                    <BoxView
+                        Style="{StaticResource boxViewStyle}" />
+                </StackLayout>
+                <Label 
+                    Text="Comman Editor Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,0,0,0">
+                    <Grid
+                        RowSpacing="0"
+                        RowDefinitions="Auto, 1">
+                        <Label
+                            Margin="4,0,0,0"
+                            Text="{Binding Source={x:Static appResources:LocalizationResources.notes}}"
+                            TextColor="{Binding Source={x:Static appResources:AppColorResources.grayColor}}"
+                            FontSize="{StaticResource FontSize14}"
+                            FontFamily="{StaticResource FontLight}"
+                            VerticalTextAlignment="Center"
+                            IsVisible="{Binding Notes, Converter={StaticResource StringVisibilityConverter}}"/>
+                        <controls:CommanEditor
+                            Text="{Binding Notes}"
+                            AutoSize="TextChanges"
+                            MaxLength="500"
+                            Style="{StaticResource editorStyle}"/>
+                        <Border
+                            Grid.Row="1"
+                            Style="{StaticResource borderStyle}" />
+                    </Grid>
+                </StackLayout>
+                <Label 
+                    Text="Floating Entry Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,0,0,0">
+                    <Grid
+                        RowSpacing="0"
+                        RowDefinitions="Auto, 1">
+                        <controls:FloatingEntry
+                            Text="{Binding Password}"
+                            TextColor="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}}"
+                            Placeholder="{Binding Source={x:Static appResources:LocalizationResources.password}}"
+                            PlaceholderColor="{Binding Source={x:Static appResources:AppColorResources.grayColor}}"
+                            IsPassword="True"
+                            Style="{StaticResource entryStyle}"
+                            ReturnType="Next"
+                            HasInfoText="True"
+                            IsMandatory="True"
+                            InfoText ="Please enter password" />
+                        <BoxView
+                            Grid.Row="1"
+                            Style="{StaticResource boxViewStyle}" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    Margin="10,20,0,0">
+                    <Grid
+                        RowSpacing="0"
+                        RowDefinitions="Auto, 1">
+                        <controls:FloatingEntry
+                            Text="{Binding ConfirmPassword}"
+                            TextColor="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}}"
+                            Placeholder="{Binding Source={x:Static appResources:LocalizationResources.confirmPassword}}"
+                            PlaceholderColor="{Binding Source={x:Static appResources:AppColorResources.grayColor}}"
+                            IsPassword="True"
+                            Style="{StaticResource entryStyle}"
+                            ReturnType="Next"
+                            HasInfoText="True"
+                            IsMandatory="True"
+                            InfoText ="Please enter confirm password same as password" />
+                        <BoxView
+                            Grid.Row="1"
+                            Style="{StaticResource boxViewStyle}" />
+                    </Grid>
+                </StackLayout>
+                <Label 
+                    Text="Picker Search Dialog AlertViews"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,0,0,0">
+                    <Grid
+                        ColumnSpacing="0"
+                        ColumnDefinitions="*">
+                        <StackLayout
+                            x:Name="pickerInfoControlView" />
+                    </Grid>
+                    <BoxView
+                        Style="{StaticResource boxViewStyle}" />
+                </StackLayout>
+                <Label 
+                    Text="Checkbox Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,0,0,0">
+                    <Grid
+                        ColumnSpacing="0"
+                        ColumnDefinitions="*">
+                        <StackLayout
+                            x:Name="checkBoxView" />
+                    </Grid>
+                </StackLayout>
+                <Label 
+                    Text="Question Checkbox AlertViews"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <StackLayout
+                    Margin="10,10,0,0">
+                    <Grid
+                        ColumnSpacing="0"
+                        ColumnDefinitions="*">
+                        <StackLayout
+                            x:Name="questionCheckboxView" />
+                    </Grid>
+                </StackLayout>
+                <Label 
+                    Text="Rating views controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:RatingView
+                    x:Name="ratingView"
+                    StrokeWidth="1"
+                    Margin="10,10,0,0"
+                    ColorOff="Transparent"
+                    ColorOn="{Binding Source={x:Static appResources:AppColorResources.PrimaryGreen}, Converter={StaticResource ColorConverter}}"
+                    OutlineOffColor="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor}, Converter={StaticResource ColorConverter}}"
+                    OutlineOnColor="{Binding Source={x:Static appResources:AppColorResources.PrimaryGreen}, Converter={StaticResource ColorConverter}}"
+                    RatingType="Full"
+                    HeightRequest="25"
+                    Value="{Binding Rating}"
+                    Path="M3628.041 4667.141l3.315 10.2h10.726l-8.677 6.305 3.314 10.2-8.678-6.3-8.678 6.3 3.314-10.2-8.678-6.305h10.727z" />
+                <Label 
+                    Text="Pinch to zoom controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:PinchToZoomContainer
+                    ScaleChanged="PinchToZoomContainer_ScaleChanged">
+                    <Image
+                        x:Name="imageZoom"
+                        Aspect="AspectFit"
+                        Source="ic_calendar"
+                        VerticalOptions="Fill" 
+                        HorizontalOptions="Fill"/>
+                </controls:PinchToZoomContainer>
+                <Label 
+                    Text="Rounded Progress Bar controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:RoundedProgressBar
+                    Grid.Row="2"
+                    Progress="{Binding Progress}"
+                    IsVisible="false"
+                    Margin="20,15,20,0"
+                    ScaleY="{OnPlatform Android=0.5,iOS=2}"
+                    CornerRadius="{OnPlatform Android=3, iOS=1}"
+                    ProgressBackgroundColor="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor}, Converter={StaticResource ColorConverter}}"
+                    ProgressColor="{Binding Source={x:Static appResources:AppColorResources.blueColor}, Converter={StaticResource ColorConverter}}">
+                    <controls:RoundedProgressBar.Triggers>
+                        <MultiTrigger
+                            TargetType="controls:RoundedProgressBar">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition
+                                    Binding="{Binding IsApproved}"
+                                    Value="true" />
+                                <BindingCondition
+                                    Binding="{Binding IsCancelled}"
+                                    Value="true" />
+                                <BindingCondition
+                                    Binding="{Binding IsNotify}"
+                                    Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter
+                                Property="IsVisible"
+                                Value="true" />
+                        </MultiTrigger>
+                    </controls:RoundedProgressBar.Triggers>
+                </controls:RoundedProgressBar>
+                <Label 
+                    Text="Pickerview controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:PickerView
+                    HeightRequest="200"
+                    Margin="10,10,0,0"
+                    ItemsSource="{Binding QuantityList}"
+                    FontSize="{StaticResource FontSize14}"
+                    FontFamily="{StaticResource FontMedium}"
+                    SelectedIndex="{Binding QuantitySelectedIndex}" />
+                <Label 
+                    Text="Switch controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:Switch 
+                    AutomationId="false"
+                    OnColor="{Binding Source={x:Static appResources:AppColorResources.blueColorOpacity40}}"
+                    ThumbColor="{Binding Source={x:Static appResources:AppColorResources.blueColor}}" />
+                <Label 
+                    Text="Dashed Line controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:DashedLine
+					Margin="10,20"
+                    HeightRequest="1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    DashColor="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor}}"
+                    DashWidth="{OnPlatform Android=8, iOS=4}"
+                    DashGap="{OnPlatform Android=4, iOS=2}"/>
+                <Label 
+                    Text="Custom Webview controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:CustomWebView
+                    x:Name="webView"
+                    Margin="10,10,0,0"
+                    Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                    HeightRequest="250"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+                <Label 
+                    Text="Select Bottom Label With Image and BiDi Margin Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:Button
+                    Text="Click Here..."
+                    controls:BiDi.Margin="10,10,0,0"
+                    FontAttributes="Bold"
+                    Clicked="Button_Clicked"
+                    Style="{StaticResource buttonStyle}" />
+                <Label 
+                    Text="ChipView and BiDi Margin Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:ChipView
+                    controls:BiDi.Margin="10,10,0,0"
+                    x:DataType="x:String"
+                    VerticalOptions="Center"
+                    Style="{StaticResource borderFrameStyle}"
+                    Text="Hello"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.blackTextColor}, Converter={StaticResource ColorConverter}}"
+                    FontSize="{StaticResource FontSize13}"
+                    BorderColor="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor2}, Converter={StaticResource ColorConverter}}"
+                    BackgroundColorChip="{Binding Source={x:Static appResources:AppColorResources.lightGrayColor9}, Converter={StaticResource ColorConverter}}" />
+                <Label 
+                    Text="FlowLayout Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:FlowLayout
+                    Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Start"
+                    Margin="10, 10, 0, 0"
+                    BindableLayout.ItemsSource="{Binding FlowRatesLists}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Border                                    
+                                    x:DataType="viewModel:FlowRatesList"
+                                    Style="{StaticResource borderFrameStyle}"
+                                    Stroke="{Binding Source={x:Static appResources:AppColorResources.bluecolorOpacity5}, Converter={StaticResource ColorConverter}}"
+                                    BackgroundColor="{Binding Source={x:Static appResources:AppColorResources.bluecolorOpacity5}, Converter={StaticResource ColorConverter}}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start">
+                                    <Label
+                                        Grid.Column="0"
+                                        Padding="5"
+                                        FontSize="{StaticResource FontSize11}"
+                                        Text="{Binding Description}"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="{Binding Source={x:Static appResources:AppColorResources.blueColor}, Converter={StaticResource ColorConverter}}"
+                                        Style="{StaticResource valueLabelStyle}"/>
+                                </Border>
+                            </ContentView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </controls:FlowLayout> 
+                <Label 
+                    Text="HTML Label Controls"
+                    TextColor="{Binding Source={x:Static appResources:AppColorResources.redColor}}"
+                    FontSize="{StaticResource FontSize16}"
+                    Margin="0,10,0,0" />
+                <controls:HtmlLabel
+					x:Name="lblHtml"
+                    Margin="10,10,0,0"
+					FontSize="{StaticResource FontSize14}"
+					TextColor="Black"
+					AndroidLegacyMode="True"
+					UnderlineText="False"
+					TextType="Html"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </controls:CustomScrollView>
+    </pages:BaseContentPage.Content>
+</pages:BaseContentPage>

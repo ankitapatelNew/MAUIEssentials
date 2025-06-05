@@ -217,7 +217,11 @@ namespace MAUIEssentials.Platforms.Android.Handlers
         {
             try
             {
-                handler.PlatformView.SetTextColor(entry.TextColor.ToAndroid());
+                if (handler?.PlatformView == null || entry == null)
+                    return;
+            
+                var textColor = entry.TextColor ?? Colors.Black;
+                handler.PlatformView.SetTextColor(textColor.ToAndroid());
             }
             catch (Exception ex)
             {

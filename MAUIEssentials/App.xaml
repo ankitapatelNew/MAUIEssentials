@@ -2,68 +2,127 @@
 <Application 
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:appResources="clr-namespace:MAUIEssentials.AppResources"
 	xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls"
 	xmlns:converters="clr-namespace:MAUIEssentials.AppCode.Converters"
 	xmlns:styles="clr-namespace:MAUIEssentials.Styles"
 	xmlns:local="clr-namespace:MAUIEssentials"
+	xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+	ios:Application.HandleControlUpdatesOnMainThread="True"
 	x:Class="MAUIEssentials.App">
     <Application.Resources>
-        <ResourceDictionary
-			x:Name="dictionary">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Styles/ThemeResourceDictionary.xaml" />
+				<ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
 
-			<converters:ArabicStringConverter
-				x:Key="ArabicStringConverter" />
-			<converters:BooleanInverter
-				x:Key="BooleanInverter" />
-			<converters:EmptyValueToBoolConverter
-				x:Key="EmptyValueToBoolConverter" />
-			<converters:EmptyStringConverter
-				x:Key="EmptyStringConverter" />
-			<converters:StringVisibilityConverter
-				x:Key="StringVisibilityConverter" />
-			<converters:ColorToBrushConverter
-				x:Key="ColorToBrush" />
-			<converters:DashConverter
-				x:Key="DashConverter" />
-			<converters:GregorianDateStringConverter
-				x:Key="GregorianDateStringConverter" />
-			<converters:IsBoldConverter
-				x:Key="IsBoldConverter" />
-			<converters:StringToColorConverter
-				x:Key="ColorConverter" />
-			<converters:TrimStringConverter
-				x:Key="TrimStringConverter" />
+				<ResourceDictionary
+					x:Name="dictionary">
+					<converters:ArabicStringConverter
+						x:Key="ArabicStringConverter" />
+					<converters:BooleanInverter
+						x:Key="BooleanInverter" />
+					<converters:EmptyValueToBoolConverter
+						x:Key="EmptyValueToBoolConverter" />
+					<converters:EmptyStringConverter
+						x:Key="EmptyStringConverter" />
+					<converters:StringVisibilityConverter
+						x:Key="StringVisibilityConverter" />
+					<converters:ColorToBrushConverter
+						x:Key="ColorToBrush" />
+					<converters:DashConverter
+						x:Key="DashConverter" />
+					<converters:GregorianDateStringConverter
+						x:Key="GregorianDateStringConverter" />
+					<converters:IsBoldConverter
+						x:Key="IsBoldConverter" />
+					<converters:StringToColorConverter
+						x:Key="ColorConverter" />
+					<converters:TrimStringConverter
+						x:Key="TrimStringConverter" />
 
-			<styles:DefaultDevicesStyle
-				x:Key="DefaultDevicesStyle" />
-			<styles:IPhoneXDevicesStyle
-				x:Key="IPhoneXDevicesStyle" />
-			<styles:SmallDevicesStyle
-				x:Key="SmallDevicesStyle" />
+					<!--BoxView border Style-->
+					<Style
+						x:Key="boxViewStyle"
+						TargetType="BoxView">
+						<Setter
+							Property="HeightRequest"
+							Value="1" />
+						<Setter
+							Property="HorizontalOptions"
+							Value="Fill" />
+						<Setter
+							Property="BackgroundColor"
+							Value="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor}}" />
+					</Style>
 
-            <!-- Border Style-->
-			<Style
-				x:Key="borderStyle"
-				TargetType="Border">
-				<Setter
-					Property="Padding"
-					Value="0" />
-				<Setter
-					Property="StrokeShape"
-					Value="RoundRectangle 10,10,10,10" />
-				<Setter
-					Property="StrokeThickness"
-					Value="1" />
-				<Setter
-					Property="Stroke"
-					Value="Transparent" />
-				<Setter
-					Property="BackgroundColor"
-					Value="White" />
-			</Style>
+					<!-- Border Style-->
+					<Style
+						x:Key="borderStyle"
+						TargetType="Border">
+						<Setter
+							Property="Padding"
+							Value="0" />
+						<Setter
+							Property="StrokeShape"
+							Value="RoundRectangle 10,10,10,10" />
+						<Setter
+							Property="StrokeThickness"
+							Value="1" />
+						<Setter
+							Property="HeightRequest"
+							Value="1" />
+						<Setter
+							Property="HorizontalOptions"
+							Value="Fill"/>
+						<Setter
+							Property="Stroke"
+							Value="{StaticResource lightBorderColor}" />
+					</Style>
+
+					<Style
+						x:Key="popupBorderStyle"
+						TargetType="Border">
+						<Setter
+							Property="Padding"
+							Value="0" />
+						<Setter
+							Property="StrokeShape"
+							Value="RoundRectangle 10,10,10,10" />
+						<Setter
+							Property="StrokeThickness"
+							Value="1" />
+						<Setter
+							Property="HorizontalOptions"
+							Value="Fill"/>
+						<Setter
+							Property="Stroke"
+							Value="{StaticResource lightBorderColor}" />
+					</Style>
+
+                    <Style
+                        x:Key="borderFrameStyle"
+                        TargetType="Border">
+                        <Setter
+                            Property="Padding"
+                            Value="0" />
+						<Setter
+							Property="StrokeShape"
+							Value="RoundRectangle 5,5,5,5" />
+						<Setter
+							Property="StrokeThickness"
+							Value="1" />
+                        <Setter
+                            Property="Stroke"
+                            Value="{Binding Source={x:Static appResources:AppColorResources.lightBorderColor2}, Converter={StaticResource ColorConverter}}" />
+                        <Setter
+                            Property="BackgroundColor"
+                            Value="{Binding Source={x:Static appResources:AppColorResources.white}, Converter={StaticResource ColorConverter}}" />
+                    </Style>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

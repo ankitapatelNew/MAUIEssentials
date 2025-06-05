@@ -39,7 +39,6 @@
     <Color x:Key="black54Opacity">#8C000000</Color>
     <Color x:Key="borderColor">#7b7e7f</Color>
     <Color x:Key="black">#000000</Color>
-    <Color x:Key="grayTextColor">#6e6e6e</Color>
     <Color x:Key="darkGray">#979797</Color>
     <Color x:Key="darkGrayCancel">#9E9E9E</Color>
     <Color x:Key="skyBlue">#2196F3</Color>

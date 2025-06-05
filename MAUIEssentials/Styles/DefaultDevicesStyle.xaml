@@ -240,6 +240,27 @@
 			Value="False" />
 	</Style>
 
+	<!--Editor Style-->
+	<Style
+		x:Key="editorStyle"
+		TargetType="controls:CommanEditor">
+		<Setter
+			Property="HeightRequest"
+			Value="{x:OnIdiom Phone='80', Tablet='100'}" />
+		<Setter
+			Property="TextColor"
+			Value="{Binding Source={x:Static appResources:AppColorResources.black}, Converter={StaticResource ColorConverter}}" />
+		<Setter
+			Property="PlaceholderColor"
+			Value="{Binding Source={x:Static appResources:AppColorResources.grayColor}, Converter={StaticResource ColorConverter}}" />
+		<Setter
+			Property="FontSize"
+			Value="{x:OnIdiom Phone='15', Tablet='17'}" />
+		<Setter
+			Property="IsBorder"
+			Value="False" />
+	</Style>
+
 	<!--Blue Button Style-->
 	<Style
 		x:Key="buttonStyle"

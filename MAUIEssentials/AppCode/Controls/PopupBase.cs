@@ -23,7 +23,7 @@ namespace MAUIEssentials.AppCode.Controls
 				HasSystemPadding = false;
 			}
             HideSoftInputOnTapped = true;
-			FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
+			// FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
             Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, false);
 			BackgroundColor = AppColorResources.black50Opacity.ToColor();
         }

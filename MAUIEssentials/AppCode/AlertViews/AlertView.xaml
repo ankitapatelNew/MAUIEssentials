@@ -28,12 +28,12 @@
 		</StackLayout.Margin>
         <Border
             x:Name="border"
-            Style="{DynamicResource borderStyle}"
+            Style="{DynamicResource popupBorderStyle}"
             VerticalOptions="Center">
             <Border.HorizontalOptions>
                 <OnIdiom 
                     x:TypeArguments="LayoutOptions"
-					Phone="FillAndExpand"
+					Phone="Fill"
 					Tablet="Center"/>
             </Border.HorizontalOptions>
 			<StackLayout
@@ -68,7 +68,7 @@
 				<Label
 					x:Name="lblSecondMessage"
 					FontSize="{StaticResource FontSize12}"
-					TextColor="{Binding Source={x:Static appResources:AppColorResources.grayTextColor}, Converter={StaticResource ColorConverter}}"
+					TextColor="{Binding Source={x:StaticResource grayTextColor}, Converter={StaticResource ColorConverter}}"
 					HorizontalOptions="Center"
 					HorizontalTextAlignment="Center"/>
 				<controls:HtmlLabel

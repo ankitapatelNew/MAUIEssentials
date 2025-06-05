@@ -10,17 +10,17 @@ using DatePicker = Microsoft.Maui.Controls.DatePicker;
 
 namespace MAUIEssentials.Platforms.Android.Handlers
 {
-    public class CommanDatePickerHandler : DatePickerHandler
+    public class CustomDatePickerHandler : DatePickerHandler
     {
-        public static readonly IPropertyMapper<IDatePicker, CommanDatePickerHandler> Mapper =
-            new PropertyMapper<IDatePicker, CommanDatePickerHandler>(DatePickerHandler.Mapper)
+        public static readonly IPropertyMapper<IDatePicker, CustomDatePickerHandler> Mapper =
+            new PropertyMapper<IDatePicker, CustomDatePickerHandler>(DatePickerHandler.Mapper)
             {
                 [nameof(CustomDatePicker.Placeholder)] = MapPlaceholder,
                 [nameof(CustomDatePicker.PlaceholderColor)] = MapPlaceholderColor,
                 [nameof(CustomDatePicker.IsBorder)] = MapIsBorder
             };
 
-        public CommanDatePickerHandler() : base(Mapper) { }
+        public CustomDatePickerHandler() : base(Mapper) { }
 
         protected override void ConnectHandler(MauiDatePicker platformView)
         {
@@ -83,7 +83,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             }
         }
 
-        public static void MapPlaceholder(CommanDatePickerHandler handler, IDatePicker view)
+        public static void MapPlaceholder(CustomDatePickerHandler handler, IDatePicker view)
         {
             if (handler.PlatformView is EditText editText && view is CustomDatePicker custom)
             {
@@ -91,7 +91,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             }
         }
 
-        public static void MapPlaceholderColor(CommanDatePickerHandler handler, IDatePicker view)
+        public static void MapPlaceholderColor(CustomDatePickerHandler handler, IDatePicker view)
         {
             if (handler.PlatformView is EditText editText && view is CustomDatePicker custom)
             {
@@ -99,7 +99,7 @@ namespace MAUIEssentials.Platforms.Android.Handlers
             }
         }
 
-        public static void MapIsBorder(CommanDatePickerHandler handler, IDatePicker view)
+        public static void MapIsBorder(CustomDatePickerHandler handler, IDatePicker view)
         {
             try
             {

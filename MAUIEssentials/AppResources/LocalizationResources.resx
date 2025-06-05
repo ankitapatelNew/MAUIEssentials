@@ -251,4 +251,129 @@
 		xml:space="preserve">
     	<value>Email is not supported on this device</value>
 	</data>
+	<data
+		name="scanYourFinger"
+		xml:space="preserve">
+		<value>Scan your fingerprint</value>
+	</data>
+	<data
+		name="scanYourFaceprint"
+		xml:space="preserve">
+		<value>Scan your faceprint</value>
+	</data>
+	<data
+		name="fingerprint"
+		xml:space="preserve">
+		<value>Fingerprint</value>
+	</data>
+	<data
+		name="faceId"
+		xml:space="preserve">
+		<value>Face Id</value>
+	</data>
+	<data
+		name="touchIdMAUIEssentials"
+		xml:space="preserve">
+    	<value>Touch ID for "MAUIEssentials"</value>
+	</data>
+	<data
+		name="Welcome"
+		xml:space="preserve">
+        <value>Welcome</value>
+    </data>
+	<data
+		name="login"
+		xml:space="preserve">
+		<value>Login</value>
+	</data>
+	<data
+		name="email"
+		xml:space="preserve">
+		<value>Email</value>
+	</data>
+	<data
+		name="password"
+		xml:space="preserve">
+		<value>Password</value>
+	</data>
+	<data
+		name="enterEmail"
+		xml:space="preserve">
+		<value>Please enter your email</value>
+	</data>
+	<data
+		name="enterPassword"
+		xml:space="preserve">
+		<value>Please enter your password</value>
+	</data>
+	<data
+		name="validateEmail"
+		xml:space="preserve">
+		<value>Incorrect email address</value>
+	</data>
+	<data
+		name="incorrectEmailPassword"
+		xml:space="preserve">
+		<value>Email or Password is incorrect</value>
+	</data>
+	<data
+		name="postcode"
+		xml:space="preserve">
+		<value>Postcode</value>
+	</data>
+	<data
+		name="sampleForm"
+		xml:space="preserve">
+		<value>Sample Form</value>
+	</data>
+	<data
+		name="firstName"
+		xml:space="preserve">
+		<value>First Name</value>
+	</data>
+	<data
+		name="lastName"
+		xml:space="preserve">
+		<value>Last Name</value>
+	</data>
+	<data
+		name="notes"
+		xml:space="preserve">
+		<value>Notes</value>
+	</data>
+	<data
+		name="confirmPassword"
+		xml:space="preserve">
+		<value>Confirm Password</value>
+	</data>
+	<data
+		name="designation"
+		xml:space="preserve">
+		<value>Designation</value>
+	</data>
+	<data
+		name="country"
+		xml:space="preserve">
+		<value>Country</value>
+	</data>
+	<data
+		name="dateOfBirth"
+		xml:space="preserve">
+		<value>Date of Birth</value>
+	</data>
+	<data
+		name="gender"
+		xml:space="preserve">
+		<value>Gender</value>
+	</data>
+	<data
+		name="termsOfConditions"
+		xml:space="preserve">
+		<value>Terms of Conditions</value>
+	</data>
+	<data
+		name="switchSample"
+		xml:space="preserve">
+		<value>Switch Sample</value>
+	</data>
 </root>

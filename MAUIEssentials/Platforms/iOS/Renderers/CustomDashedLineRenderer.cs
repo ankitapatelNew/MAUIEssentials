@@ -9,7 +9,7 @@ using UIKit;
 
 namespace MAUIEssentials.Platforms.iOS.Renderers
 {
-    public class DashedLineRenderer : ViewRenderer<DashedLine, UIView>
+    public class CustomDashedLineRenderer : ViewRenderer<DashedLine, UIView>
     {
         protected override void OnElementChanged(ElementChangedEventArgs<DashedLine> e)
         {

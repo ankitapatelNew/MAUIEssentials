@@ -12,7 +12,7 @@
     <BindableLayout.ItemTemplate>
 		<DataTemplate>
 			<Border
-				Style="{StaticResource borderFrameStyle}">
+				Style="{StaticResource popupBorderStyle}">
 				<Grid
 					Padding="10"
 					ColumnSpacing="10"

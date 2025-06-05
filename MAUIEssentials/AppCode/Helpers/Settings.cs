@@ -21,6 +21,9 @@ namespace MAUIEssentials.AppCode.Helpers
         const string SubscriptionResponseKey = "SubscriptionResponseKey";
         static readonly string SubscriptionResponseDefault = string.Empty;
 
+        const string FingerprintEnabledKey = "FingerprintEnabledKey";
+        static readonly bool FingerprintEnabledDefault = false;
+
         static LanguageModel? _appLanguage;
         public static LanguageModel? AppLanguage
         {
@@ -51,21 +54,22 @@ namespace MAUIEssentials.AppCode.Helpers
             get => Preferences.Get(AppTypeKey, AppTypeDefault).ToEnum(AppTypeEnum.Customer);
             set => Preferences.Set(AppTypeKey, value.ToString());
         }
-        
+
         static List<SubscriptionPlanLevel>? _subscriptionPlanLevelList;
         public static List<SubscriptionPlanLevel>? SubscriptionPlanLevelList
         {
             get
             {
-                 if (_subscriptionPlanLevelList != null)
+                if (_subscriptionPlanLevelList != null)
                     return _subscriptionPlanLevelList;
                 var data = Preferences.Get(OwnerSubscriptionModelKey, OwnerSubscriptionModelDefault);
-                _subscriptionPlanLevelList =  string.IsNullOrEmpty(data) ? new List<SubscriptionPlanLevel>() : JsonConvert.DeserializeObject<List<SubscriptionPlanLevel>>(data);
+                _subscriptionPlanLevelList = string.IsNullOrEmpty(data) ? new List<SubscriptionPlanLevel>() : JsonConvert.DeserializeObject<List<SubscriptionPlanLevel>>(data);
                 return _subscriptionPlanLevelList;
             }
-            set {
+            set
+            {
                 _subscriptionPlanLevelList = value;
-                 Preferences.Set(OwnerSubscriptionModelKey, value == null ? string.Empty : JsonConvert.SerializeObject(value));
+                Preferences.Set(OwnerSubscriptionModelKey, value == null ? string.Empty : JsonConvert.SerializeObject(value));
             }
         }
 
@@ -85,10 +89,17 @@ namespace MAUIEssentials.AppCode.Helpers
 
                 return _subscriptionResponse;
             }
-            set {
+            set
+            {
                 _subscriptionResponse = value;
                 Preferences.Set(SubscriptionResponseKey, value == null ? string.Empty : JsonConvert.SerializeObject(value));
-            } 
+            }
+        }
+
+        public static bool FingerprintEnabled
+        {
+            get => Preferences.Get(FingerprintEnabledKey, FingerprintEnabledDefault);
+            set => Preferences.Set(FingerprintEnabledKey, value);
         }
     }
 }

@@ -49,9 +49,12 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="3.1.2" />
 		<PackageReference Include="Xamarin.Firebase.Common" Version="121.0.0.4" />
-		<PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.5.0.4" />
 		<PackageReference Include="Xamarin.Firebase.Crashlytics" Version="119.4.0" />
 		<PackageReference Include="Xamarin.Firebase.Analytics" Version="122.2.0" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.5.0.4" />
+		<!-- <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.7.0.1" /> -->
+		<!-- <PackageReference Include="Xamarin.GooglePlayServices.Measurement" Version="122.4.0.1" /> -->
 	</ItemGroup>
 </Project>

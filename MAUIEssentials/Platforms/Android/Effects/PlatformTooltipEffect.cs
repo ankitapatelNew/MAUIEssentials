@@ -1,7 +1,7 @@
 using MAUIEssentials.AppCode.Behaviors;
 using Microsoft.Maui.Controls.Platform;
 
-namespace MAUIEssentials.Platforms.Android.Effects
+namespace MAUIEssentials.Effects
 {
     public class PlatformTooltipEffect : PlatformEffect
     {

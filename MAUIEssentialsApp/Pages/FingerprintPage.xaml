@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentialsApp.Pages.FingerprintPage"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls;assembly=MAUIEssentials"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+		<Grid
+			x:Name="mainGrid"
+			HorizontalOptions="Fill"
+			VerticalOptions="Fill">
+			<Grid.Background>
+				<LinearGradientBrush
+					EndPoint="0,1">
+					<GradientStop
+						Color="#d2181f"
+						Offset="0.1" />
+					<GradientStop
+						Color="#91191e"
+						Offset="1.0" />
+				</LinearGradientBrush>
+			</Grid.Background>
+			<controls:Image
+				x:Name="imgSplash"
+				Source="ic_splash"
+				Aspect="AspectFit" />
+			<Grid.GestureRecognizers>
+				<TapGestureRecognizer
+					Tapped="TapGestureRecognizer_Tapped" />
+			</Grid.GestureRecognizers>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

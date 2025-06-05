@@ -73,7 +73,7 @@ namespace MAUIEssentials.AppCode.Controls
 
 		public double Value {
 			get => (double)GetValue(ValueProperty);
-			set => SetValue(ValueProperty, ClampValue(value));
+			set => SetValue(ValueProperty, 	(value));
 		}
 
 		public string Path {
@@ -269,25 +269,29 @@ namespace MAUIEssentials.AppCode.Controls
 				Color = SKColorOn,
 				IsAntialias = true,
 			}) {
-				for (int i = 0; i < Count; i++) {
+				for (int i = 0; i < Count; i++)
+				{
 					if (i <= Value - 1) // Full
 					{
 						canvas.DrawPath(path, fillPaint);
 						canvas.DrawPath(path, strokePaint);
-					} else if (i < Value) //Partial
-					  {
+					}
+					else if (i < Value) //Partial
+					{
 						float filledPercentage = (float)(Value - Math.Truncate(Value));
 						strokePaint.Color = SKOutlineOffColor;
 						canvas.DrawPath(path, strokePaint);
 
-						using (var rectPath = new SKPath()) {
+						using (var rectPath = new SKPath())
+						{
 							var rect = SKRect.Create(path.Bounds.Left + path.Bounds.Width * filledPercentage, path.Bounds.Top, path.Bounds.Width * (1 - filledPercentage), ItemHeight);
 							rectPath.AddRect(rect);
 							canvas.ClipPath(rectPath, SKClipOperation.Difference);
 							canvas.DrawPath(path, fillPaint);
 						}
-					} else //Empty
-					  {
+					}
+					else //Empty
+					{
 						canvas.DrawPath(path, fillBgPaint);
 						strokePaint.Color = SKOutlineOffColor;
 						canvas.DrawPath(path, strokePaint);

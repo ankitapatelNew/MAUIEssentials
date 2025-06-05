@@ -5,7 +5,7 @@ using MAUIEssentials.Models;
 using Microsoft.Maui.Controls.Platform;
 using UIKit;
 
-namespace MAUIEssentials.Platforms.iOS.Effects
+namespace MAUIEssentials.Effects
 {
     public class PlatformTooltipEffect : PlatformEffect
     {

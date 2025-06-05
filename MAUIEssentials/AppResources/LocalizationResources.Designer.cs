@@ -19,15 +19,14 @@ namespace MAUIEssentials.AppResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Build.Tasks.StronglyTypedResourceBuilder", "15.1.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocalizationResources
+    public class LocalizationResources
     {
-
         private static global::System.Resources.ResourceManager resourceMan;
 
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationResources()
+        public LocalizationResources()
         {
         }
 
@@ -35,7 +34,7 @@ namespace MAUIEssentials.AppResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
+        public static global::System.Resources.ResourceManager ResourceManager
         {
             get
             {
@@ -53,7 +52,7 @@ namespace MAUIEssentials.AppResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
+        public static global::System.Globalization.CultureInfo Culture
         {
             get
             {
@@ -68,7 +67,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Take Now.
         /// </summary>
-        internal static string takeNow
+        public static string takeNow
         {
             get
             {
@@ -79,7 +78,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Choose from gallery.
         /// </summary>
-        internal static string chooseFromGallery
+        public static string chooseFromGallery
         {
             get
             {
@@ -90,7 +89,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Select Document.
         /// </summary>
-        internal static string selectDocument
+        public static string selectDocument
         {
             get
             {
@@ -101,7 +100,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Select File.
         /// </summary>
-        internal static string selectFile
+        public static string selectFile
         {
             get
             {
@@ -112,7 +111,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Please select a file to upload.
         /// </summary>
-        internal static string selectFileUpload
+        public static string selectFileUpload
         {
             get
             {
@@ -123,7 +122,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string cancel
+        public static string cancel
         {
             get
             {
@@ -134,7 +133,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
-        internal static string ok
+        public static string ok
         {
             get
             {
@@ -145,7 +144,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Search....
         /// </summary>
-        internal static string search
+        public static string search
         {
             get
             {
@@ -156,7 +155,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Retry.
         /// </summary>
-        internal static string retry
+        public static string retry
         {
             get
             {
@@ -167,7 +166,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to No internet connection!.
         /// </summary>
-        internal static string checkInternet
+        public static string checkInternet
         {
             get
             {
@@ -178,7 +177,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Upload Files.
         /// </summary>
-        internal static string uploadFiles
+        public static string uploadFiles
         {
             get
             {
@@ -189,7 +188,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Please enter postcode.
         /// </summary>
-        internal static string enterPostcode
+        public static string enterPostcode
         {
             get
             {
@@ -200,7 +199,7 @@ namespace MAUIEssentials.AppResources {
         /// <summary>
         ///   Looks up a localized string similar to Choose an address.
         /// </summary>
-        internal static string chooseAddress
+        public static string chooseAddress
         {
             get
             {
@@ -570,13 +569,290 @@ namespace MAUIEssentials.AppResources {
                 return ResourceManager.GetString("mins", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Email is not supported on this device.
         /// </summary>
-        public static string emailNotSupport {
-            get {
+        public static string emailNotSupport
+        {
+            get
+            {
                 return ResourceManager.GetString("emailNotSupport", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Scan your faceprint.
+        /// </summary>
+        public static string scanYourFaceprint
+        {
+            get
+            {
+                return ResourceManager.GetString("scanYourFaceprint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Scan your fingerprint.
+        /// </summary>
+        public static string scanYourFinger
+        {
+            get
+            {
+                return ResourceManager.GetString("scanYourFinger", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fingerprint.
+        /// </summary>
+        public static string fingerprint
+        {
+            get
+            {
+                return ResourceManager.GetString("fingerprint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Face Id.
+        /// </summary>
+        public static string faceId
+        {
+            get
+            {
+                return ResourceManager.GetString("faceId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Touch ID for &quot;MAUIEssentials&quot;.
+        /// </summary>
+        public static string touchIdMAUIEssentials
+        {
+            get
+            {
+                return ResourceManager.GetString("touchIdMAUIEssentials", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string Welcome
+        {
+            get
+            {
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string login
+        {
+            get
+            {
+                return ResourceManager.GetString("login", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string email
+        {
+            get
+            {
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string password
+        {
+            get
+            {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your password.
+        /// </summary>
+        public static string enterPassword
+        {
+            get
+            {
+                return ResourceManager.GetString("enterPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your email.
+        /// </summary>
+        public static string enterEmail
+        {
+            get
+            {
+                return ResourceManager.GetString("enterEmail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect email address.
+        /// </summary>
+        public static string validateEmail
+        {
+            get
+            {
+                return ResourceManager.GetString("validateEmail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Email or Password is incorrect.
+        /// </summary>
+        public static string incorrectEmailPassword
+        {
+            get
+            {
+                return ResourceManager.GetString("incorrectEmailPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Postcode.
+        /// </summary>
+        public static string postcode
+        {
+            get
+            {
+                return ResourceManager.GetString("postcode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Form.
+        /// </summary>
+        public static string sampleForm
+        {
+            get
+            {
+                return ResourceManager.GetString("sampleForm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string firstName
+        {
+            get
+            {
+                return ResourceManager.GetString("firstName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string lastName
+        {
+            get
+            {
+                return ResourceManager.GetString("lastName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string notes
+        {
+            get
+            {
+                return ResourceManager.GetString("notes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string confirmPassword
+        {
+            get
+            {
+                return ResourceManager.GetString("confirmPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Designation.
+        /// </summary>
+        public static string designation
+        {
+            get
+            {
+                return ResourceManager.GetString("designation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string country
+        {
+            get
+            {
+                return ResourceManager.GetString("country", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string dateOfBirth
+        {
+            get
+            {
+                return ResourceManager.GetString("dateOfBirth", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        public static string gender
+        {
+            get
+            {
+                return ResourceManager.GetString("gender", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Terms of Conditions.
+        /// </summary>
+        public static string termsOfConditions
+        {
+            get
+            {
+                return ResourceManager.GetString("termsOfConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Sample.
+        /// </summary>
+        public static string switchSample
+        {
+            get
+            {
+                return ResourceManager.GetString("switchSample", resourceCulture);
             }
         }
     }

@@ -21,7 +21,7 @@
         Margin="10, 15"
         VerticalOptions="End">
         <Border
-            Style="{DynamicResource borderStyle}">
+            Style="{DynamicResource popupBorderStyle}">
             <StackLayout
                 Spacing="0"
                 Orientation="Vertical">

@@ -929,8 +929,8 @@ namespace MAUIEssentials.AppCode.Helpers
                         Message = LocalizationResources.checkInternet,
                         ButtonTextColor = AppColorResources.redColor.ToColor(),
                         ButtonWidth = 80,
-                        ButtonFontFamily = (OnPlatform<string>)Application.Current.Resources["AllerRegular"],
-                        MessageFontFamily = (OnPlatform<string>)Application.Current.Resources["AllerRegular"],
+                        ButtonFontFamily = (OnPlatform<string>)Application.Current.Resources["FontRegular"],
+                        MessageFontFamily = (OnPlatform<string>)Application.Current.Resources["FontRegular"],
                         ButtonCommand = new Command(() =>
                         {
                             CheckInternetAccess(new ConnectivityChangedEventArgs(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles));
@@ -1559,6 +1559,18 @@ namespace MAUIEssentials.AppCode.Helpers
                 ex.LogException();
             }
             return 0;
+        }
+
+        public static void Logout()
+        {
+            try
+            {
+                Settings.FingerprintEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                ex.LogException();
+            }
         }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.Maui.Platform;
 using MAUIEssentials.AppCode.Controls;
 using MAUIEssentials.AppCode.Helpers;
 using UIKit;
+using CoreGraphics;
+using Foundation;
 
 namespace MAUIEssentials.Platforms.iOS.Handlers
 {

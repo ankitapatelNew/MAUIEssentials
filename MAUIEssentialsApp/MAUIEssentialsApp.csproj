@@ -1,7 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
+		<ApplicationId>com.maui.mauiessentialsapp</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
+		<ApplicationId>com.speedyservices.iphoneapp</ApplicationId>
+	</PropertyGroup>
+
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
+		<!-- <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers> -->
 		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks> -->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
@@ -19,22 +28,62 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<!-- <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk> -->
 
 		<!-- Display name -->
 		<ApplicationTitle>MAUIEssentialsApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mauiessentialsapp</ApplicationId>
+		<!-- <ApplicationId>com.companyname.mauiessentialsapp</ApplicationId> -->
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
-		<WindowsPackageType>None</WindowsPackageType>
+		<!-- <WindowsPackageType>None</WindowsPackageType> -->
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	 <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+		<AndroidLinkTool>r8</AndroidLinkTool>
+		<EnableLLVM>true</EnableLLVM>
+		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+		<AndroidEnableLLVMOptimizations>true</AndroidEnableLLVMOptimizations>
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<PublishTrimmed>true</PublishTrimmed>
+		<LinkerBehavior>LinkAll</LinkerBehavior>
+		<UseInterpreter>false</UseInterpreter>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<UseFastDeployment>true</UseFastDeployment>
+		<AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+		<EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+		<AndroidLinkMode>None</AndroidLinkMode>
+		<!-- Make sure PublishAot and EnableLLVM remain false here -->
+	</PropertyGroup>
+
+	<!-- <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='net9.0-android|AnyCPU'">
+		<AndroidEnableProfiler>true</AndroidEnableProfiler>
+		<AndroidLinkMode>None</AndroidLinkMode> Critical for debugging
+		<MauiEnableHotReload>false</MauiEnableHotReload> Disable during debugging
+		<AndroidEnablePreloadAssemblies>false</AndroidEnablePreloadAssemblies>
+  		<AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+		Critical for MAUI 9.0
+		<AndroidEnableProfiler>true</AndroidEnableProfiler>
+		<AndroidBundleSkipsAot>true</AndroidBundleSkipsAot>
+	</PropertyGroup> -->
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='net9.0-ios|AnyCPU'">
+		<MtouchLink>SdkOnly</MtouchLink>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+		<CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -46,7 +95,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -56,8 +104,89 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\MAUIEssentials\MAUIEssentials.csproj" />
+		<ProjectReference Include="..\FirebaseEssentials\FirebaseEssentials.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="9.0.70" />
+		<PackageReference Include="Microsoft.Maui.Maps" Version="9.0.70" />
+		<PackageReference Include="MonkeyCache.FileStore" Version="2.1.1" />
+		<PackageReference Include="Mopups.Maui" Version="1.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Plugin.InAppBilling" Version="8.0.5" />
+		<PackageReference Include="Plugin.Maui.Biometric" Version="0.0.5" />
+		<!-- <PackageReference Include="Plugin.MauiMTAdmob" Version="2.0.2" /> -->
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.0" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.9" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="3.119.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<!-- <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="4.0.1" /> -->
 	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+		<!-- <PackageReference Include="Xamarin.Firebase.iOS.Auth" Version="8.10.0.3" />
+		<PackageReference Include="Xamarin.Google.iOS.SignIn" Version="5.0.2.4" />
+		<PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
+		<PackageReference Include="Xamarin.Google.iOS.UserMessagingPlatform" Version="1.2.0.5" /> -->
+		<PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
+		<PackageReference Include="Xamarin.Firebase.iOS.Crashlytics" Version="8.10.0.3" />
+		<PackageReference Include="Xamarin.Firebase.iOS.Analytics" Version="8.10.0.3" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<!-- <PackageReference Include="Xamarin.Firebase.Auth" Version="123.1.0.2" />
+		<PackageReference Include="Xamarin.Firebase.Messaging" Version="124.1.0.1" />
+		<PackageReference Include="Xamarin.Firebase.Common" Version="121.0.0.4" />
+		<PackageReference Include="Xamarin.Firebase.Analytics" Version="122.2.0" />
+		<PackageReference Include="Xamarin.Firebase.Crashlytics" Version="119.4.0" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Auth" Version="121.3.0.1" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.5.0.4" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Basement" Version="118.5.0.1" />
+		<PackageReference Include="Xamarin.Google.UserMessagingPlatform" Version="3.1.0.2" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Common" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.AndroidX.Collection.Jvm" Version="1.4.5.2" /> -->
+		<PackageReference Include="Xamarin.AndroidX.Fragment" Version="1.8.5.2" />
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.5.2" />
+
+		<!-- <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.7.0.1" /> -->
+		<!-- <PackageReference Include="Xamarin.GooglePlayServices.Measurement.Api" Version="122.2.0" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite" Version="124.0.0.1" /> -->
+		<!-- <PackageReference Include="Xamarin.GooglePlayServices.Basement" Version="118.5.0.1" /> -->
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views/" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms/Android/Resources/values/String.xml" />
+	  <AndroidResource Remove="Platforms/Android/Resources/xml/file_paths.xml" />
+	  <AndroidResource Remove="Platforms/Android/Resources/xml/network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Include="Platforms/Android/Resources/values/String.xml" />
+	  <AndroidResource Include="Platforms/Android/Resources/xml/file_paths.xml" />
+	  <AndroidResource Include="Platforms/Android/Resources/xml/network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<GoogleServicesJson Include="Platforms\Android\google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<BundleResource Include="Platforms\iOS\GoogleService-Info.plist">
+			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
+			<PublishFolderType>RootDirectory</PublishFolderType>
+		</BundleResource>
+	</ItemGroup> 
 
 </Project>

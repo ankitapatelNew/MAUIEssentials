@@ -2,6 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!-- <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>	 -->
 		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks> -->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
@@ -13,37 +17,70 @@
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
-		<OutputType>Exe</OutputType>
+		<!-- <OutputType>Exe</OutputType>
 		<RootNamespace>MAUIEssentials</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk> -->
 
 		<!-- Display name -->
-		<ApplicationTitle>MAUIEssentials</ApplicationTitle>
+		<!-- <ApplicationTitle>MAUIEssentials</ApplicationTitle> -->
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mauiessentials</ApplicationId>
+		<!-- <ApplicationId>com.companyname.mauiessentials</ApplicationId> -->
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<!-- <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion> -->
 
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
-		<WindowsPackageType>None</WindowsPackageType>
+		<!-- <WindowsPackageType>None</WindowsPackageType> -->
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<!-- <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Debug'">
+		<AndroidEnableProguard>true</AndroidEnableProguard>
+		<AndroidDexTool>d8</AndroidDexTool>
+	</PropertyGroup> -->
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
+		<CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+		<CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+
+	<!-- <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+		<AndroidLinkTool>r8</AndroidLinkTool>
+		<EnableLLVM>true</EnableLLVM>
+		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+		<AndroidEnableLLVMOptimizations>true</AndroidEnableLLVMOptimizations>
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<PublishTrimmed>true</PublishTrimmed>
+		<LinkerBehavior>LinkAll</LinkerBehavior>
+		<UseInterpreter>false</UseInterpreter>
+	</PropertyGroup> -->
+
 	<ItemGroup>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
+		<MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
+		<MauiFont Include="Resources\Fonts\OpenSans-Semibold.ttf" />
+		<MauiFont Include="Resources\Fonts\NotoNaskhArabic-Medium.ttf" />
+		<MauiFont Include="Resources\Fonts\NotoNaskhArabic-Regular.ttf" />
+		<MauiFont Include="Resources\Fonts\Roboto-Bold.ttf" />
+		<MauiFont Include="Resources\Fonts\Roboto-Light.ttf" />
+		<MauiFont Include="Resources\Fonts\Roboto-Medium.ttf" />
+		<MauiFont Include="Resources\Fonts\Roboto-Regular.ttf" />
+		<MauiFont Include="Resources\Fonts\NotoNaskhArabic-Bold.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,9 +89,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\FirebaseEssentials\FirebaseEssentials.csproj">
-			<ReferenceSourceTarget></ReferenceSourceTarget>
-		</ProjectReference>
+		<ProjectReference Include="..\FirebaseEssentials\FirebaseEssentials.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,16 +105,62 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Plugin.InAppBilling" Version="8.0.5" />
 		<PackageReference Include="Plugin.Maui.Biometric" Version="0.0.5" />
-		<PackageReference Include="Plugin.MauiMTAdmob" Version="2.0.2" />
+		<PackageReference Include="Plugin.MauiMTAdmob" Version="1.6.4" />
+		<PackageReference Include="Xamarin.Build.Download" Version="0.11.4" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.0" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.9" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="3.119.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="4.0.1" />
+		<!-- <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="4.0.1" /> -->
 	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Common" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.Google.Android.Play.App.Update" Version="2.1.0.13" />
+	</ItemGroup>
+
+	<!-- <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<PackageReference Include="Xamarin.AndroidX.Fragment" Version="1.8.6.1" />
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.6.1" />
+	</ItemGroup> -->
+
+	<!-- <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+		<PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
+		<PackageReference Include="Xamarin.Firebase.iOS.Crashlytics" Version="8.10.0.3" />
+		<PackageReference Include="Xamarin.Firebase.iOS.Analytics" Version="8.10.0.3" />
+	</ItemGroup> -->
 
 	<ItemGroup>
 	  <Folder Include="AppResources/" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppResources\AppColorResources.Designer.cs">
+			<DependentUpon>AppColorResources.resx</DependentUpon>
+		</Compile>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppResources\LocalizationResources.Designer.cs">
+			<DependentUpon>LocalizationResources.resx</DependentUpon>
+		</Compile>
+		<!-- <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppSettingsManager.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Compile> -->
+	</ItemGroup>
+
+	<!-- <ItemGroup>
+	  <EmbeddedResource Include="appsettings.json" />
+	</ItemGroup> -->
+
+	<ItemGroup>
+		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="AppResources\AppColorResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>AppColorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="AppResources\LocalizationResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocalizationResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 </Project>

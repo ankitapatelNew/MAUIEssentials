@@ -30,11 +30,12 @@
         <Border
             x:Name="border"
             VerticalOptions="Center"
-            Style="{DynamicResource borderStyle}">
+            Style="{DynamicResource popupBorderStyle}"
+			BackgroundColor="White">
             <Border.HorizontalOptions>
                 <OnIdiom 
                     x:TypeArguments="LayoutOptions"
-					Phone="FillAndExpand"
+					Phone="Fill"
 					Tablet="Center"/>
             </Border.HorizontalOptions>
             <StackLayout
@@ -56,7 +57,7 @@
 					Placeholder="{Binding PickerDialog.SearchPlaceholder}"
 					PlaceholderColor="Gray"
 					FontSize="{StaticResource FontSize15}"
-					FontFamily="{StaticResource AllerRegular}"
+					FontFamily="{StaticResource FontMedium}"
 					IsVisible="{Binding PickerDialog.IsSearchVisible}"
 					TintColor="{Binding PickerDialog.TintColor}">
 					<controls:SearchBar.BackgroundColor>
@@ -122,7 +123,7 @@
 						TextColor="{Binding PickerDialog.OkTextColor}"
 						BackgroundColor="{Binding PickerDialog.OkBackgroundColor}"
 						FontSize="{StaticResource FontSize13}"
-						FontFamily="{StaticResource AllerRegular}"
+						FontFamily="{StaticResource FontMedium}"
 						CornerRadius="0"
 						HeightRequest="40"
 						TextTransform="Uppercase"
@@ -134,7 +135,7 @@
 						TextColor="{Binding PickerDialog.CancelTextColor}"
 						BackgroundColor="{Binding PickerDialog.CancelBackgroundColor}"
 						FontSize="{StaticResource FontSize13}"
-						FontFamily="{StaticResource AllerRegular}"
+						FontFamily="{StaticResource FontMedium}"
 						CornerRadius="0"
 						HeightRequest="40"
 						TextTransform="Uppercase"

@@ -23,8 +23,8 @@
     <Border
 		x:Name="infoView"
 		VerticalOptions="Center"
-		Style="{DynamicResource borderStyle}"
 		Margin="{x:OnIdiom Phone='20,30', Tablet='50'}"
+		Style="{StaticResource popupBorderStyle}"
 		BackgroundColor="White">
 		<StackLayout
 			Padding="10"
@@ -84,13 +84,13 @@
 					TextColor="{StaticResource blueColor}"
 					FontAttributes="Bold"
 					Clicked="CloseTapped"
-					Style="{StaticResource blueButtonBorderStyle}" />
+					Style="{StaticResource buttonStyle}" />
 				<controls:Button
 					x:Name="btnTwo"
 					TextColor="{StaticResource blueColor}"
 					FontAttributes="Bold"
 					Clicked="SecondButtonClicked"
-					Style="{StaticResource blueButtonBorderStyle}" />
+					Style="{StaticResource buttonStyle}" />
 			</StackLayout>
 		</StackLayout>
     </Border>

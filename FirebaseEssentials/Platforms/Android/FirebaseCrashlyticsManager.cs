@@ -1,9 +1,10 @@
-using Android.Gms.Extensions;
+using System;
+using System.Threading.Tasks;
 using Android.Runtime;
-using Firebase.Crashlytics;
-using FirebaseEssentials.Shared;
 using Java.Lang;
-using Boolean = Java.Lang.Boolean;
+using Firebase.Crashlytics;
+using Android.Gms.Extensions;
+using FirebaseEssentials.Shared;
 
 namespace FirebaseEssentials.Android
 {
@@ -51,8 +52,10 @@ namespace FirebaseEssentials.Android
 
 		public void SetCrashlyticsCollectionEnabled(bool enabled)
 		{
-    		FirebaseCrashlytics.Instance.SetCrashlyticsCollectionEnabled(new Boolean(enabled));
-		}
+#pragma warning disable CA1422 // Validate platform compatibility
+            FirebaseCrashlytics.Instance.SetCrashlyticsCollectionEnabled(new Java.Lang.Boolean(enabled));
+#pragma warning restore CA1422 // Validate platform compatibility
+        }
 
 		public async Task<bool> CheckForUnsentReportsAsync()
 		{

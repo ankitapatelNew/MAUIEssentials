@@ -10,7 +10,7 @@
     <controls:CommanEntry
 		x:Name="entry"
 		HeightRequest="38"
-		HorizontalOptions="FillAndExpand"
+		HorizontalOptions="Fill"
 		VerticalOptions="End"
 		Text="{Binding Text, Source={x:Reference floatingEntry}}"
 		TextColor="{Binding TextColor, Source={x:Reference floatingEntry}}"

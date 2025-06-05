@@ -42,4 +42,12 @@ namespace MAUIEssentials.AppCode.Helpers
         Customer = 1,
         Owner = 2
     }
+
+    public enum RatingEnum
+	{
+		None,
+		Yes,
+		No,
+		Other
+	}
 }

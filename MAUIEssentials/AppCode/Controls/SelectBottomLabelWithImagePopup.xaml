@@ -42,7 +42,7 @@
                         Margin="0,0,0,10"
                         x:Name="newBookingView"
                         IsEnabled="True"
-                        Style="{StaticResource borderStyle}"
+                        Style="{StaticResource popupBorderStyle}"
                         Stroke="{Binding Source={x:Static appResources:AppColorResources.blueColor}, Converter={StaticResource ColorConverter}}"
                         x:DataType="controls:BottomLabelWithImage">
                         <Grid
@@ -51,12 +51,11 @@
                             ColumnSpacing="15">
                             <Image
                                 x:Name="img"
-                                Rotation="{Binding ImageRotation}"
                                 HeightRequest="{Binding Height}"
                                 WidthRequest="{Binding Height}"
+                                Source="{Binding Image}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center"
-                                Source="{Binding Image}"
                                 BackgroundColor="Transparent">
                                 <Image.Behaviors>
                                     <xct:IconTintColorBehavior 
@@ -75,8 +74,8 @@
                             </Grid.Behaviors>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
-                                Command="{Binding BindingContext.ItemClickCommand, Source={x:Reference lstView}}"
-                                CommandParameter="{Binding .}" />
+                                    Command="{Binding BindingContext.ItemClickCommand, Source={x:Reference lstView}}"
+                                    CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
                         </Grid>
                     </Border>

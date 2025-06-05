@@ -1,6 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.maui.mauiessentialsapp" android:versionCode="1" android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="34" />
+	<application android:hardwareAccelerated="true" android:usesCleartextTraffic="true" android:allowBackup="true" android:supportsRtl="true" android:label="MAUIEssentials" android:icon="@mipmap/appicon" android:largeHeap="true" android:requestLegacyExternalStorage="true" android:enableOnBackInvokedCallback="true">	
+		
+		<!-- google API Key --> 
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDVVFHZ0nfViC-RN-xT0PLcS4t3VlsYXtM" />
+
+		<!-- firebase cloud message -->
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="${applicationId}" />
+			</intent-filter>
+		</receiver>
+
+		<meta-data
+			android:name="firebase_crashlytics_collection_enabled"
+			android:value="false" />
+
+		<!-- File provider -->
+		<!-- <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+		</provider> -->
+
+		<!-- Google Ads -->
+		<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-6733157128433662~6931839897" />
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+		<meta-data android:name="com.google.android.play.billingclient.version" android:value="6.0.1"  tools:replace="android:value" />
+		<service android:name="com.android.vending.billing.IInAppBillingService" android:exported="true" />
+    </application>
+
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+
+	<uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+
+	<uses-permission android:name="android.permission.USE_BIOMETRIC" />
+	<!-- Only include if targeting devices below Android 10 -->
+	<uses-permission android:name="android.permission.USE_FINGERPRINT" android:maxSdkVersion="34" />
+
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+	<uses-feature android:name="android.hardware.location.network" android:required="false" />
+
+	<uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+
+	<queries>
+		<!-- Camera -->
+		<intent>
+			<action android:name="android.media.action.IMAGE_CAPTURE" />
+		</intent>
+
+		<!-- Browser -->
+		<intent>
+			<action android:name="android.intent.action.VIEW"/>
+			<data android:scheme="http"/>
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW"/>
+			<data android:scheme="https"/>
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.SENDTO" />
+			<data android:mimeType="*/*" />
+		</intent>
+
+		<!-- Contact  -->
+		<intent>
+			<action android:name="android.intent.action.DIAL" />
+			<data android:scheme="tel" />
+		</intent>
+
+		<package android:name="com.google.android.apps.maps" />
+	</queries>
 </manifest>

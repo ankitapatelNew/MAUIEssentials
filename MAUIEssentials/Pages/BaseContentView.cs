@@ -68,7 +68,7 @@ namespace MAUIEssentials.Pages
         {
             Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, true);
 
-            FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
+            // FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
             BackgroundColor = Colors.White;
 
             NavigationPage.SetHasNavigationBar(this, false);

@@ -13,7 +13,7 @@ using Paint = Android.Graphics.Paint;
 
 namespace MAUIEssentials.Platforms.Android.Renderers
 {
-    public class PickerViewRenderer : ViewRenderer<PickerView, NumberPicker>
+    public class CustomPickerViewRenderer : ViewRenderer<PickerView, NumberPicker>
     {
         private static readonly Color _lightTextColor = Color.ParseColor("#FF000000");
         private static readonly Color _lightDividerColor = Color.ParseColor("#FFCCCCCC");
@@ -23,7 +23,7 @@ namespace MAUIEssentials.Platforms.Android.Renderers
         private Typeface _currentTypeface;
         private float _currentTextSize;
 
-        public PickerViewRenderer(Context context) : base(context)
+        public CustomPickerViewRenderer(Context context) : base(context)
         {
         }
 

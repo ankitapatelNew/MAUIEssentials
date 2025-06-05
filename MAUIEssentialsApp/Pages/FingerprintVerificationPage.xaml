@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:PopupBase
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUIEssentialsApp.Pages.FingerprintVerificationPage"
+    xmlns:appResources="clr-namespace:MAUIEssentials.AppResources;assembly=MAUIEssentials"
+    xmlns:controls="clr-namespace:MAUIEssentials.AppCode.Controls;assembly=MAUIEssentials"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    BackgroundColor="{Binding Source={x:Static appResources:AppColorResources.black50Opacity}, Converter={StaticResource ColorConverter}}"
+    CloseWhenBackgroundIsClicked="False">
+    <controls:PopupBase.Animation>
+        <animations:MoveAnimation
+            DurationIn="50"
+            DurationOut="200"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </controls:PopupBase.Animation>
+    <Grid
+		x:Name="mainGrid"
+		HorizontalOptions="Fill"
+		VerticalOptions="Fill">
+		<controls:Image
+			x:Name="imgSplash"
+			Source="ic_splash"
+			Aspect="AspectFit" />
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer
+				Tapped="TapGestureRecognizer_Tapped" />
+		</Grid.GestureRecognizers>
+	</Grid>
+</controls:PopupBase>

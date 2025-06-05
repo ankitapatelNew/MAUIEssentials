@@ -12,13 +12,13 @@ namespace MAUIEssentials;
 
 public partial class App : Application
 {
-	public static IMauiContext? mauiContext;
+	public static IMauiContext mauiContext;
 	const int smallWightResolution = 768;
 	const int smallHeightResolution = 1280;
 
 	public static bool IsRunning { get; set; }
 
-	static App? _instance;
+	static App _instance;
 	public static App Instance
 	{
 		get
@@ -38,17 +38,17 @@ public partial class App : Application
 			InitializeComponent();
 			DependencyService.Get<ICommonUtils>().StatusbarColor(AppColorResources.white.ToColor(), AppColorResources.white.ToColor(), GradientOrientation.ReverseDiagonal);
 
-			Barrel.ApplicationId = AppInfo.PackageName;
-			Barrel.Current.AutoExpire = true;
-			if (!Settings.IsHuaweiApp)
-			{
-				CrossMauiMTAdmob.Current.UserPersonalizedAds = true;
-				CrossMauiMTAdmob.Current.ComplyWithFamilyPolicies = true;
-				CrossMauiMTAdmob.Current.UseRestrictedDataProcessing = true;
-				CrossMauiMTAdmob.Current.TagForChildDirectedTreatment = MTTagForChildDirectedTreatment.TagForChildDirectedTreatmentUnspecified;
-				CrossMauiMTAdmob.Current.MaxAdContentRating = MTMaxAdContentRating.MaxAdContentRatingG;
-				CrossMauiMTAdmob.Current.TagForUnderAgeOfConsent = MTTagForUnderAgeOfConsent.TagForUnderAgeOfConsentUnspecified;
-			}
+			// Barrel.ApplicationId = AppInfo.PackageName;
+			// Barrel.Current.AutoExpire = true;
+			// if (!Settings.IsHuaweiApp)
+			// {
+			// 	CrossMauiMTAdmob.Current.UserPersonalizedAds = true;
+			// 	CrossMauiMTAdmob.Current.ComplyWithFamilyPolicies = true;
+			// 	CrossMauiMTAdmob.Current.UseRestrictedDataProcessing = true;
+			// 	CrossMauiMTAdmob.Current.TagForChildDirectedTreatment = MTTagForChildDirectedTreatment.TagForChildDirectedTreatmentUnspecified;
+			// 	CrossMauiMTAdmob.Current.MaxAdContentRating = MTMaxAdContentRating.MaxAdContentRatingG;
+			// 	CrossMauiMTAdmob.Current.TagForUnderAgeOfConsent = MTTagForUnderAgeOfConsent.TagForUnderAgeOfConsentUnspecified;
+			// }
 
 			SetAppLanguage();
 			ChangeFontStyles(true);
@@ -87,17 +87,38 @@ public partial class App : Application
 
 	private void OnNotificationOpened(object source, FirebaseEssentials.Shared.FirebasePushNotificationResponseEventArgs e)
 	{
-		throw new NotImplementedException();
+		try
+		{
+			
+		}
+		catch (Exception ex)
+		{
+			ex.LogException();
+		}
 	}
 
 	private void OnNotificationReceived(object source, FirebaseEssentials.Shared.FirebasePushNotificationDataEventArgs e)
 	{
-		throw new NotImplementedException();
+		try
+		{
+			
+		}
+		catch (Exception ex)
+		{
+			ex.LogException();
+		}
 	}
 
 	private void OnNotificationStatus(object source, FirebaseEssentials.Shared.FirebasePushNotificationErrorEventArgs e)
 	{
-		throw new NotImplementedException();
+		try
+		{
+			
+		}
+		catch (Exception ex)
+		{
+			ex.LogException();
+		}
 	}
 
 	protected override void OnSleep()
@@ -134,6 +155,7 @@ public partial class App : Application
 		{
 			base.OnHandlerChanged();
 			mauiContext = Handler.MauiContext;
+			_ = Handler.MauiContext?.Services.GetService<IPageNavigationService>()?.NavigateToSplashPage();
 		}
 		catch (Exception ex)
 		{
@@ -185,23 +207,23 @@ public partial class App : Application
 
 	public static void SetAppLanguage()
 	{
-		if (Settings.AppLanguage == null)
-		{
-			Settings.AppLanguage = Languages.FirstOrDefault();
-		}
-		LocalizationResources.Culture = new CultureInfo(Settings.AppLanguage?.Code ?? string.Empty);
+		// if (Settings.AppLanguage == null)
+		// {
+		// 	Settings.AppLanguage = Languages.FirstOrDefault();
+		// }
+		// LocalizationResources.Culture = new CultureInfo(Settings.AppLanguage?.Code ?? string.Empty);
 
-		Current.Resources["ArrowImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 90 : 270;
-		Current.Resources["BackImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 180 : 0;
-		Current.Resources["PreviousImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 270 : 90;
-		Current.Resources["NextImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 90 : 270;
-		Current.Resources["AppFlowDirection"] = Settings.AppLanguage?.FlowDirection;
-		Current.Resources["ViewScaleX"] = DeviceInfo.Platform == DevicePlatform.iOS && Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
-		Current.Resources["TutorialCardScaleX"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
-		Current.Resources["SwitchScaleX"] = DeviceInfo.Platform == DevicePlatform.Android && Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
-		Current.Resources["TooltipPosition"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? TooltipPosition.Right : TooltipPosition.Left;
-		Current.Resources["LeftArrow"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_arrow_right" : "ic_arrow_left";
-		Current.Resources["RigthArrow"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_arrow_left" : "ic_arrow_right";
+		// Current.Resources["ArrowImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 90 : 270;
+		// Current.Resources["BackImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 180 : 0;
+		// Current.Resources["PreviousImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 270 : 90;
+		// Current.Resources["NextImageRotation"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? 90 : 270;
+		// Current.Resources["AppFlowDirection"] = Settings.AppLanguage?.FlowDirection;
+		// Current.Resources["ViewScaleX"] = DeviceInfo.Platform == DevicePlatform.iOS && Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
+		// Current.Resources["TutorialCardScaleX"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
+		// Current.Resources["SwitchScaleX"] = DeviceInfo.Platform == DevicePlatform.Android && Settings.AppLanguage?.Language == AppLanguage.Arabic ? -1 : 1;
+		// Current.Resources["TooltipPosition"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? TooltipPosition.Right : TooltipPosition.Left;
+		// Current.Resources["LeftArrow"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_arrow_right" : "ic_arrow_left";
+		// Current.Resources["RigthArrow"] = Settings.AppLanguage?.Language == AppLanguage.Arabic ? "ic_arrow_left" : "ic_arrow_right";
 	}
 
 	public static List<LanguageModel> Languages => new List<LanguageModel>()
@@ -224,26 +246,26 @@ public partial class App : Application
 	{
 		try
 		{
-			if (!isMain)
-			{
-				if (Current.Resources.MergedDictionaries.Any(x => x.GetType() == typeof(EnglishFontStyles))
-					&& Settings.AppLanguage?.Language == AppLanguage.Arabic)
-				{
-					var englishStyles = Current.Resources.MergedDictionaries.FirstOrDefault(x => x.GetType() == typeof(EnglishFontStyles));
+			// if (!isMain)
+			// {
+			// 	if (Current.Resources.MergedDictionaries.Any(x => x.GetType() == typeof(EnglishFontStyles))
+			// 		&& Settings.AppLanguage?.Language == AppLanguage.Arabic)
+			// 	{
+			// 		var englishStyles = Current.Resources.MergedDictionaries.FirstOrDefault(x => x.GetType() == typeof(EnglishFontStyles));
 
-					Current.Resources.MergedDictionaries.Remove(englishStyles);
-					Current.Resources.MergedDictionaries.Add(ArabicFontStyles.Instance);
+			// 		Current.Resources.MergedDictionaries.Remove(englishStyles);
+			// 		Current.Resources.MergedDictionaries.Add(ArabicFontStyles.Instance);
 
-				}
-				else if (Current.Resources.MergedDictionaries.Any(x => x.GetType() == typeof(ArabicFontStyles))
-				&& Settings.AppLanguage?.Language == AppLanguage.English)
-				{
-					var arabicStyles = Current.Resources.MergedDictionaries.FirstOrDefault(x => x.GetType() == typeof(ArabicFontStyles));
+			// 	}
+			// 	else if (Current.Resources.MergedDictionaries.Any(x => x.GetType() == typeof(ArabicFontStyles))
+			// 	&& Settings.AppLanguage?.Language == AppLanguage.English)
+			// 	{
+			// 		var arabicStyles = Current.Resources.MergedDictionaries.FirstOrDefault(x => x.GetType() == typeof(ArabicFontStyles));
 
-					Current.Resources.MergedDictionaries.Remove(arabicStyles);
-					Current.Resources.MergedDictionaries.Add(EnglishFontStyles.Instance);
-				}
-			}
+			// 		Current.Resources.MergedDictionaries.Remove(arabicStyles);
+			// 		Current.Resources.MergedDictionaries.Add(EnglishFontStyles.Instance);
+			// 	}
+			// }
 		}
 		catch (Exception ex)
 		{

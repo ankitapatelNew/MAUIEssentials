@@ -65,11 +65,11 @@
 		Grid.Row="3"
 		Grid.ColumnSpan="2"
 		Margin="0,25,0,0"
-		Style="{StaticResource borderStyle}"
+		Style="{StaticResource popupBorderStyle}"
 		IsVisible="{Binding HasUploadButton, Source={x:Reference pickerControl}}"
 		Stroke="{Binding Source={x:StaticResource blueColor}}">
         <Grid
-			HorizontalOptions="CenterAndExpand"
+			HorizontalOptions="Center"
 			ColumnSpacing="10"
 			ColumnDefinitions="20, Auto"
 			HeightRequest="{StaticResource ButtonHeight}">

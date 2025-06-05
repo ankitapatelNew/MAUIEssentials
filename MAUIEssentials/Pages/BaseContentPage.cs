@@ -86,7 +86,7 @@ namespace MAUIEssentials.Pages
             }
             //Shell.SetTabBarIsVisible(this, false);
             Shell.SetNavBarIsVisible(this, false);
-            FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
+            // FlowDirection = (FlowDirection)(Settings.AppLanguage?.FlowDirection);
             BackgroundColor = AppColorResources.white.ToColor();
 
             NavigationPage.SetHasBackButton(this, false);
